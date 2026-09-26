@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://d3ptlx7c403vm"]
+
+[ext_resource type="Script" path="res://game/characters/tonda/character_tonda_state.gd" id="1_vgfl2"]
+
+[resource]
+resource_name = "Tonda"
+script = ExtResource("1_vgfl2")
+script_name = "Tonda"
+scene = "res://game/characters/tonda/character_tonda.tscn"

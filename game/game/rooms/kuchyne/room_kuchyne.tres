@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://cxbx5nsoupitu"]
+
+[ext_resource type="Script" path="res://game/rooms/kuchyne/room_kuchyne_state.gd" id="1_uxiya"]
+
+[resource]
+resource_name = "Kuchyne"
+script = ExtResource("1_uxiya")
+script_name = "Kuchyne"
+scene = "res://game/rooms/kuchyne/room_kuchyne.tscn"

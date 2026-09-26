@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b0asknhtekmax"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/room_kulna.gd" id="1_0w3g4"]
+[ext_resource type="PackedScene" uid="uid://cum42l2mc4khg" path="res://game/rooms/kulna/walkable_areas/podlaha/walkable_area_podlaha.tscn" id="2_cr7j3"]
+[ext_resource type="PackedScene" uid="uid://d2didlrxkexp5" path="res://game/rooms/kulna/props/bg/prop_bg.tscn" id="2_l8u4i"]
+[ext_resource type="Texture2D" uid="uid://r4w1bofr7vg1" path="res://assets/rooms/shed_inside.png" id="3_70iks"]
+[ext_resource type="PackedScene" uid="uid://dkyaf7m0nrco" path="res://game/rooms/kulna/props/bota/prop_bota.tscn" id="4_ihal4"]
+[ext_resource type="Texture2D" uid="uid://bnwus5g2qrqyg" path="res://assets/props/old_boot.png" id="5_c0fx7"]
+[ext_resource type="PackedScene" uid="uid://bas2p2md5ifpx" path="res://game/rooms/kulna/props/micka/prop_micka.tscn" id="6_k3c4d"]
+[ext_resource type="Texture2D" uid="uid://bvf8fn0rijj2r" path="res://assets/characters/cat_micka.png" id="7_s7y3q"]
+[ext_resource type="PackedScene" uid="uid://ch0ierp8cy84u" path="res://game/rooms/kulna/props/plsik_1/prop_plsik_1.tscn" id="8_dryo4"]
+[ext_resource type="Texture2D" uid="uid://c23g5jtu52ov7" path="res://assets/characters/dormouse.png" id="9_4cgs2"]
+[ext_resource type="PackedScene" uid="uid://bntu1h4y1cbr6" path="res://game/rooms/kulna/props/plsik_2/prop_plsik_2.tscn" id="10_2xnpb"]
+[ext_resource type="PackedScene" uid="uid://ccu8nmnjs8lwd" path="res://game/rooms/kulna/props/hnizdo/prop_hnizdo.tscn" id="11_2xnpb"]
+[ext_resource type="Texture2D" uid="uid://duxx34cc4pkdp" path="res://assets/props/sock_red.png" id="13_huqqa"]
+[ext_resource type="PackedScene" uid="uid://bg2tmk6gcjv50" path="res://game/rooms/kulna/hotspots/ven/hotspot_ven.tscn" id="14_huqqa"]
+[ext_resource type="PackedScene" uid="uid://djffx73ueuylj" path="res://game/rooms/kulna/hotspots/pila/hotspot_pila.tscn" id="15_te50r"]
+[ext_resource type="PackedScene" uid="uid://w3mbuaob01sq" path="res://game/rooms/kulna/hotspots/konvicka/hotspot_konvicka.tscn" id="16_o8m3a"]
+[ext_resource type="PackedScene" uid="uid://b12p2t1fodbar" path="res://game/rooms/kulna/markers/vstup/marker_vstup.tscn" id="17_ajo0a"]
+
+[node name="RoomKulna" type="Node2D" unique_id=1077351848]
+script = ExtResource("1_0w3g4")
+script_name = "Kulna"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="." unique_id=1552505325]
+
+[node name="Podlaha" parent="WalkableAreas" unique_id=1254813702 instance=ExtResource("2_cr7j3")]
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 900, 1880, 900, 1900, 1060, 20, 1060)])
+
+[node name="Props" type="Node2D" parent="." unique_id=137339689]
+
+[node name="Bg" parent="Props" unique_id=398405284 instance=ExtResource("2_l8u4i")]
+position = Vector2(960, 540)
+texture = ExtResource("3_70iks")
+
+[node name="Bota" parent="Props" unique_id=504377935 instance=ExtResource("4_ihal4")]
+position = Vector2(1440, 830)
+texture = ExtResource("5_c0fx7")
+description = "Stará bota"
+baseline = 140
+
+[node name="Micka" parent="Props" unique_id=2104104446 instance=ExtResource("6_k3c4d")]
+position = Vector2(1242, 745)
+texture = ExtResource("7_s7y3q")
+description = "Kočka Micka"
+baseline = 110
+
+[node name="Plsik1" parent="Props" unique_id=621484589 instance=ExtResource("8_dryo4")]
+position = Vector2(1330, 990)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_4cgs2")
+description = "Plšík"
+baseline = 80
+
+[node name="Plsik2" parent="Props" unique_id=1002223327 instance=ExtResource("10_2xnpb")]
+position = Vector2(1580, 1010)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_4cgs2")
+description = "Plšík"
+baseline = 80
+
+[node name="Hnizdo" parent="Props" unique_id=682574627 instance=ExtResource("11_2xnpb")]
+position = Vector2(1440, 700)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_huqqa")
+description = "Ponožky"
+baseline = 80
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=887099310]
+
+[node name="Ven" parent="Hotspots" unique_id=1576410899 instance=ExtResource("14_huqqa")]
+description = "Ven z kůlny"
+walk_to_point = Vector2(170, 960)
+
+[node name="Pila" parent="Hotspots" unique_id=134072279 instance=ExtResource("15_te50r")]
+walk_to_point = Vector2(620, 940)
+
+[node name="Konvicka" parent="Hotspots" unique_id=199272849 instance=ExtResource("16_o8m3a")]
+description = "Konvička"
+walk_to_point = Vector2(760, 960)
+
+[node name="Regions" type="Node2D" parent="." unique_id=185515586]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1506135234]
+
+[node name="Vstup" parent="Markers" unique_id=1731598830 instance=ExtResource("17_ajo0a")]
+position = Vector2(280, 960)
+
+[node name="Characters" type="Node2D" parent="." unique_id=1726684496]

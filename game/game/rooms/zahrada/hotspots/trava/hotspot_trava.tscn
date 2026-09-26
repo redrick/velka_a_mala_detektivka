@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cvg0rjqu2cmuo"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/hotspots/trava/hotspot_trava.gd" id="1_n2byl"]
+
+[node name="Trava" type="Area2D" unique_id=241931200]
+script = ExtResource("1_n2byl")
+script_name = "Trava"
+description = "Trava"
+cursor = 1
+interaction_polygon = PackedVector2Array(760, 680, 1090, 680, 1090, 770, 760, 770)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=756454699]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(760, 680, 1090, 680, 1090, 770, 760, 770)

@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dffxr3fpx3pd0"]
+
+[node name="ZKuchyne" type="Marker2D" unique_id=2020832858]
+visible = false

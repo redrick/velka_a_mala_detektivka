@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://hor7l0gbqlp2"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/hotspots/snura/hotspot_snura.gd" id="1_2lfp4"]
+
+[node name="Snura" type="Area2D" unique_id=2025813770]
+script = ExtResource("1_2lfp4")
+script_name = "Snura"
+description = "Snura"
+cursor = 1
+interaction_polygon = PackedVector2Array(645, 440, 1180, 440, 1180, 550, 645, 550)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1450841238]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(645, 440, 1180, 440, 1180, 550, 645, 550)

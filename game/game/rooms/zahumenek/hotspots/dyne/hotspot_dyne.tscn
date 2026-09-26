@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d0km2agcmmn1d"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/hotspots/dyne/hotspot_dyne.gd" id="1_it3l7"]
+
+[node name="Dyne" type="Area2D" unique_id=1632564100]
+script = ExtResource("1_it3l7")
+script_name = "Dyne"
+description = "Dyne"
+cursor = 1
+interaction_polygon = PackedVector2Array(90, 820, 530, 820, 530, 1020, 90, 1020)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1432508158]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(90, 820, 530, 820, 530, 1020, 90, 1020)

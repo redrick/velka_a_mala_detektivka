@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://rngl5i8a854w"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/hotspots/ker/hotspot_ker.gd" id="1_jxkk1"]
+
+[node name="Ker" type="Area2D" unique_id=1379641690]
+script = ExtResource("1_jxkk1")
+script_name = "Ker"
+description = "Ker"
+cursor = 1
+interaction_polygon = PackedVector2Array(240, 500, 540, 500, 540, 630, 240, 630)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=435662005]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(240, 500, 540, 500, 540, 630, 240, 630)

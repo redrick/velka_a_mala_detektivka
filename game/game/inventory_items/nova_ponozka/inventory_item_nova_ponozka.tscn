@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cbp3b3envhie0"]
+
+[ext_resource type="Texture2D" uid="uid://duxx34cc4pkdp" path="res://assets/props/sock_red.png" id="1_ex50h"]
+[ext_resource type="Script" path="res://game/inventory_items/nova_ponozka/inventory_item_nova_ponozka.gd" id="1_yg65o"]
+
+[node name="ItemNovaPonozka" type="TextureRect" unique_id=241576411]
+texture_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_ex50h")
+stretch_mode = 5
+script = ExtResource("1_yg65o")
+script_name = "NovaPonozka"
+description = "Nová ponožka"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=424939832]

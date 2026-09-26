@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bdmr1q08644ao"]
+
+[ext_resource type="Script" path="res://game/characters/babicka/character_babicka_state.gd" id="1_r23kg"]
+
+[resource]
+resource_name = "Babicka"
+script = ExtResource("1_r23kg")
+script_name = "Babicka"
+scene = "res://game/characters/babicka/character_babicka.tscn"

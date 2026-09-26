@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6f7jbxmhymxd"]
+
+[ext_resource type="Script" path="res://game/rooms/kuchyne/hotspots/kamna/hotspot_kamna.gd" id="1_tmydl"]
+
+[node name="Kamna" type="Area2D" unique_id=1169943066]
+script = ExtResource("1_tmydl")
+script_name = "Kamna"
+description = "Kamna"
+cursor = 1
+interaction_polygon = PackedVector2Array(58, 360, 328, 360, 328, 756, 58, 756)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=363642962]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(58, 360, 328, 360, 328, 756, 58, 756)

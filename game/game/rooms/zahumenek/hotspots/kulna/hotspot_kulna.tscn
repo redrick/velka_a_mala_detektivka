@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dqtjw1pqojbbr"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/hotspots/kulna/hotspot_kulna.gd" id="1_g5qjf"]
+
+[node name="Kulna" type="Area2D" unique_id=1236546965]
+script = ExtResource("1_g5qjf")
+script_name = "Kulna"
+description = "Kulna"
+cursor = 1
+interaction_polygon = PackedVector2Array(1640, 480, 1830, 480, 1830, 630, 1640, 630)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1680512603]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(1640, 480, 1830, 480, 1830, 630, 1640, 630)

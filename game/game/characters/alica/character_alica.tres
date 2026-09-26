@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bgc4mw01ih1wi"]
+
+[ext_resource type="Script" path="res://game/characters/alica/character_alica_state.gd" id="1_8h0q0"]
+
+[resource]
+resource_name = "Alica"
+script = ExtResource("1_8h0q0")
+script_name = "Alica"
+scene = "res://game/characters/alica/character_alica.tscn"

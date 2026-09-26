@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://w3mbuaob01sq"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/hotspots/konvicka/hotspot_konvicka.gd" id="1_wujqe"]
+
+[node name="Konvicka" type="Area2D" unique_id=199272849]
+script = ExtResource("1_wujqe")
+script_name = "Konvicka"
+description = "Konvicka"
+cursor = 1
+interaction_polygon = PackedVector2Array(825, 880, 955, 880, 955, 980, 825, 980)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=78255595]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(825, 880, 955, 880, 955, 980, 825, 980)

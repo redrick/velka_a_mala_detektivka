@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bd2tssvrdnsy3"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/room_zahumenek_state.gd" id="1_gxpq0"]
+
+[resource]
+resource_name = "Zahumenek"
+script = ExtResource("1_gxpq0")
+script_name = "Zahumenek"
+scene = "res://game/rooms/zahumenek/room_zahumenek.tscn"

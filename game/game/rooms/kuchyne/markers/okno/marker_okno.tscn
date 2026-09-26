@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bxo80eugg0u70"]
+
+[node name="Okno" type="Marker2D" unique_id=484436936]
+visible = false

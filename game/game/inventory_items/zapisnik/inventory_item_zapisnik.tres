@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://c583s0ij8cuj1"]
+
+[ext_resource type="Script" path="res://game/inventory_items/zapisnik/inventory_item_zapisnik_state.gd" id="1_47638"]
+
+[resource]
+resource_name = "Zapisnik"
+script = ExtResource("1_47638")
+script_name = "Zapisnik"
+scene = "res://game/inventory_items/zapisnik/inventory_item_zapisnik.tscn"

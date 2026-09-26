@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://dt37su7l8246u"]
+
+[ext_resource type="Script" uid="uid://carymp4bw3sp2" path="res://game/rooms/zahrada/room_zahrada.gd" id="1_0armj"]
+[ext_resource type="PackedScene" uid="uid://d0iyoi41xyuim" path="res://game/rooms/zahrada/props/bg/prop_bg.tscn" id="2_fob50"]
+[ext_resource type="PackedScene" uid="uid://byvh38npgk7j" path="res://game/rooms/zahrada/walkable_areas/zahrada/walkable_area_zahrada.tscn" id="2_n8cl8"]
+[ext_resource type="Texture2D" uid="uid://v07m7gpsqvcq" path="res://assets/rooms/garden.png" id="4_mumj7"]
+[ext_resource type="PackedScene" uid="uid://cmbrpouaf4eue" path="res://game/rooms/zahrada/props/stopy/prop_stopy.tscn" id="5_mh47s"]
+[ext_resource type="PackedScene" uid="uid://hor7l0gbqlp2" path="res://game/rooms/zahrada/hotspots/snura/hotspot_snura.tscn" id="5_mumj7"]
+[ext_resource type="Texture2D" uid="uid://b8egcjbqe3fli" path="res://assets/props/footprints.png" id="6_jnvwv"]
+[ext_resource type="PackedScene" uid="uid://b0n6e4p728ukh" path="res://game/rooms/zahrada/hotspots/dvere/hotspot_dvere.tscn" id="6_m2o7i"]
+[ext_resource type="PackedScene" uid="uid://vfvxey5a5ogv" path="res://game/rooms/zahrada/props/pelisek/prop_pelisek.tscn" id="7_5s8el"]
+[ext_resource type="PackedScene" uid="uid://bummfjvpqgha4" path="res://game/rooms/zahrada/markers/start/marker_start.tscn" id="7_fvxyo"]
+[ext_resource type="PackedScene" uid="uid://doveoa2yj4b5v" path="res://game/characters/babicka/character_babicka.tscn" id="8_0e437"]
+[ext_resource type="Texture2D" uid="uid://uvleulqonllt" path="res://assets/props/dog_bed.png" id="8_fjlda"]
+[ext_resource type="PackedScene" uid="uid://byv8xm8owdmqm" path="res://game/rooms/zahrada/props/ponozka/prop_ponozka.tscn" id="9_tjmjs"]
+[ext_resource type="PackedScene" uid="uid://005wj6pims5w" path="res://game/characters/joey/character_joey.tscn" id="10_5s8el"]
+[ext_resource type="Texture2D" uid="uid://i0xxeuqxtonb" path="res://assets/props/old_sock.png" id="10_sjsr6"]
+[ext_resource type="PackedScene" uid="uid://dqjdu874f4j7o" path="res://game/rooms/zahrada/props/past/prop_past.tscn" id="11_sjsr6"]
+[ext_resource type="Texture2D" uid="uid://djx5088f0ey8x" path="res://assets/props/flour_patch.png" id="12_w3a5x"]
+[ext_resource type="PackedScene" uid="uid://cvg0rjqu2cmuo" path="res://game/rooms/zahrada/hotspots/trava/hotspot_trava.tscn" id="13_cfmoo"]
+[ext_resource type="PackedScene" uid="uid://gpn4c5y1eq81" path="res://game/rooms/zahrada/props/navnada/prop_navnada.tscn" id="13_kld8h"]
+[ext_resource type="Texture2D" uid="uid://duxx34cc4pkdp" path="res://assets/props/sock_red.png" id="14_erquw"]
+[ext_resource type="PackedScene" uid="uid://71wjltjsakl0" path="res://game/rooms/zahrada/props/silueta/prop_silueta.tscn" id="15_3y34s"]
+[ext_resource type="Texture2D" uid="uid://chsfjiuen1ril" path="res://assets/props/dormouse_silhouette.png" id="16_nlb88"]
+[ext_resource type="PackedScene" uid="uid://b0xfqc2td663w" path="res://game/rooms/zahrada/props/moucne_stopy/prop_moucne_stopy.tscn" id="17_e17la"]
+[ext_resource type="PackedScene" uid="uid://c2iaev11bkwml" path="res://game/characters/tonda/character_tonda.tscn" id="17_w3a5x"]
+[ext_resource type="Texture2D" uid="uid://lq07wg2fo15c" path="res://assets/props/floury_prints.png" id="18_i24ef"]
+[ext_resource type="PackedScene" uid="uid://38ras5wdripc" path="res://game/rooms/zahrada/props/nitka/prop_nitka.tscn" id="19_5olrt"]
+[ext_resource type="Texture2D" uid="uid://cwww6p5dm5uyg" path="res://assets/props/thread.png" id="20_f8ilf"]
+[ext_resource type="PackedScene" uid="uid://cga6fse50podc" path="res://game/rooms/zahrada/props/budka/prop_budka.tscn" id="21_5sb2i"]
+[ext_resource type="Texture2D" uid="uid://dix7i3c18vjfr" path="res://assets/props/birdhouse.png" id="22_gvtys"]
+[ext_resource type="PackedScene" uid="uid://bx3v4qw8g7gm5" path="res://game/rooms/zahrada/props/hrebik_1/prop_hrebik_1.tscn" id="23_m0tkp"]
+[ext_resource type="Texture2D" uid="uid://c04v3aykb7kmh" path="res://assets/props/nail.png" id="24_2yxtt"]
+[ext_resource type="PackedScene" uid="uid://bp7gtyb8enw17" path="res://game/rooms/zahrada/hotspots/cesta/hotspot_cesta.tscn" id="24_pias0"]
+[ext_resource type="PackedScene" uid="uid://dffxr3fpx3pd0" path="res://game/rooms/zahrada/markers/z_kuchyne/marker_z_kuchyne.tscn" id="25_pias0"]
+[ext_resource type="PackedScene" uid="uid://c8tqhca6qctia" path="res://game/rooms/zahrada/props/hrebik_2/prop_hrebik_2.tscn" id="25_t83np"]
+[ext_resource type="PackedScene" uid="uid://bct0cwiianm0y" path="res://game/rooms/zahrada/props/hrebik_3/prop_hrebik_3.tscn" id="26_t83np"]
+[ext_resource type="PackedScene" uid="uid://b4wtix2477yeh" path="res://game/rooms/zahrada/markers/ze_zahumenku/marker_ze_zahumenku.tscn" id="27_iigo7"]
+[ext_resource type="PackedScene" uid="uid://kw7cqvbv5bl2" path="res://game/rooms/zahrada/markers/konec/marker_konec.tscn" id="34_uecdf"]
+
+[node name="RoomZahrada" type="Node2D" unique_id=163904117]
+script = ExtResource("1_0armj")
+script_name = "Zahrada"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="." unique_id=946152794]
+
+[node name="Zahrada" parent="WalkableAreas" unique_id=1308696960 instance=ExtResource("2_n8cl8")]
+
+[node name="Props" type="Node2D" parent="." unique_id=1526117466]
+
+[node name="Bg" parent="Props" unique_id=1772886168 instance=ExtResource("2_fob50")]
+position = Vector2(960, 540)
+texture = ExtResource("4_mumj7")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+interaction_polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+
+[node name="Stopy" parent="Props" unique_id=1710748566 instance=ExtResource("5_mh47s")]
+position = Vector2(930, 735)
+texture = ExtResource("6_jnvwv")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+baseline = 40
+
+[node name="Pelisek" parent="Props" unique_id=183185624 instance=ExtResource("7_5s8el")]
+position = Vector2(430, 790)
+texture = ExtResource("8_fjlda")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Joeyho pelíšek"
+baseline = 45
+
+[node name="Ponozka" parent="Props" unique_id=501923279 instance=ExtResource("9_tjmjs")]
+position = Vector2(455, 770)
+scale = Vector2(0.9, 0.9)
+input_pickable = false
+texture = ExtResource("10_sjsr6")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Ponožka"
+clickable = false
+baseline = 80
+
+[node name="Past" parent="Props" unique_id=2088092213 instance=ExtResource("11_sjsr6")]
+position = Vector2(930, 745)
+texture = ExtResource("12_w3a5x")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Mouka pod šňůrou"
+baseline = 50
+
+[node name="Navnada" parent="Props" unique_id=1824713136 instance=ExtResource("13_kld8h")]
+position = Vector2(1095, 500)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("14_erquw")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Nová ponožka"
+baseline = 80
+
+[node name="Silueta" parent="Props" unique_id=330551091 instance=ExtResource("15_3y34s")]
+position = Vector2(2050, 760)
+texture = ExtResource("16_nlb88")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+baseline = 60
+
+[node name="MoucneStopy" parent="Props" unique_id=250270725 instance=ExtResource("17_e17la")]
+position = Vector2(690, 760)
+texture = ExtResource("18_i24ef")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Stopy v mouce"
+baseline = 50
+
+[node name="Nitka" parent="Props" unique_id=1495862875 instance=ExtResource("19_5olrt")]
+position = Vector2(420, 700)
+texture = ExtResource("20_f8ilf")
+obstacle_polygon = [Vector2(-16, -16), Vector2(16, -16), Vector2(16, 16), Vector2(-16, 16)]
+description = "Červená nitka"
+baseline = 40
+
+[node name="Budka" parent="Props" unique_id=733391743 instance=ExtResource("21_5sb2i")]
+position = Vector2(1150, 840)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("22_gvtys")
+description = "Budka pro plšíky"
+baseline = 120
+
+[node name="Hrebik1" parent="Props" unique_id=548105791 instance=ExtResource("23_m0tkp")]
+z_index = 1
+position = Vector2(1150, 800)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("24_2yxtt")
+description = "Hřebík"
+baseline = 28
+
+[node name="Hrebik2" parent="Props" unique_id=793292994 instance=ExtResource("25_t83np")]
+z_index = 1
+position = Vector2(1150, 800)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("24_2yxtt")
+description = "Hřebík"
+baseline = 28
+
+[node name="Hrebik3" parent="Props" unique_id=2036095643 instance=ExtResource("26_t83np")]
+z_index = 1
+position = Vector2(1150, 800)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("24_2yxtt")
+description = "Hřebík"
+baseline = 28
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=731578895]
+
+[node name="Snura" parent="Hotspots" unique_id=2025813770 instance=ExtResource("5_mumj7")]
+description = "Šňůra na prádlo"
+walk_to_point = Vector2(910, 760)
+
+[node name="Dvere" parent="Hotspots" unique_id=960942526 instance=ExtResource("6_m2o7i")]
+description = "Dveře do chalupy"
+walk_to_point = Vector2(1530, 720)
+
+[node name="Trava" parent="Hotspots" unique_id=241931200 instance=ExtResource("13_cfmoo")]
+description = "Tráva pod šňůrou"
+walk_to_point = Vector2(830, 800)
+
+[node name="Cesta" parent="Hotspots" unique_id=1656404526 instance=ExtResource("24_pias0")]
+description = "Cesta do zahumenku"
+walk_to_point = Vector2(100, 900)
+
+[node name="Regions" type="Node2D" parent="." unique_id=983506574]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1312930641]
+
+[node name="Start" parent="Markers" unique_id=159601845 instance=ExtResource("7_fvxyo")]
+position = Vector2(760, 900)
+
+[node name="ZKuchyne" parent="Markers" unique_id=2020832858 instance=ExtResource("25_pias0")]
+position = Vector2(1530, 800)
+
+[node name="ZeZahumenku" parent="Markers" unique_id=143628279 instance=ExtResource("27_iigo7")]
+position = Vector2(200, 900)
+
+[node name="Konec" parent="Markers" unique_id=826176938 instance=ExtResource("34_uecdf")]
+position = Vector2(880, 930)
+
+[node name="Characters" type="Node2D" parent="." unique_id=238411073]
+
+[node name="CharacterBabicka *" parent="Characters" unique_id=1387522685 instance=ExtResource("8_0e437")]
+position = Vector2(1290, 800)
+metadata/EDITOR_TMP_COPY_OF = "Babicka"
+
+[node name="CharacterJoey *" parent="Characters" unique_id=1094189757 instance=ExtResource("10_5s8el")]
+position = Vector2(230, 990)
+metadata/EDITOR_TMP_COPY_OF = "Joey"
+
+[node name="CharacterTonda *" parent="Characters" unique_id=484641510 instance=ExtResource("17_w3a5x")]
+position = Vector2(1820, 800)
+metadata/EDITOR_TMP_COPY_OF = "Tonda"

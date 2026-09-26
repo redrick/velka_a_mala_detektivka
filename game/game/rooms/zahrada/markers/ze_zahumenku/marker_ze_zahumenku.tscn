@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://b4wtix2477yeh"]
+
+[node name="ZeZahumenku" type="Marker2D" unique_id=143628279]
+visible = false

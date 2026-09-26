@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bb01pmpktnxix"]
+
+[ext_resource type="PackedScene" uid="uid://brql00i32wa0s" path="res://game/gui/components/hover_text/hover_text.tscn" id="1_1fksi"]
+[ext_resource type="Theme" uid="uid://dymyq4rwgxww2" path="res://game/gui/resources/gui_theme.tres" id="2_x2whg"]
+
+[node name="HoverTextHighRes" instance=ExtResource("1_1fksi")]
+theme = ExtResource("2_x2whg")

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://rvmehgnmnpa2"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/props/kamen_2/prop_kamen_2.gd" id="1_dgake"]
+
+[node name="Kamen2" type="Area2D" unique_id=1663477528]
+script = ExtResource("1_dgake")
+script_name = "Kamen2"
+description = "Kamen 2"
+cursor = 1
+interaction_polygon = PackedVector2Array(-46, -26, 46, -26, 46, 26, -46, 26)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1218575664]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1742618457]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1350585341]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-46, -26, 46, -26, 46, 26, -46, 26)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=287498243]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

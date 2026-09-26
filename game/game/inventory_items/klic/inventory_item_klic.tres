@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://d3n6njrjvolor"]
+
+[ext_resource type="Script" path="res://game/inventory_items/klic/inventory_item_klic_state.gd" id="1_5plk5"]
+
+[resource]
+resource_name = "Klic"
+script = ExtResource("1_5plk5")
+script_name = "Klic"
+scene = "res://game/inventory_items/klic/inventory_item_klic.tscn"

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://djffx73ueuylj"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/hotspots/pila/hotspot_pila.gd" id="1_oe5v2"]
+
+[node name="Pila" type="Area2D" unique_id=134072279]
+script = ExtResource("1_oe5v2")
+script_name = "Pila"
+description = "Pila"
+cursor = 1
+interaction_polygon = PackedVector2Array(530, 185, 715, 185, 715, 250, 530, 250)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=154985053]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(530, 185, 715, 185, 715, 250, 530, 250)

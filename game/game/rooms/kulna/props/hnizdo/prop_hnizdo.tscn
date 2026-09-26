@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ccu8nmnjs8lwd"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/props/hnizdo/prop_hnizdo.gd" id="1_62712"]
+
+[node name="Hnizdo" type="Area2D" unique_id=682574627]
+input_pickable = false
+script = ExtResource("1_62712")
+script_name = "Hnizdo"
+description = "Hnizdo"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2143570986]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1703007335]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1342229149]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=487297265]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dqjdu874f4j7o"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/past/prop_past.gd" id="1_vcqlc"]
+
+[node name="Past" type="Area2D" unique_id=2088092213]
+input_pickable = false
+script = ExtResource("1_vcqlc")
+script_name = "Past"
+description = "Past"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-180, -50, 180, -50, 180, 50, -180, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1074412875]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1689343721]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1568721987]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-180, -50, 180, -50, 180, 50, -180, 50)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=775014689]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

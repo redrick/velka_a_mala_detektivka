@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://neqmpxoxkup8"]
+
+[ext_resource type="Script" path="res://game/inventory_items/lupa/inventory_item_lupa_state.gd" id="1_2a3rx"]
+
+[resource]
+resource_name = "Lupa"
+script = ExtResource("1_2a3rx")
+script_name = "Lupa"
+scene = "res://game/inventory_items/lupa/inventory_item_lupa.tscn"

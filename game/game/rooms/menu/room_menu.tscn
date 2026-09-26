@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bqk1fluxpcpaf"]
+
+[ext_resource type="Script" path="res://game/rooms/menu/room_menu.gd" id="1_a1vh8"]
+[ext_resource type="PackedScene" uid="uid://d0j4f55c8lm6d" path="res://game/rooms/menu/props/bg/prop_bg.tscn" id="2_c3jfm"]
+[ext_resource type="Texture2D" uid="uid://brjgsgyku2usd" path="res://assets/menu/bg.png" id="3_a8r3v"]
+
+[node name="RoomMenu" type="Node2D" unique_id=1883579241]
+script = ExtResource("1_a1vh8")
+script_name = "Menu"
+has_player = false
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="." unique_id=1354509738]
+
+[node name="Props" type="Node2D" parent="." unique_id=1945528224]
+
+[node name="Bg" parent="Props" unique_id=2144996938 instance=ExtResource("2_c3jfm")]
+position = Vector2(960, 540)
+texture = ExtResource("3_a8r3v")
+interaction_polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=2120655885]
+
+[node name="Regions" type="Node2D" parent="." unique_id=922493432]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1168505151]
+
+[node name="Characters" type="Node2D" parent="." unique_id=501881857]

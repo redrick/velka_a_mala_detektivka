@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://kw7cqvbv5bl2"]
+
+[node name="Konec" type="Marker2D" unique_id=826176938]
+visible = false

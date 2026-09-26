@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://drr66xo4vkqos"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/hotspots/cesta_zpet/hotspot_cesta_zpet.gd" id="1_u6t5q"]
+
+[node name="CestaZpet" type="Area2D" unique_id=274962853]
+script = ExtResource("1_u6t5q")
+script_name = "CestaZpet"
+description = "Cesta Zpet"
+cursor = 1
+interaction_polygon = PackedVector2Array(0, 650, 70, 650, 70, 1060, 0, 1060)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1132180495]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 650, 70, 650, 70, 1060, 0, 1060)

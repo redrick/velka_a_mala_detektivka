@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://d0q1y8xjkgue3"]
+
+[ext_resource type="Script" path="res://game/inventory_items/stara_ponozka/inventory_item_stara_ponozka_state.gd" id="1_j1uhs"]
+
+[resource]
+resource_name = "StaraPonozka"
+script = ExtResource("1_j1uhs")
+script_name = "StaraPonozka"
+scene = "res://game/inventory_items/stara_ponozka/inventory_item_stara_ponozka.tscn"

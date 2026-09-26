@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://djwt1xflura5s"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/walkable_areas/louka/walkable_area_louka.gd" id="1_uaemt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uaemt"]
+vertices = PackedVector2Array(1255, 1060, 20, 1060, 20, 730, 1330, 730, 1900, 1060, 1690, 1060, 1600, 700, 1900, 700)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(20, 730, 1330, 730, 1255, 1060, 20, 1060), PackedVector2Array(1600, 700, 1900, 700, 1900, 1060, 1690, 1060)])
+agent_radius = 0.0
+
+[node name="Louka" type="Node2D" unique_id=697498031]
+script = ExtResource("1_uaemt")
+script_name = "Louka"
+description = "Louka"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(20, 730, 1330, 730, 1255, 1060, 20, 1060), PackedVector2Array(1600, 700, 1900, 700, 1900, 1060, 1690, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="." unique_id=1963800444]
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_uaemt")

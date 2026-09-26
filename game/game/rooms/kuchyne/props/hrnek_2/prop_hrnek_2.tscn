@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnl3eajk4od38"]
+
+[ext_resource type="Script" path="res://game/rooms/kuchyne/props/hrnek_2/prop_hrnek_2.gd" id="1_j0jhg"]
+
+[node name="Hrnek2" type="Area2D" unique_id=151124628]
+input_pickable = false
+script = ExtResource("1_j0jhg")
+script_name = "Hrnek2"
+description = "Hrnek 2"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=290437280]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=833699416]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1378716398]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=937014366]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

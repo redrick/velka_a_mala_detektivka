@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dgj02hjvnjo8"]
+
+[node name="ZaPlotem" type="Marker2D" unique_id=128834072]
+visible = false

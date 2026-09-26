@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bas2p2md5ifpx"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/props/micka/prop_micka.gd" id="1_l7bl2"]
+
+[node name="Micka" type="Area2D" unique_id=2104104446]
+script = ExtResource("1_l7bl2")
+script_name = "Micka"
+description = "Micka"
+cursor = 1
+interaction_polygon = PackedVector2Array(-110, -110, 110, -110, 110, 110, -110, 110)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=788347092]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1435428264]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=151739363]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-110, -110, 110, -110, 110, 110, -110, 110)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=88535110]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

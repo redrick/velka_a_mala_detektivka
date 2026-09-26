@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c8tqhca6qctia"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/hrebik_2/prop_hrebik_2.gd" id="1_ygr0q"]
+
+[node name="Hrebik2" type="Area2D" unique_id=793292994]
+script = ExtResource("1_ygr0q")
+script_name = "Hrebik2"
+description = "Hrebik 2"
+cursor = 1
+interaction_polygon = PackedVector2Array(-14, -28, 14, -28, 14, 28, -14, 28)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026974047]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=148279136]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=8316353]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-14, -28, 14, -28, 14, 28, -14, 28)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=581551075]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

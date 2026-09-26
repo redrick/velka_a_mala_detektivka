@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ch0ierp8cy84u"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/props/plsik_1/prop_plsik_1.gd" id="1_bsno6"]
+
+[node name="Plsik1" type="Area2D" unique_id=621484589]
+input_pickable = false
+script = ExtResource("1_bsno6")
+script_name = "Plsik1"
+description = "Plsik 1"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-150, -80, 150, -80, 150, 80, -150, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1851837293]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1689028991]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=108929769]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-150, -80, 150, -80, 150, 80, -150, 80)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1299284054]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

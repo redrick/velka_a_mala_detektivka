@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://batney0njg1gu"]
+
+[ext_resource type="Theme" uid="uid://dymyq4rwgxww2" path="res://game/gui/resources/gui_theme.tres" id="1_3jfr0"]
+[ext_resource type="Script" uid="uid://corfea34tdfs3" path="res://game/gui/templates/simple_click/components/simple_click_bar/simple_click_bar_custom.gd" id="2_cakc8"]
+[ext_resource type="Texture2D" uid="uid://ddjnrtl7sp5lk" path="res://game/gui/components/simple_click_bar_high_res/images/simple_click_settings_button_high_res.svg" id="3_3fges"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3sel"]
+atlas = ExtResource("3_3fges")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76qso"]
+atlas = ExtResource("3_3fges")
+region = Rect2(0, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d5dm"]
+atlas = ExtResource("3_3fges")
+region = Rect2(0, 40, 40, 40)
+
+[node name="SimpleClickBarHighRes" type="Control" groups=["popochiu_gui_component"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_3jfr0")
+script = ExtResource("2_cakc8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.74902)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Box" type="HBoxContainer" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="SettingsBtn" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_u3sel")
+texture_pressed = SubResource("AtlasTexture_76qso")
+texture_hover = SubResource("AtlasTexture_4d5dm")
+stretch_mode = 3

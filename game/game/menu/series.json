@@ -1,0 +1,78 @@
+{
+ "series": [
+  {
+   "id": "vamd",
+   "title": "Velká a malá detektivka",
+   "subtitle": "Alica a Hanka řeší záhady",
+   "cover": "res://assets/menu/series_vamd.png",
+   "episodes": [
+    {
+     "number": 1,
+     "title": "Záhada zmizelých ponožek",
+     "cover": "res://assets/menu/ep_vamd_01.png",
+     "start_room": "Zahrada"
+    },
+    {
+     "number": 2,
+     "title": "Tajemství starého klíče"
+    },
+    {
+     "number": 3,
+     "title": "Mapa ke starému rybníku"
+    },
+    {
+     "number": 4,
+     "title": "Hanka to vyřeší!"
+    },
+    {
+     "number": 5,
+     "title": "Kdo staví sněhuláky?"
+    },
+    {
+     "number": 6,
+     "title": "Kam mizí perníčky?"
+    },
+    {
+     "number": 7,
+     "title": "Joeyho velký den"
+    },
+    {
+     "number": 8,
+     "title": "Stopy ve sněhu"
+    },
+    {
+     "number": 9,
+     "title": "Tajná zpráva v knihovně"
+    },
+    {
+     "number": 10,
+     "title": "Záhada ve škole"
+    },
+    {
+     "number": 11,
+     "title": "Kam mizí vajíčka?"
+    },
+    {
+     "number": 12,
+     "title": "Tajemné šipky"
+    },
+    {
+     "number": 13,
+     "title": "Stopy u potoka"
+    },
+    {
+     "number": 14,
+     "title": "Poklad na hradě"
+    },
+    {
+     "number": 15,
+     "title": "Noc padajících hvězd"
+    },
+    {
+     "number": 16,
+     "title": "Klub Hvězdička"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cpmiqw2i6lt07"]
+
+[ext_resource type="Script" path="res://game/characters/alica/character_alica.gd" id="1_issgv"]
+[ext_resource type="Texture2D" uid="uid://dgynqfldkxrvo" path="res://assets/characters/alica_happy.png" id="2_i484k"]
+
+[node name="CharacterAlica" type="Area2D" unique_id=2011947838]
+script = ExtResource("1_issgv")
+text_color = Color(0.11764706, 0.30980393, 0.6, 1)
+walk_speed = 400.0
+follow_character_offset = Vector2(-170, 10)
+follow_character_threshold = Vector2(260, 80)
+follow_character_outside_room = true
+dialog_pos = Vector2(0, -510)
+sprite_prefix = "alica"
+default_mood = "happy"
+script_name = "Alica"
+description = "Alica"
+cursor = 8
+interaction_polygon = PackedVector2Array(-120, -480, 120, -480, 120, 0, -120, 0)
+
+[node name="ScalingPolygon" type="CollisionPolygon2D" parent="." unique_id=687616326]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2036370509]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525647029]
+texture = ExtResource("2_i484k")
+offset = Vector2(0, -240)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1974044067]
+visible = false
+polygon = PackedVector2Array(-120, -480, 120, -480, 120, 0, -120, 0)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1807597829]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

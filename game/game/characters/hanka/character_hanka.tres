@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://kf31tanye2e3"]
+
+[ext_resource type="Script" path="res://game/characters/hanka/character_hanka_state.gd" id="1_suhfc"]
+
+[resource]
+resource_name = "Hanka"
+script = ExtResource("1_suhfc")
+script_name = "Hanka"
+scene = "res://game/characters/hanka/character_hanka.tscn"

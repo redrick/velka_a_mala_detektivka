@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://kx7takquepoo"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/room_zahumenek.gd" id="1_v70ib"]
+[ext_resource type="PackedScene" uid="uid://b1qeowi44ug5s" path="res://game/rooms/zahumenek/props/bg/prop_bg.tscn" id="2_qqb8m"]
+[ext_resource type="PackedScene" uid="uid://djwt1xflura5s" path="res://game/rooms/zahumenek/walkable_areas/louka/walkable_area_louka.tscn" id="2_tkyqe"]
+[ext_resource type="Texture2D" uid="uid://c0k7qibui4uxh" path="res://assets/rooms/zahumenek.png" id="3_7qksb"]
+[ext_resource type="PackedScene" uid="uid://b4iv4eb1woxc1" path="res://game/rooms/zahumenek/props/plot/prop_plot.tscn" id="4_lk0de"]
+[ext_resource type="Texture2D" uid="uid://dxouhry1pb80g" path="res://assets/props/fence_gap.png" id="5_nbvhl"]
+[ext_resource type="PackedScene" uid="uid://b1ifa4e7s6vnx" path="res://game/rooms/zahumenek/props/kamen_1/prop_kamen_1.tscn" id="6_tnygm"]
+[ext_resource type="Texture2D" uid="uid://b762mninnowbx" path="res://assets/props/stone_big.png" id="7_pbno0"]
+[ext_resource type="PackedScene" uid="uid://rvmehgnmnpa2" path="res://game/rooms/zahumenek/props/kamen_2/prop_kamen_2.tscn" id="8_pf86g"]
+[ext_resource type="Texture2D" uid="uid://bthm1v0gbq4n8" path="res://assets/props/stone_small.png" id="9_ctlas"]
+[ext_resource type="PackedScene" uid="uid://dqkf6hhqeo13h" path="res://game/rooms/zahumenek/props/kamen_3/prop_kamen_3.tscn" id="10_tkyqe"]
+[ext_resource type="PackedScene" uid="uid://cao7xyel3jo2v" path="res://game/rooms/zahumenek/hotspots/diera/hotspot_diera.tscn" id="12_e6l7y"]
+[ext_resource type="PackedScene" uid="uid://rngl5i8a854w" path="res://game/rooms/zahumenek/hotspots/ker/hotspot_ker.tscn" id="13_4tegf"]
+[ext_resource type="PackedScene" uid="uid://d0km2agcmmn1d" path="res://game/rooms/zahumenek/hotspots/dyne/hotspot_dyne.tscn" id="14_83aig"]
+[ext_resource type="PackedScene" uid="uid://dqtjw1pqojbbr" path="res://game/rooms/zahumenek/hotspots/kulna/hotspot_kulna.tscn" id="15_js4m5"]
+[ext_resource type="PackedScene" uid="uid://drr66xo4vkqos" path="res://game/rooms/zahumenek/hotspots/cesta_zpet/hotspot_cesta_zpet.tscn" id="16_wryhm"]
+[ext_resource type="PackedScene" uid="uid://dt8espihxoepy" path="res://game/rooms/zahumenek/markers/ze_zahrady/marker_ze_zahrady.tscn" id="17_5pmyl"]
+[ext_resource type="PackedScene" uid="uid://dgj02hjvnjo8" path="res://game/rooms/zahumenek/markers/za_plotem/marker_za_plotem.tscn" id="18_65mip"]
+[ext_resource type="PackedScene" uid="uid://c1blnrfrvfah5" path="res://game/rooms/zahumenek/markers/prechod_l/marker_prechod_l.tscn" id="19_kfwv1"]
+[ext_resource type="PackedScene" uid="uid://bm1r1umg1hvtd" path="res://game/rooms/zahumenek/markers/prechod_p/marker_prechod_p.tscn" id="20_iegym"]
+[ext_resource type="PackedScene" uid="uid://005wj6pims5w" path="res://game/characters/joey/character_joey.tscn" id="21_uikva"]
+[ext_resource type="Script" uid="uid://daj210onpu1b6" path="res://game/characters/joey/character_joey.gd" id="22_11rlw"]
+
+[node name="RoomZahumenek" type="Node2D" unique_id=1795179206]
+script = ExtResource("1_v70ib")
+script_name = "Zahumenek"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="." unique_id=1524865495]
+
+[node name="Louka" parent="WalkableAreas" unique_id=697498031 instance=ExtResource("2_tkyqe")]
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(20, 730, 1330, 730, 1255, 1060, 20, 1060), PackedVector2Array(1600, 700, 1900, 700, 1900, 1060, 1690, 1060)])
+
+[node name="Props" type="Node2D" parent="." unique_id=1118859689]
+
+[node name="Bg" parent="Props" unique_id=1659539289 instance=ExtResource("2_qqb8m")]
+position = Vector2(960, 540)
+texture = ExtResource("3_7qksb")
+
+[node name="Plot" parent="Props" unique_id=1912962090 instance=ExtResource("4_lk0de")]
+position = Vector2(650, 660)
+texture = ExtResource("5_nbvhl")
+baseline = 60
+
+[node name="Kamen1" parent="Props" unique_id=1635488118 instance=ExtResource("6_tnygm")]
+position = Vector2(1360, 930)
+texture = ExtResource("7_pbno0")
+description = "Velký kámen"
+baseline = 34
+
+[node name="Kamen2" parent="Props" unique_id=1663477528 instance=ExtResource("8_pf86g")]
+position = Vector2(1460, 900)
+texture = ExtResource("9_ctlas")
+description = "Malý kámen"
+baseline = 26
+
+[node name="Kamen3" parent="Props" unique_id=1625488899 instance=ExtResource("10_tkyqe")]
+position = Vector2(1560, 870)
+texture = ExtResource("7_pbno0")
+description = "Velký kámen"
+baseline = 34
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=49903380]
+
+[node name="Diera" parent="Hotspots" unique_id=517002534 instance=ExtResource("12_e6l7y")]
+description = "Díra v plotě"
+walk_to_point = Vector2(634, 790)
+
+[node name="Ker" parent="Hotspots" unique_id=1379641690 instance=ExtResource("13_4tegf")]
+description = "Malinový keř"
+walk_to_point = Vector2(400, 790)
+
+[node name="Dyne" parent="Hotspots" unique_id=1632564100 instance=ExtResource("14_83aig")]
+description = "Dýně"
+walk_to_point = Vector2(620, 960)
+
+[node name="Kulna" parent="Hotspots" unique_id=1236546965 instance=ExtResource("15_js4m5")]
+description = "Kůlna"
+walk_to_point = Vector2(1760, 760)
+
+[node name="CestaZpet" parent="Hotspots" unique_id=274962853 instance=ExtResource("16_wryhm")]
+description = "Cesta na zahradu"
+walk_to_point = Vector2(90, 900)
+
+[node name="Regions" type="Node2D" parent="." unique_id=974447812]
+
+[node name="Markers" type="Node2D" parent="." unique_id=172317304]
+
+[node name="ZeZahrady" parent="Markers" unique_id=1080616795 instance=ExtResource("17_5pmyl")]
+position = Vector2(200, 900)
+
+[node name="ZaPlotem" parent="Markers" unique_id=128834072 instance=ExtResource("18_65mip")]
+position = Vector2(470, 684)
+
+[node name="PrechodL" parent="Markers" unique_id=1173444536 instance=ExtResource("19_kfwv1")]
+position = Vector2(1270, 900)
+
+[node name="PrechodP" parent="Markers" unique_id=105473059 instance=ExtResource("20_iegym")]
+position = Vector2(1700, 880)
+
+[node name="Characters" type="Node2D" parent="." unique_id=4820136]
+
+[node name="CharacterJoey" type="Area2D" parent="Characters" unique_id=1094189757 instance=ExtResource("21_uikva")]
+position = Vector2(1000, 980)
+script = ExtResource("22_11rlw")
+text_color = Color(0.22745098, 0.22745098, 0.22745098, 1)
+walk_speed = 400.0
+dialog_pos = Vector2(0, -310)
+script_name = "Joey"
+description = "Joey"
+cursor = 8
+interaction_polygon = PackedVector2Array(-180, -280, 180, -280, 180, 0, -180, 0)
+metadata/EDITOR_TMP_COPY_OF = "Joey"

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://diulnfdbtf5kp"]
+
+[ext_resource type="PackedScene" uid="uid://h06i1s6r5g8d" path="res://game/gui/components/dialog_text/dialog_overhead/dialog_overhead.tscn" id="1_gbftt"]
+[ext_resource type="Theme" uid="uid://dymyq4rwgxww2" path="res://game/gui/resources/gui_theme.tres" id="2_npu58"]
+[ext_resource type="Texture2D" uid="uid://ddt8ickflro44" path="res://game/gui/components/dialog_text/images/ico_continue_high_res.svg" id="3_tk8u0"]
+
+[node name="DialogOverheadHighRes" instance=ExtResource("1_gbftt")]
+theme = ExtResource("2_npu58")
+wrap_width = 900.0
+limit_margin = 32.0
+
+[node name="RichTextLabel" parent="." index="0"]
+custom_minimum_size = Vector2(64, 28)
+offset_right = 800.0
+offset_bottom = 28.0
+
+[node name="ContinueIcon" parent="RichTextLabel" index="1"]
+texture_filter = 0
+offset_right = 42.0
+offset_bottom = 50.0
+texture_progress = ExtResource("3_tk8u0")

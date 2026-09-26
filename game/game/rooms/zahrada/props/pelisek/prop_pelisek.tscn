@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://vfvxey5a5ogv"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/pelisek/prop_pelisek.gd" id="1_dst0a"]
+
+[node name="Pelisek" type="Area2D" unique_id=183185624]
+script = ExtResource("1_dst0a")
+script_name = "Pelisek"
+description = "Pelisek"
+cursor = 1
+interaction_polygon = PackedVector2Array(-130, -45, 130, -45, 130, 45, -130, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1413542720]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=313473714]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1182030583]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 45, -130, 45)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1622950693]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

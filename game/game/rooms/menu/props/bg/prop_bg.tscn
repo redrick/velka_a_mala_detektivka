@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d0j4f55c8lm6d"]
+
+[ext_resource type="Script" path="res://game/rooms/menu/props/bg/prop_bg.gd" id="1_5jevb"]
+
+[node name="Bg" type="Area2D" unique_id=2144996938]
+z_index = -1
+input_pickable = false
+script = ExtResource("1_5jevb")
+script_name = "Bg"
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array()
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=277625312]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16583109]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=113820745]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1941460156]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

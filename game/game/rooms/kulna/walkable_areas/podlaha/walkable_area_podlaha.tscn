@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cum42l2mc4khg"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/walkable_areas/podlaha/walkable_area_podlaha.gd" id="1_8kpnk"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8kpnk"]
+vertices = PackedVector2Array(1900, 1060, 20, 1060, 40, 900, 1880, 900)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 900, 1880, 900, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="Podlaha" type="Node2D" unique_id=1254813702]
+script = ExtResource("1_8kpnk")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 900, 1880, 900, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="." unique_id=1502957527]
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_8kpnk")

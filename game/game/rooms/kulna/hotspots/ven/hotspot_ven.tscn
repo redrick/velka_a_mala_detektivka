@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bg2tmk6gcjv50"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/hotspots/ven/hotspot_ven.gd" id="1_wi3y2"]
+
+[node name="Ven" type="Area2D" unique_id=1576410899]
+script = ExtResource("1_wi3y2")
+script_name = "Ven"
+description = "Ven"
+cursor = 1
+interaction_polygon = PackedVector2Array(0, 560, 130, 560, 130, 1060, 0, 1060)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=2097744445]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 560, 130, 560, 130, 1060, 0, 1060)

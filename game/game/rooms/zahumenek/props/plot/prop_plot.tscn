@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b4iv4eb1woxc1"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/props/plot/prop_plot.gd" id="1_1ds7v"]
+
+[node name="Plot" type="Area2D" unique_id=1912962090]
+input_pickable = false
+script = ExtResource("1_1ds7v")
+script_name = "Plot"
+description = "Plot"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-650, -60, 650, -60, 650, 60, -650, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=583135451]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1730415649]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=2122959258]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-650, -60, 650, -60, 650, 60, -650, 60)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=893587128]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://gpn4c5y1eq81"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/navnada/prop_navnada.gd" id="1_qsoms"]
+
+[node name="Navnada" type="Area2D" unique_id=1824713136]
+input_pickable = false
+script = ExtResource("1_qsoms")
+script_name = "Navnada"
+description = "Navnada"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1386734549]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2139191389]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=770937298]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-60, -80, 60, -80, 60, 80, -60, 80)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1036183374]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

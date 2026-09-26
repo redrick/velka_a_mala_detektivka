@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dt8pt7qsmrvls"]
+
+[ext_resource type="Script" path="res://game/characters/hanka/character_hanka.gd" id="1_4abj1"]
+[ext_resource type="Texture2D" uid="uid://chdc7qbwjlcdj" path="res://assets/characters/hanka_happy.png" id="2_y1qfl"]
+
+[node name="CharacterHanka" type="Area2D" unique_id=396073992]
+script = ExtResource("1_4abj1")
+text_color = Color(0.6117647, 0.18431373, 0.41960785, 1)
+walk_speed = 400.0
+follow_character = "Alica"
+follow_character_offset = Vector2(-170, 10)
+follow_character_threshold = Vector2(260, 80)
+follow_character_outside_room = true
+dialog_pos = Vector2(0, -430)
+sprite_prefix = "hanka"
+default_mood = "happy"
+script_name = "Hanka"
+description = "Hanka"
+cursor = 8
+interaction_polygon = PackedVector2Array(-110, -400, 110, -400, 110, 0, -110, 0)
+
+[node name="ScalingPolygon" type="CollisionPolygon2D" parent="." unique_id=756340023]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956327290]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1579276379]
+texture = ExtResource("2_y1qfl")
+offset = Vector2(0, -200)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=869820409]
+visible = false
+polygon = PackedVector2Array(-110, -400, 110, -400, 110, 0, -110, 0)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1572334461]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

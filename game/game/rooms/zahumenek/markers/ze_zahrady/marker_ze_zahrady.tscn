@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dt8espihxoepy"]
+
+[node name="ZeZahrady" type="Marker2D" unique_id=1080616795]
+visible = false

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dhglrictf3sso"]
+
+[ext_resource type="Script" path="res://game/rooms/kuchyne/room_kuchyne.gd" id="1_cpq33"]
+[ext_resource type="PackedScene" uid="uid://c23lrp8gr03vp" path="res://game/rooms/kuchyne/props/bg/prop_bg.tscn" id="2_klr1j"]
+[ext_resource type="PackedScene" uid="uid://c5b67xefansfb" path="res://game/rooms/kuchyne/walkable_areas/podlaha/walkable_area_podlaha.tscn" id="2_m5ux1"]
+[ext_resource type="Texture2D" uid="uid://bie2a4rcdcutv" path="res://assets/rooms/kitchen.png" id="4_1uecr"]
+[ext_resource type="PackedScene" uid="uid://0qm3jr2v3ege" path="res://game/rooms/kuchyne/hotspots/dvere/hotspot_dvere.tscn" id="5_1uecr"]
+[ext_resource type="PackedScene" uid="uid://c4ykkkbq7pmg4" path="res://game/rooms/kuchyne/props/mouka/prop_mouka.tscn" id="5_l4oik"]
+[ext_resource type="Texture2D" uid="uid://cj1mem72fu2jr" path="res://assets/props/flour_bag.png" id="6_kmlj2"]
+[ext_resource type="PackedScene" uid="uid://c2e3u4pay2rgt" path="res://game/rooms/kuchyne/hotspots/okno/hotspot_okno.tscn" id="6_sx12e"]
+[ext_resource type="PackedScene" uid="uid://6f7jbxmhymxd" path="res://game/rooms/kuchyne/hotspots/kamna/hotspot_kamna.tscn" id="7_n1tr3"]
+[ext_resource type="PackedScene" uid="uid://bsb13ao28ja54" path="res://game/rooms/kuchyne/props/hrnek_1/prop_hrnek_1.tscn" id="7_oq7r2"]
+[ext_resource type="Texture2D" uid="uid://d34kjauf88m4w" path="res://assets/props/mug.png" id="8_oe3p5"]
+[ext_resource type="PackedScene" uid="uid://cnl3eajk4od38" path="res://game/rooms/kuchyne/props/hrnek_2/prop_hrnek_2.tscn" id="9_37qxp"]
+[ext_resource type="PackedScene" uid="uid://bpuq306jjbqon" path="res://game/rooms/kuchyne/markers/vstup/marker_vstup.tscn" id="13_37qxp"]
+[ext_resource type="PackedScene" uid="uid://bxo80eugg0u70" path="res://game/rooms/kuchyne/markers/okno/marker_okno.tscn" id="14_ietw0"]
+[ext_resource type="PackedScene" uid="uid://doveoa2yj4b5v" path="res://game/characters/babicka/character_babicka.tscn" id="15_fk7xn"]
+[ext_resource type="Script" uid="uid://bdlvtvi4dhmip" path="res://game/characters/babicka/character_babicka.gd" id="16_jugb3"]
+
+[node name="RoomKuchyne" type="Node2D" unique_id=1201402727]
+script = ExtResource("1_cpq33")
+script_name = "Kuchyne"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="." unique_id=1363767291]
+
+[node name="Podlaha" parent="WalkableAreas" unique_id=674709557 instance=ExtResource("2_m5ux1")]
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 790, 1880, 790, 1900, 1060, 20, 1060)])
+
+[node name="Props" type="Node2D" parent="." unique_id=2067163816]
+
+[node name="Bg" parent="Props" unique_id=283301139 instance=ExtResource("2_klr1j")]
+position = Vector2(960, 540)
+texture = ExtResource("4_1uecr")
+
+[node name="Mouka" parent="Props" unique_id=1267164779 instance=ExtResource("5_l4oik")]
+position = Vector2(1530, 312)
+texture = ExtResource("6_kmlj2")
+baseline = 80
+
+[node name="Hrnek1" parent="Props" unique_id=2052932771 instance=ExtResource("7_oq7r2")]
+position = Vector2(790, 500)
+texture = ExtResource("8_oe3p5")
+description = "Kakao"
+baseline = 40
+
+[node name="Hrnek2" parent="Props" unique_id=151124628 instance=ExtResource("9_37qxp")]
+position = Vector2(1030, 500)
+texture = ExtResource("8_oe3p5")
+description = "Kakao"
+baseline = 40
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1392598690]
+
+[node name="Dvere" parent="Hotspots" unique_id=1532803384 instance=ExtResource("5_1uecr")]
+description = "Dveře na zahradu"
+walk_to_point = Vector2(1700, 830)
+
+[node name="Okno" parent="Hotspots" unique_id=1205732538 instance=ExtResource("6_sx12e")]
+walk_to_point = Vector2(900, 820)
+
+[node name="Kamna" parent="Hotspots" unique_id=1169943066 instance=ExtResource("7_n1tr3")]
+walk_to_point = Vector2(380, 850)
+
+[node name="Regions" type="Node2D" parent="." unique_id=253156283]
+
+[node name="Markers" type="Node2D" parent="." unique_id=1789755951]
+
+[node name="Vstup" parent="Markers" unique_id=403518990 instance=ExtResource("13_37qxp")]
+position = Vector2(1620, 880)
+
+[node name="Okno" parent="Markers" unique_id=484436936 instance=ExtResource("14_ietw0")]
+position = Vector2(880, 860)
+
+[node name="Characters" type="Node2D" parent="." unique_id=1013767329]
+
+[node name="CharacterBabicka" type="Area2D" parent="Characters" unique_id=1387522685 instance=ExtResource("15_fk7xn")]
+position = Vector2(1250, 840)
+script = ExtResource("16_jugb3")
+text_color = Color(0.18431373, 0.41960785, 0.22745098, 1)
+walk_speed = 400.0
+dialog_pos = Vector2(0, -570)
+script_name = "Babicka"
+description = "Babička"
+cursor = 8
+interaction_polygon = PackedVector2Array(-130, -540, 130, -540, 130, 0, -130, 0)
+metadata/EDITOR_TMP_COPY_OF = "Babicka"

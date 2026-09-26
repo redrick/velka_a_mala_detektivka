@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c4ykkkbq7pmg4"]
+
+[ext_resource type="Script" path="res://game/rooms/kuchyne/props/mouka/prop_mouka.gd" id="1_llhij"]
+
+[node name="Mouka" type="Area2D" unique_id=1267164779]
+script = ExtResource("1_llhij")
+script_name = "Mouka"
+description = "Mouka"
+cursor = 1
+interaction_polygon = PackedVector2Array(-70, -80, 70, -80, 70, 80, -70, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=397754824]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=318937184]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=217576867]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-70, -80, 70, -80, 70, 80, -70, 80)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=742653643]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

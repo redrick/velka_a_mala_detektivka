@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bpuq306jjbqon"]
+
+[node name="Vstup" type="Marker2D" unique_id=403518990]
+visible = false

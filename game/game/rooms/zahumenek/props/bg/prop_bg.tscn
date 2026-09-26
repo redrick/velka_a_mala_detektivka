@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b1qeowi44ug5s"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/props/bg/prop_bg.gd" id="1_5bikh"]
+
+[node name="Bg" type="Area2D" unique_id=1659539289]
+z_index = -1
+input_pickable = false
+script = ExtResource("1_5bikh")
+script_name = "Bg"
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1083107616]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1842597779]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=1500582471]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=655831695]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

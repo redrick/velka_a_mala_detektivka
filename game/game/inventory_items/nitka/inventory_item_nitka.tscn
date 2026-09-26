@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://buxnkvdc30qse"]
+
+[ext_resource type="Script" path="res://game/inventory_items/nitka/inventory_item_nitka.gd" id="1_1vrlh"]
+[ext_resource type="Texture2D" uid="uid://c1soyn5x6eby7" path="res://assets/props/thread_icon.png" id="1_iardf"]
+
+[node name="ItemNitka" type="TextureRect" unique_id=1128166835]
+texture_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_iardf")
+stretch_mode = 5
+script = ExtResource("1_1vrlh")
+script_name = "Nitka"
+description = "Červená nitka"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1227054896]

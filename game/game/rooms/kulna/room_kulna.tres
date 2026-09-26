@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://rtbl12702tn4"]
+
+[ext_resource type="Script" path="res://game/rooms/kulna/room_kulna_state.gd" id="1_fnt18"]
+
+[resource]
+resource_name = "Kulna"
+script = ExtResource("1_fnt18")
+script_name = "Kulna"
+scene = "res://game/rooms/kulna/room_kulna.tscn"

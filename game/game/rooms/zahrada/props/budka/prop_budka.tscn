@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cga6fse50podc"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/budka/prop_budka.gd" id="1_awthy"]
+
+[node name="Budka" type="Area2D" unique_id=733391743]
+input_pickable = false
+script = ExtResource("1_awthy")
+script_name = "Budka"
+description = "Budka"
+clickable = false
+cursor = 1
+interaction_polygon = PackedVector2Array(-120, -120, 120, -120, 120, 120, -120, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=491907682]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015878371]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=161209874]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-120, -120, 120, -120, 120, 120, -120, 120)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=1069944169]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

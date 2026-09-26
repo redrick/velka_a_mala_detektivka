@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bm1r1umg1hvtd"]
+
+[node name="PrechodP" type="Marker2D" unique_id=105473059]
+visible = false

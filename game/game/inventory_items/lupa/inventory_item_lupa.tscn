@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dyxk5axsuwhj2"]
+
+[ext_resource type="Script" path="res://game/inventory_items/lupa/inventory_item_lupa.gd" id="1_4ajd1"]
+[ext_resource type="Texture2D" uid="uid://qs2seaccstq2" path="res://assets/props/magnifier.png" id="1_67uwa"]
+
+[node name="ItemLupa" type="TextureRect" unique_id=1540848722]
+texture_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_67uwa")
+stretch_mode = 5
+script = ExtResource("1_4ajd1")
+script_name = "Lupa"
+description = "Lupa"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2086772797]

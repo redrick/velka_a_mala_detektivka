@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cao7xyel3jo2v"]
+
+[ext_resource type="Script" path="res://game/rooms/zahumenek/hotspots/diera/hotspot_diera.gd" id="1_ar0oi"]
+
+[node name="Diera" type="Area2D" unique_id=517002534]
+script = ExtResource("1_ar0oi")
+script_name = "Diera"
+description = "Diera"
+cursor = 1
+interaction_polygon = PackedVector2Array(572, 600, 696, 600, 696, 712, 572, 712)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=119473672]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(572, 600, 696, 600, 696, 712, 572, 712)

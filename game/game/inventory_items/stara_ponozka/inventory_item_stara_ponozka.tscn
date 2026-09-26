@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ctw1cygmhcm0k"]
+
+[ext_resource type="Texture2D" uid="uid://i0xxeuqxtonb" path="res://assets/props/old_sock.png" id="1_1vyed"]
+[ext_resource type="Script" path="res://game/inventory_items/stara_ponozka/inventory_item_stara_ponozka.gd" id="1_vxa5x"]
+
+[node name="ItemStaraPonozka" type="TextureRect" unique_id=1000885676]
+texture_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_1vyed")
+stretch_mode = 5
+script = ExtResource("1_vxa5x")
+script_name = "StaraPonozka"
+description = "Stará ponožka"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=470321115]

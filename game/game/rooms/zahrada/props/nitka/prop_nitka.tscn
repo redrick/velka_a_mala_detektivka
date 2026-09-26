@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://38ras5wdripc"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/props/nitka/prop_nitka.gd" id="1_2xrbc"]
+
+[node name="Nitka" type="Area2D" unique_id=1495862875]
+script = ExtResource("1_2xrbc")
+script_name = "Nitka"
+description = "Nitka"
+cursor = 1
+interaction_polygon = PackedVector2Array(-150, -40, 150, -40, 150, 40, -150, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=493844133]
+texture_filter = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=90694883]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="." unique_id=928664996]
+visible = false
+modulate = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-150, -40, 150, -40, 150, 40, -150, 40)
+
+[node name="ObstaclePolygon" type="NavigationObstacle2D" parent="." unique_id=770393858]
+visible = false
+affect_navigation_mesh = true
+carve_navigation_mesh = true

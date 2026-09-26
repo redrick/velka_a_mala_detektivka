@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://d7wpamfbtoed"]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada/room_zahrada_state.gd" id="1_oq5aa"]
+
+[resource]
+resource_name = "Zahrada"
+script = ExtResource("1_oq5aa")
+script_name = "Zahrada"
+scene = "res://game/rooms/zahrada/room_zahrada.tscn"

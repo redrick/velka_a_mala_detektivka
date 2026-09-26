@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://byvh38npgk7j"]
+
+[ext_resource type="Script" uid="uid://cn3dldxexvvsy" path="res://game/rooms/zahrada/walkable_areas/zahrada/walkable_area_zahrada.gd" id="1_5t4eu"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5t4eu"]
+vertices = PackedVector2Array(1900, 740, 1900, 1060, 20, 1060, 20, 690, 1700, 690)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(20, 690, 1700, 690, 1900, 740, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="Zahrada" type="Node2D" unique_id=1308696960]
+script = ExtResource("1_5t4eu")
+script_name = "Zahrada"
+description = "Zahrada"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(20, 690, 1700, 690, 1900, 740, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="." unique_id=1899599123]
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_5t4eu")
