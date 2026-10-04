@@ -10,7 +10,7 @@ from chars3 import *
 from scenes3 import *
 from props_extra import mug, night_sky
 from attic import *
-from letter import Panel, caption, bubble, sfx, title, hand_text, thought
+from letter import Panel, caption, bubble, sfx, title, series_title, hand_text, thought
 
 W, H = A4
 M = 28; GUT = 9; TOP = H - 30
@@ -179,8 +179,7 @@ def cover():
     box = [(M+34, H-236), (W-M-30, H-232), (W-M-34, H-48), (M+30, H-52)]
     fill([(x+3, y-3) for x, y in box], 0.0, 0.25); fill(box, 1.0)
     for a_, b_ in ((0, 1), (1, 2), (2, 3), (3, 0)): stroke([box[a_], box[b_]], 1.8)
-    title(W/2, H-98, "VELKÁ A MALÁ", 40)
-    title(W/2, H-160, "DETEKTIVKA", 66)
+    series_title(W/2, H-98, H-160, 40, 66)
     hand_text(M+40, H-190, W-2*M-80, "Alica a Hanka", "SHB", 20)
     hand_text(M+40, H-217, W-2*M-80, "Případ č. 2: Tajemství starého klíče", "SH", 15)
     magnifier(M+82, H-120, ang=-30, r=17)

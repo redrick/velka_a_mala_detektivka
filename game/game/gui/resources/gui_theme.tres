@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://frg87wol1nrd" path="res://addons/popochiu/engine/objects/gui/resources/images/h_slider_grabber_high_res.svg" id="3_emke0"]
 [ext_resource type="Texture2D" uid="uid://d1ywqbehmtuv" path="res://addons/popochiu/engine/objects/gui/resources/images/down_arrow.png" id="4_13x2e"]
 [ext_resource type="Texture2D" uid="uid://b7gjmpl5mp5xi" path="res://addons/popochiu/engine/objects/gui/resources/images/radio_button.png" id="5_3v5ri"]
-[ext_resource type="FontFile" path="res://assets/fonts/ShantellHandBold.ttf" id="6_d35rj"]
+[ext_resource type="FontFile" path="res://assets/fonts/TataHand.ttf" id="6_d35rj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27bc1"]
 content_margin_left = 2.0

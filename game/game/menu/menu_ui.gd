@@ -7,6 +7,13 @@ const Kit := preload("res://game/menu/ui_kit.gd")
 const SettingsPage := preload("res://game/menu/settings_page.gd")
 const CATALOG := "res://game/menu/series.json"
 const CARD_SIZE := Vector2(170, 204)
+const MINIGAMES := [
+	["Nastraž past", "příběh 1 · posouvání pytlíků", preload("res://game/minigames/trap.gd")],
+	["Kam svítí hvězdička", "příběh 2 · zrcátka a paprsek", preload("res://game/minigames/sunbeam.gd")],
+	["Dvacet dětských kroků", "příběh 3 · plánování kroků", preload("res://game/minigames/steps.gd")],
+	["Čí je to stopa?", "příběh 3 · stopy v bahně", preload("res://game/minigames/prints.gd")],
+	["Kdo to byl?", "příběh 3 · kdo vykopal poklad", preload("res://game/minigames/culprit.gd")],
+]
 
 var _catalog: Array = []
 var _screen: Control
@@ -39,6 +46,10 @@ func show_series() -> void:
 	col.add_theme_constant_override("separation", 40)
 	screen.add_child(col)
 	col.add_child(Kit.title(tr("Vyber si příběh"), 76))
+	var last := _episode(Globals.last_story())
+	if not last.is_empty():
+		var resume := Kit.button(tr("▶ Pokračovat: %s") % tr(last.title), _continue.bind(last), 40)
+		col.add_child(_wide(resume, 900))
 	var row := HBoxContainer.new()
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	row.add_theme_constant_override("separation", 60)
@@ -103,6 +114,27 @@ func show_quit() -> void:
 	col.add_child(row)
 
 
+## Test list of the logic minigames, one per story, so they can be tried outside the stories.
+func show_minigames() -> void:
+	_current = show_minigames
+	var col := _dialog(1100.0, 180.0)
+	col.add_child(_header(tr("Minihry")))
+	for game in MINIGAMES:
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 24)
+		row.add_child(_wide(Kit.button(tr(game[0]), _play_minigame.bind(game[2]), 32), 520))
+		var note := Kit.label(tr(game[1]), 26)
+		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		row.add_child(note)
+		col.add_child(row)
+
+
+func _play_minigame(script: Script) -> void:
+	var mg: CanvasLayer = script.new()
+	mg.closable = true
+	add_child(mg)
+
+
 ## A paper sheet of the given width, centred horizontally; returns its column.
 func _dialog(width: float, top: float) -> VBoxContainer:
 	var screen := _new_screen()
@@ -134,6 +166,7 @@ func _add_footer(screen: Control) -> void:
 	left.add_theme_constant_override("separation", 16)
 	left.add_child(Kit.button(tr("Nastavení"), show_settings, 28))
 	left.add_child(Kit.button(tr("Ukončit hru"), show_quit, 28))
+	left.add_child(Kit.button(tr("Minihry"), show_minigames, 28))
 	_pin(screen, left, Control.PRESET_BOTTOM_LEFT)
 	_pin(screen, Kit.language_switch(), Control.PRESET_BOTTOM_RIGHT)
 
@@ -187,8 +220,9 @@ func _episode_card(ep: Dictionary) -> Control:
 	var tex: Texture2D = load(ep.cover) if ep.has("cover") else load(Kit.ART + "ep_locked.png")
 	var cover := _cover_button(tex, CARD_SIZE)
 	card.add_child(cover)
+	var saved: bool = playable and Globals.has_save(int(ep.number)) and not Globals.is_finished(int(ep.number))
 	if playable:
-		cover.pressed.connect(_start.bind(ep))
+		cover.pressed.connect(_continue.bind(ep) if saved else _start.bind(ep))
 	else:
 		cover.disabled = true
 		cover.modulate = Color(1, 1, 1, 0.75)
@@ -201,7 +235,10 @@ func _episode_card(ep: Dictionary) -> Control:
 	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	caption.custom_minimum_size = Vector2(CARD_SIZE.x, 58)
 	card.add_child(caption)
-	if playable:
+	if saved:
+		card.add_child(Kit.button(tr("▶ Pokračovat"), _continue.bind(ep), 22))
+		card.add_child(Kit.button(tr("Znovu od začátku"), show_restart.bind(ep), 18))
+	elif playable:
 		card.add_child(Kit.title(tr("▶ Hrát"), 30))
 	else:
 		card.add_child(Kit.label(tr("Brzy"), 20, Color("8a7f6a")))
@@ -226,7 +263,37 @@ func _zoom(c: Control, to: float) -> void:
 
 func _start(ep: Dictionary) -> void:
 	_screen.mouse_filter = Control.MOUSE_FILTER_STOP
-	Globals.start_episode(ep.start_room)
+	Globals.start_episode(ep.start_room, int(ep.number))
+
+
+func _continue(ep: Dictionary) -> void:
+	_screen.mouse_filter = Control.MOUSE_FILTER_STOP
+	Globals.continue_episode(int(ep.number))
+
+
+## "Start again": the saved game of this story is replaced once the story starts.
+func show_restart(ep: Dictionary) -> void:
+	_current = show_restart.bind(ep)
+	var col := _dialog(820.0, 300.0)
+	col.add_child(Kit.title(tr("Znovu od začátku"), 56))
+	var q := Kit.label(tr("Začít příběh znovu? Uložená hra se přepíše."), 32)
+	q.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	col.add_child(q)
+	var row := HBoxContainer.new()
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	row.add_theme_constant_override("separation", 40)
+	row.add_child(_wide(Kit.button(tr("Ano"), _start.bind(ep)), 200))
+	row.add_child(_wide(Kit.button(tr("Ne"), _back), 200))
+	col.add_child(row)
+
+
+## The episode with this number from the catalog, or {}.
+func _episode(n: int) -> Dictionary:
+	for series in _catalog:
+		for ep in series.episodes:
+			if int(ep.number) == n and ep.has("start_room"):
+				return ep
+	return {}
 
 
 func _new_screen() -> Control:

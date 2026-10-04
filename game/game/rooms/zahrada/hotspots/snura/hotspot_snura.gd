@@ -43,11 +43,14 @@ func _on_middle_click() -> void:
 
 # Called when the hotspot is clicked and there is an inventory item selected
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	# Replace the call to E.command_fallback() with your own logic.
-	PopochiuUtils.e.command_fallback()
-	# Example: if a Key is used here, make the player say something.
-#	if _item == I.Key:
-#		await C.player.say("No can do")
+	# Hanging the sock or pouring the flour here is the natural way to set the trap.
+	if (_item == I.NovaPonozka or _item == I.Mouka) and Globals.got_flour and not Globals.trap_set:
+		I.deselect_active()
+		await C.player.walk_to_clicked()
+		await C.player.face_clicked()
+		await _set_trap()
+	else:
+		PopochiuUtils.e.command_fallback()
 
 
 # Called when the hotspot starts moving
@@ -85,10 +88,14 @@ func _on_movement_ended() -> void:
 func _set_trap() -> void:
 	await C.Alica.say("Pověsíme na šňůru novou ponožku…")
 	R.current.get_prop("Navnada").show()
-	I.NovaPonozka.remove()
 	C.Hanka.pose("grin")
 	await C.Hanka.say("…a já pod ni nasypu mouku!")
+	C.Hanka.pose()
+	var trap: CanvasLayer = preload("res://game/minigames/trap.gd").new()
+	R.current.add_child(trap)
+	await trap.finished
 	R.current.get_prop("Past").show()
+	I.NovaPonozka.remove()
 	I.Mouka.remove()
 	C.Hanka.pose()
 	await C.Alica.say("Past je hotová. Teď počkáme do večera.")

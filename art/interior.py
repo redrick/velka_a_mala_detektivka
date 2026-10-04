@@ -100,3 +100,4 @@ def room_kitchen(b):
     jar(b.X(0.69), b.Y(0.64)+5); jar(b.X(0.72), b.Y(0.64)+5, 22, jam=False)
     door(b.X(0.89), b.X(0.98), b.Y(0.3), b.Y(0.78))
     table(b.X(0.21), b.X(0.34), b.Y(0.42), b.Y(0.3))
+    wall_art(b, "kuchyne")

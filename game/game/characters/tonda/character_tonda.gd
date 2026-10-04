@@ -17,6 +17,8 @@ func _on_room_set() -> void:
 
 # Called when the character is clicked
 func _on_click() -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "click"):
+		return
 	await C.player.walk_to_clicked(Vector2(-220, 0))
 	await C.player.face_clicked()
 	if not Globals.case_started:
@@ -50,6 +52,8 @@ func _on_double_click() -> void:
 
 # Called when the character is right-clicked
 func _on_right_click() -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "look"):
+		return
 	await C.player.face_clicked()
 	await C.player.say("To je Tonda od sousedů.")
 
@@ -64,6 +68,8 @@ func _on_middle_click() -> void:
 
 # Called when the character is clicked while an inventory item is selected
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "item", _item):
+		return
 	# Replace the call to E.command_fallback() with your own logic.
 	E.command_fallback()
 	# Example: if the player uses a Key on this character, make the player say something.

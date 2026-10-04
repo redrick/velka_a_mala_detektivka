@@ -1,9 +1,9 @@
 extends RefCounted
 ## Shared look for the main menu and the in-game menu: hand-inked paper panels and yellow buttons
-## drawn in art/menu.py, the ShantellHand font, dark ink text, yellow outlined titles.
+## drawn in art/menu.py, táta's handwriting (TataHand), dark ink text, yellow outlined titles.
 
 const ART := "res://assets/menu/"
-const FONT := preload("res://assets/fonts/ShantellHandBold.ttf")
+const FONT := preload("res://assets/fonts/TataHand.ttf")
 const INK := Color("2b2118")
 const TITLE_YELLOW := Color("ffd43b")
 const LOCALES := {"cs": "Čeština", "en": "English"}
@@ -82,6 +82,7 @@ static func option_row(caption: String, options: Array, current: Variant, on_pic
 
 
 static func quit_game() -> void:
+	Globals.save_now()
 	(Engine.get_main_loop() as SceneTree).quit()
 
 

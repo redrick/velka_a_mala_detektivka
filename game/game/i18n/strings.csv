@@ -1,12 +1,33 @@
 keys,cs,en
 %d z %d příběhů,%d z %d příběhů,%d of %d stories
+(klikni),(klikni),(click)
 A chlupy! Šedé a huňaté.,A chlupy! Šedé a huňaté.,And fur! Grey and fluffy.
+A chrápalo!,A chrápalo!,And it snored!
+A chrápe to! Jako děda!,A chrápe to! Jako děda!,And now it's snoring! Like Grandpa!
+A proč jste plechovku neotevřela?,A proč jste plechovku neotevřela?,And why didn't you open the tin?
+A ta mapa? Kam vede?,A ta mapa? Kam vede?,And the map? Where does it lead?
+A tady je obrázek! To je slepička!,A tady je obrázek! To je slepička!,And here's a picture! It's a hen!
+A tady jsou malé dírky. Jako když zobe ptáček.,A tady jsou malé dírky. Jako když zobe ptáček.,And here are little holes. Like a bird pecking.
+"A tenhle odznak je pro nového člena. Čekal tu na tebe, Tondo.","A tenhle odznak je pro nového člena. Čekal tu na tebe, Tondo.","And this badge is for a new member. It's been waiting for you, Tonda."
+A teď to syčí!,A teď to syčí!,And now it's hissing!
 A v botě je ještě něco… klíč!,A v botě je ještě něco… klíč!,There's something else in the boot… a key!
+A z trámu se na nás dívala sova.,A z trámu se na nás dívala sova.,And an owl watched us from the beam.
+Aaa!,Aaa!,Aaah!
 Ahoj holky!,Ahoj holky!,"Hi, girls!"
+Ale já jo! Jsem malá detektivka!,Ale já jo! Jsem malá detektivka!,But I do! I'm the little detective!
+Ale minulou neděli ráno jsem šel s tátou pro rohlíky. A u vrby svítilo světýlko!,Ale minulou neděli ráno jsem šel s tátou pro rohlíky. A u vrby svítilo světýlko!,But last Sunday morning I went with Dad to get rolls. And there was a little light by the willow!
+Ale pozor. Pravidlo klubu: poklad hledá jen celý klub.,Ale pozor. Pravidlo klubu: poklad hledá jen celý klub.,But remember. The club's rule: only the whole club looks for the treasure.
+Ale světlo padá na stará zrcátka.,Ale světlo padá na stará zrcátka.,But the light falls on the old mirrors.
 Alica,Alica,Alica
 Alica a Hanka řeší záhady,Alica a Hanka řeší záhady,Alica and Hanka solve mysteries
+Alica četla hádanku a já hledala!,Alica četla hádanku a já hledala!,Alica read the riddle and I searched!
+Alico! Hvězdička svítí na zem!,Alico! Hvězdička svítí na zem!,Alica! The star is shining on the floor!
 Alico! Tady dole jsou malinkaté stopy!,Alico! Tady dole jsou malinkaté stopy!,Alica! There are teeny tiny footprints down here!
+Alico! Tady je bílé peříčko!,Alico! Tady je bílé peříčko!,Alica! There's a white feather here!
+Alico… slyšíš to? Co to je?,Alico… slyšíš to? Co to je?,Alica… do you hear that? What is it?
 Ano,Ano,Yes
+Ano!,Ano!,Yes!
+"Au, rákosí! Tudy to nejde. Oprav plán.","Au, rákosí! Tudy to nejde. Oprav plán.","Ouch, reeds! Can't go this way. Fix the plan."
 Automaticky,Automaticky,Automatically
 "Babi, dědo! Víme, kdo bral ponožky!","Babi, dědo! Víme, kdo bral ponožky!","Grandma, Grandpa! We know who took the socks!"
 Babička,Babička,Grandma
@@ -16,10 +37,20 @@ Babiččina kachlová kamna.,Babiččina kachlová kamna.,Grandma's tiled stove.
 Babiččina šňůra na prádlo.,Babiččina šňůra na prádlo.,Grandma's washing line.
 Bg,Bg,Background
 Bota,Bota,Boot
+"Brr, voda! Oprav plán.","Brr, voda! Oprav plán.","Brr, water! Fix the plan."
 Brzy,Brzy,Coming soon
 Budeme hlídat celou noc!,Budeme hlídat celou noc!,We'll keep watch all night!
 Budka,Budka,Birdhouse
 Budka pro plšíky,Budka pro plšíky,A house for the dormice
+Budka pro sovičky.,Budka pro sovičky.,A box for the owlets.
+Budka pro sovy,Budka pro sovy,Owl box
+Bílé pírko,Bílé pírko,White feather
+"Běžte se podívat ven, detektivky. Pod okýnko na půdu.","Běžte se podívat ven, detektivky. Pod okýnko na půdu.","Go and look outside, detectives. Under the attic window."
+Běžím pro dědu!,Běžím pro dědu!,I'll run and get Grandpa!
+CHRRR!,CHRRR!,SNORRR!
+CHRRR…,CHRRR…,SNORRR…
+CVAK!,CVAK!,CLICK!
+Celá mapa ke starému rybníku,Celá mapa ke starému rybníku,The whole map to the old pond
 Celá obrazovka,Celá obrazovka,Fullscreen
 Cesta,Cesta,Path
 Cesta Zpet,Cesta Zpet,Path back
@@ -28,87 +59,214 @@ Cesta na zahradu,Cesta na zahradu,Path to the garden
 Cesta zpátky na zahradu.,Cesta zpátky na zahradu.,The way back to the garden.
 Cestička do zahumenku.,Cestička do zahumenku.,A little path to the vegetable patch.
 Chrrr…,Chrrr…,Zzzz…
+Chtěl jsem mít taky klub. Jenže jsem sám.,Chtěl jsem mít taky klub. Jenže jsem sám.,I wanted a club too. But I'm on my own.
 Co asi ten klíč odemyká…? To zjistíme příště.,Co asi ten klíč odemyká…? To zjistíme příště.,I wonder what that key opens…? We'll find out next time.
 Co hledáte? Něco se ztratilo?,Co hledáte? Něco se ztratilo?,What are you looking for? Did you lose something?
+"Copak to máte, detektivky?","Copak to máte, detektivky?","What have you got there, detectives?"
+Dalekohled,Dalekohled,Spyglass
+Dalekohled po mém tátovi. Koukali jsme s ním na hvězdy.,Dalekohled po mém tátovi. Koukali jsme s ním na hvězdy.,My dad's spyglass. We used to look at the stars with it.
+Další díry!,Další díry!,More holes!
 Další série brzy,Další série brzy,More series coming soon
+Detektivky se nebojí. Ráno to prozkoumáme!,Detektivky se nebojí. Ráno to prozkoumáme!,Detectives aren't scared. We'll investigate in the morning!
+Detektivky si zaslouží kakao!,Detektivky si zaslouží kakao!,The detectives deserve some cocoa!
 Diera,Diera,Gap
+Divné šedé kuličky.,Divné šedé kuličky.,Strange grey little balls.
+"Divné šedé kuličky. Alica má lupu, klikni na Alicu!","Divné šedé kuličky. Alica má lupu, klikni na Alicu!","Strange grey little balls. Alica has the magnifier, click on Alica!"
+Do kuchyně,Do kuchyně,To the kitchen
+"Dobrou noc, sovičky.","Dobrou noc, sovičky.","Good night, little owls."
+"Dobrý den, děti!","Dobrý den, děti!","Hello, children!"
+Dolů po žebříku,Dolů po žebříku,Down the ladder
+Domů,Domů,Home
+Druhý den ráno…,Druhý den ráno…,The next morning…
+Druhý den za svítání…,Druhý den za svítání…,The next day at dawn…
+Dvacet dětských kroků,Dvacet dětských kroků,Twenty Child Steps
+Dvacet kroků a jsme u kamene!,Dvacet kroků a jsme u kamene!,Twenty steps and we're at the stone!
 Dvere,Dvere,Door
 Dveře do chalupy,Dveře do chalupy,Cottage door
 Dveře do chalupy.,Dveře do chalupy.,The cottage door.
+Dveře do kuchyně,Dveře do kuchyně,Door to the kitchen
+Dveře do kuchyně.,Dveře do kuchyně.,The door to the kitchen.
+Dveře do mlýnku.,Dveře do mlýnku.,The door to the little mill.
+Dveře mlýnku,Dveře mlýnku,Mill door
 Dveře na zahradu,Dveře na zahradu,Door to the garden
+Dveře ven,Dveře ven,Door outside
 Dveře ven na zahradu.,Dveře ven na zahradu.,The door out to the garden.
 Dveře ven.,Dveře ven.,The way out.
+Dvě!,Dvě!,Two!
 Dyne,Dyne,Pumpkins
 "Díky, babi! Teď past na šňůru.","Díky, babi! Teď past na šňůru.","Thanks, Grandma! Now the trap goes on the line."
 "Díky, detektivky! Ponožky už nikomu nezmizí.","Díky, detektivky! Ponožky už nikomu nezmizí.","Thank you, detectives! Nobody's socks will go missing any more."
 Díra v plotě,Díra v plotě,Gap in the fence
 Díra v plotě. Malinká.,Díra v plotě. Malinká.,A gap in the fence. A tiny one.
+Díra v zemi,Díra v zemi,Hole in the ground
+Díra ve svahu,Díra ve svahu,Hole in the bank
+Díra ve svahu.,Díra ve svahu.,A hole in the bank.
+Dírky jsou kulaté. Alica má lupu na velké stopy.,Dírky jsou kulaté. Alica má lupu na velké stopy.,The holes are round. Alica has the magnifier for the big prints.
 Dýně,Dýně,Pumpkins
 Děda,Děda,Grandpa
+Děda je na zahradě. Ukažte mu ten klíč.,Děda je na zahradě. Ukažte mu ten klíč.,Grandpa is in the garden. Show him that key.
+Děda na půdě nebyl už hrozně dlouho. Kdoví proč…,Děda na půdě nebyl už hrozně dlouho. Kdoví proč…,Grandpa hasn't been up in the attic for ages. Who knows why…
+Dědo! Na mapě jsou malinké šlápoty. Tys byl malý kluk. Musí to být dětské kroky!,Dědo! Na mapě jsou malinké šlápoty. Tys byl malý kluk. Musí to být dětské kroky!,Grandpa! There are tiny footprints on the map. You were a little boy. They must be children's steps!
+Dědo! Tenhle klíč jsme našly ve staré botě v kůlně.,Dědo! Tenhle klíč jsme našly ve staré botě v kůlně.,Grandpa! We found this key in an old boot in the shed.
 "Dědo, a tohle bylo v botě!","Dědo, a tohle bylo v botě!","Grandpa, and this was in the boot!"
+"Dědo, nebuď smutný. My tu druhou půlku najdeme!","Dědo, nebuď smutný. My tu druhou půlku najdeme!","Don't be sad, Grandpa. We'll find the other half!"
+"Dědo, pamatuješ si, která vrba to byla?","Dědo, pamatuješ si, která vrba to byla?","Grandpa, do you remember which willow it was?"
+"Dědo, v noci něco ťukalo na půdě!","Dědo, v noci něco ťukalo na půdě!","Grandpa, something was tapping in the attic last night!"
 Dědova pila. Na tu se nesahá!,Dědova pila. Na tu se nesahá!,Grandpa's saw. No touching!
+"Franta říkal, že má svůj vlastní poklad. Nikdy neprozradil kde.","Franta říkal, že má svůj vlastní poklad. Nikdy neprozradil kde.",Franta said he had his own treasure. He never told where.
+Frantův obrázkový dopis,Frantův obrázkový dopis,Franta's picture letter
+HAF HAF!,HAF HAF!,WOOF WOOF!
+HRAB HRAB,HRAB HRAB,DIG DIG
+Haf!,Haf!,Woof!
 Haf! Žbluňk!,Haf! Žbluňk!,Woof! Splash!
 Haf?,Haf?,Woof?
 Hanka,Hanka,Hanka
 Hanka to vyřeší!,Hanka to vyřeší!,Hanka Solves It!
 "Hanko, nejdřív se vrať zpátky dírou!","Hanko, nejdřív se vrať zpátky dírou!","Hanka, come back through the gap first!"
+"Hanko, posviť na něj!","Hanko, posviť na něj!","Hanka, shine your torch on him!"
+"Hanko, posviť tam!","Hanko, posviť tam!","Hanka, shine your torch up there!"
+"Hele! Tonda! A má lopatku! Tondo, cos tu kopal?","Hele! Tonda! A má lopatku! Tondo, cos tu kopal?","Look! Tonda! And he has a spade! Tonda, what were you digging?"
 Historie,Historie,History
 Hlavní menu,Hlavní menu,Main menu
 "Hm, to nepůjde.","Hm, to nepůjde.","Hmm, that won't work."
+Hm…,Hm…,Hmm…
+Hm… Počítá se od hvězdičky. Znovu!,Hm… Počítá se od hvězdičky. Znovu!,Hmm… You count from the star. Again!
+Hm… Velká vrba byla nejtlustší ze všech. Tlustší než já!,Hm… Velká vrba byla nejtlustší ze všech. Tlustší než já!,Hmm… The big willow was the fattest of all. Fatter than me!
 Hnizdo,Hnizdo,Nest
 Hodně štěstí s pastí!,Hodně štěstí s pastí!,Good luck with the trap!
 "Hodně štěstí s pastí, detektivky!","Hodně štěstí s pastí, detektivky!","Good luck with the trap, detectives!"
+"Hodně štěstí, detektivky! A vraťte se na večeři.","Hodně štěstí, detektivky! A vraťte se na večeři.","Good luck, detectives! And be back for dinner."
+"Honza, Franta a já.","Honza, Franta a já.","Honza, Franta and me."
+Honzo?!,Honzo?!,Honza?!
+Hotovo! Budka pro sovy.,Hotovo! Budka pro sovy.,Done! An owl box.
 Hotovo! Domeček pro plšíky.,Hotovo! Domeček pro plšíky.,Done! A little house for the dormice.
 Hrebik 1,Hrebik 1,Nail
 Hrebik 2,Hrebik 2,Nail
 Hrebik 3,Hrebik 3,Nail
 Hrnek 1,Hrnek 1,Mug
 Hrnek 2,Hrnek 2,Mug
+Hudba:,Hudba:,Music:
+"Hudba: Kevin MacLeod (incompetech.com), licence CC BY 4.0","Hudba: Kevin MacLeod (incompetech.com), licence CC BY 4.0","Music: Kevin MacLeod (incompetech.com), licensed CC BY 4.0"
+Hurá! Další past…,Hurá! Další past…,Hooray! Next trap…
+Hurá! Kámen s hvězdičkou!,Hurá! Kámen s hvězdičkou!,Hooray! The stone with the star!
+Hurá! Mouka je na stopách. Past je nastražená!,Hurá! Mouka je na stopách. Past je nastražená!,Hooray! The flour is on the footprints. The trap is set!
+Hurá! Sluníčko je na podlaze.,Hurá! Sluníčko je na podlaze.,Hooray! The sunshine is on the floor.
+Hurá! Všechny stopy sedí.,Hurá! Všechny stopy sedí.,Hooray! All the prints match.
 Huňatý ocásek!,Huňatý ocásek!,A fluffy tail!
 Huňatý ocásek! Zloděj šel tudy.,Huňatý ocásek! Zloděj šel tudy.,A fluffy tail! The thief came this way.
+Hvězdička svítí na zem!,Hvězdička svítí na zem!,The star shines on the floor!
+Hvězdička ze sluníčka,Hvězdička ze sluníčka,A star of sunlight
+Hvězdička ze sluníčka!,Hvězdička ze sluníčka!,A star made of sunlight!
+Hádanka od Věrky:,Hádanka od Věrky:,Věrka's riddle:
+Hú! Sovička se probudila. Pošli světlo jinam.,Hú! Sovička se probudila. Pošli světlo jinam.,Hoo! The owlet woke up. Send the light somewhere else.
 Hřebík,Hřebík,Nail
 "Hřebík. Ťuk, ťuk!","Hřebík. Ťuk, ťuk!","A nail. Tap, tap!"
+Hůlka,Hůlka,Walking stick
+Hůlka opřená o lavičku.,Hůlka opřená o lavičku.,A walking stick leaning on the bench.
+Jako by ji někdo nedávno kopal.,Jako by ji někdo nedávno kopal.,As if someone had dug here not long ago.
+Jasně!,Jasně!,Sure!
 Jazyk:,Jazyk:,Language:
+Jdu na zahradu.,Jdu na zahradu.,I'm going out to the garden.
+"Je noc. Nejdřív zjistíme, co dělá ty zvuky.","Je noc. Nejdřív zjistíme, co dělá ty zvuky.",It's night. First let's find out what makes those noises.
+Je to jasné. Byl to Tonda! Měl lopatku a utekl!,Je to jasné. Byl to Tonda! Měl lopatku a utekl!,It's obvious. It was Tonda! He had a spade and he ran away!
+Je zamčená. Ale my máme klíč!,Je zamčená. Ale my máme klíč!,It's locked. But we have a key!
+Jeden detektiv nevidí všechno. Dva vidí víc.,Jeden detektiv nevidí všechno. Dva vidí víc.,One detective can't see everything. Two see more.
+Jedna!,Jedna!,One!
+Jednou jsme u starého rybníka zakopali náš největší poklad.,Jednou jsme u starého rybníka zakopali náš největší poklad.,One day we buried our greatest treasure by the old pond.
+Jejda! To asi nebude ono.,Jejda! To asi nebude ono.,Oops! I don't think that's it.
+"Jen Klub Hvězdička. Děda, Franta a Věrka.","Jen Klub Hvězdička. Děda, Franta a Věrka.","Only the Little Star Club. Grandpa, Franta and Věrka."
+Jezevec hrabe! Podezřelý číslo dvě!,Jezevec hrabe! Podezřelý číslo dvě!,Badgers dig! Suspect number two!
+"Jezevec má drápky, ne boty. A plechovku by neodnesl.","Jezevec má drápky, ne boty. A plechovku by neodnesl.","A badger has claws, not boots. And it couldn't carry a tin away."
+Jezevec má pět drápků.,Jezevec má pět drápků.,A badger has five claws.
+Jezevec v noci hrabe v zemi. Hledá žížaly a kořínky.,Jezevec v noci hrabe v zemi. Hledá žížaly a kořínky.,At night the badger digs in the ground. It looks for worms and roots.
 Ještě ne. Ale máme stopu!,Ještě ne. Ale máme stopu!,Not yet. But we have a clue!
 Joey,Joey,Joey
 Joey je celý mokrý!,Joey je celý mokrý!,Joey is all wet!
+Joey nic nenašel. Jen chtěl dobrotu.,Joey nic nenašel. Jen chtěl dobrotu.,Joey didn't find anything. He just wanted a treat.
+Joey nás přivedl sem. Proč asi?,Joey nás přivedl sem. Proč asi?,Joey led us here. I wonder why?
+Joey něco čmuchá!,Joey něco čmuchá!,Joey's sniffing something!
+Joey poradí,Joey poradí,Ask Joey
 Joey skočil do vody!,Joey skočil do vody!,Joey jumped in the water!
 Joey! Hodný pejsek.,Joey! Hodný pejsek.,Joey! Good boy.
+"Joey, hrabej!","Joey, hrabej!","Joey, dig!"
 Joeyho pelíšek,Joeyho pelíšek,Joey's bed
 Joeyho pelíšek.,Joeyho pelíšek.,Joey's bed.
 Joeyho velký den,Joeyho velký den,Joey's Big Day
+Jsem v týmu! Kam půjdeme?,Jsem v týmu! Kam půjdeme?,I'm on the team! Where do we go?
 Jsem za plotem!,Jsem za plotem!,I'm behind the fence!
+Jsou chlupaté… a jsou v nich malinké kostičky!,Jsou chlupaté… a jsou v nich malinké kostičky!,They're furry… and there are tiny bones in them!
+"Já a moji nejlepší kamarádi, Franta a Věrka.","Já a moji nejlepší kamarádi, Franta a Věrka.","Me and my best friends, Franta and Věrka."
+Já jsem v klubu!,Já jsem v klubu!,I'm in the club!
 Já se tam vejdu! Klikni na mě!,Já se tam vejdu! Klikni na mě!,I can fit through! Click on me!
+Já taky ne.,Já taky ne.,Neither do I.
 Já taky ne. Poprosíme babičku.,Já taky ne. Poprosíme babičku.,Me neither. Let's ask Grandma.
 Já tam nedosáhnu!,Já tam nedosáhnu!,I can't reach it!
 Já vůbec nejsem ospalá…,Já vůbec nejsem ospalá…,I'm not sleepy at all…
+"Já říkala, že Tonda je hodný!","Já říkala, že Tonda je hodný!",I told you Tonda is nice!
+"Jé… Rybník je mnohem menší, než byl. A lávka tu už dávno není.","Jé… Rybník je mnohem menší, než byl. A lávka tu už dávno není.",Oh… The pond is much smaller than it was. And the footbridge is long gone.
+K rybníku,K rybníku,To the pond
 Kakao,Kakao,Cocoa
 Kakao bude hned.,Kakao bude hned.,The cocoa will be ready soon.
 Kam mizí perníčky?,Kam mizí perníčky?,Where Do the Gingerbreads Go?
 Kam mizí vajíčka?,Kam mizí vajíčka?,Where Do the Eggs Go?
+Kam ráno svítí hvězdička! To je z hádanky!,Kam ráno svítí hvězdička! To je z hádanky!,Where the star shines in the morning! That's from the riddle!
+"Kam ráno svítí hvězdička… Dědo, přijdeme se podívat ráno!","Kam ráno svítí hvězdička… Dědo, přijdeme se podívat ráno!","Where the star shines in the morning… Grandpa, let's come and look in the morning!"
+Kam ráno svítí hvězdička… Podívejte se k okýnku.,Kam ráno svítí hvězdička… Podívejte se k okýnku.,Where the star shines in the morning… Have a look at the window.
+Kam svítí hvězdička,Kam svítí hvězdička,Where the Little Star Shines
+Kam svítí hvězdička? Hvězdy přece svítí v noci…,Kam svítí hvězdička? Hvězdy přece svítí v noci…,Where does the star shine? But stars shine at night…
 Kamen 1,Kamen 1,Stone
 Kamen 2,Kamen 2,Stone
 Kamen 3,Kamen 3,Stone
 Kameny v potoce. Ale kudy šel zloděj?,Kameny v potoce. Ale kudy šel zloděj?,Stones in the stream. But which way did the thief go?
 Kamna,Kamna,Stove
 "Kamna hřejou. Mňam, teplo!","Kamna hřejou. Mňam, teplo!","The stove is warm. Mmm, cosy!"
+Kamna hřejí.,Kamna hřejí.,The stove is warm.
+Kamna hřejí. Micka u nich spí.,Kamna hřejí. Micka u nich spí.,The stove is warm. Micka sleeps next to it.
+Každý večer jsme se tu scházeli. Naše znamení byla hvězdička.,Každý večer jsme se tu scházeli. Naše znamení byla hvězdička.,Every evening we met up here. Our sign was a star.
+Kde je poklad?,Kde je poklad?,Where's the treasure?
+"Kdo mohl vědět, kde poklad je? Mapa byla přece roztržená…","Kdo mohl vědět, kde poklad je? Mapa byla přece roztržená…",Who could have known where the treasure was? The map was torn in two…
 Kdo staví sněhuláky?,Kdo staví sněhuláky?,Who Builds the Snowmen?
+Kdo to byl?,Kdo to byl?,Who Was It?
+"Kdo vůbec věděl, kde poklad je?","Kdo vůbec věděl, kde poklad je?",Who even knew where the treasure was?
+Ke mlýnu,Ke mlýnu,To the mill
+Ke starému rybníku. Ale to už je další případ!,Ke starému rybníku. Ale to už je další případ!,To the old pond. But that's another case!
 Ker,Ker,Bush
 "Klikni na mě, já mám baterku!","Klikni na mě, já mám baterku!","Click on me, I have a torch!"
+"Klikni na stopu v bahně a pak na toho, kdo ji udělal.","Klikni na stopu v bahně a pak na toho, kdo ji udělal.","Click a print in the mud, then on who made it."
 Kliknutím,Kliknutím,On click
 Klub Hvězdička,Klub Hvězdička,The Little Star Club
+Klub Hvězdička drží spolu!,Klub Hvězdička drží spolu!,The Little Star Club sticks together!
+Klub Hvězdička je zase celý. Skoro celý… ještě Franta!,Klub Hvězdička je zase celý. Skoro celý… ještě Franta!,The Little Star Club is together again. Almost… Franta is still missing!
+Klub Hvězdička je zpátky! A vy dvě jste jeho nové členky.,Klub Hvězdička je zpátky! A vy dvě jste jeho nové členky.,The Little Star Club is back! And you two are its new members.
+Klub… Hvězdička?,Klub… Hvězdička?,The Little… Star Club?
 Klíč s hvězdičkou,Klíč s hvězdičkou,Key with a star
 Klíč s hvězdičkou? Musíme ho ukázat dědovi!,Klíč s hvězdičkou? Musíme ho ukázat dědovi!,A key with a star? We must show it to Grandpa!
+"Klíč si nech, Alico. Bude se hodit.","Klíč si nech, Alico. Bude se hodit.","Keep the key, Alica. It will come in handy."
+Klíček s hvězdičkou? Ukažte ho dědovi.,Klíček s hvězdičkou? Ukažte ho dědovi.,A little key with a star? Show it to Grandpa.
 Konec 1. dílu,Konec 1. dílu,End of story 1
+Konec 2. dílu,Konec 2. dílu,End of part 2
+Konec 3. dílu,Konec 3. dílu,End of part 3
 Konvicka,Konvicka,Watering can
 Konvička,Konvička,Watering can
 Konvička na zalévání. Prázdná.,Konvička na zalévání. Prázdná.,A watering can. Empty.
 Koukej! Stopy v mouce!,Koukej! Stopy v mouce!,Look! Footprints in the flour!
 Kočka Micka,Kočka Micka,Micka the cat
+Kroky přidáš šipkami.,Kroky přidáš šipkami.,Add steps with the arrows.
+Která vrba je ta velká? Zeptáme se dědy!,Která vrba je ta velká? Zeptáme se dědy!,Which willow is the big one? Let's ask Grandpa!
+Kulaté dírky dělá hůlka.,Kulaté dírky dělá hůlka.,Round holes are made by a walking stick.
+Kulaté okýnko na půdu.,Kulaté okýnko na půdu.,A round attic window.
+Kulaté okýnko na půdu. Má hvězdičku!,Kulaté okýnko na půdu. Má hvězdičku!,A round attic window. It has a star!
+Kulaté okýnko na půdu. Nejdřív najdeme stopy.,Kulaté okýnko na půdu. Nejdřív najdeme stopy.,A round attic window. Let's find clues first.
 Kulna,Kulna,Shed
+Kámen s hvězdičkou,Kámen s hvězdičkou,Stone with a star
+Kámen s hvězdičkou. Tady to je!,Kámen s hvězdičkou. Tady to je!,The stone with the star. This is the place!
 Kůlna,Kůlna,Shed
 Kůlna je až za potokem.,Kůlna je až za potokem.,The shed is across the stream.
+Lavička,Lavička,Bench
+Lavička u mlýnku.,Lavička u mlýnku.,The bench by the little mill.
+Letos jsem se vrátila. Bydlím tady ve mlýnku.,Letos jsem se vrátila. Bydlím tady ve mlýnku.,I came back this year. I live here in the little mill.
 Louka,Louka,Meadow
+Lucerna na okně,Lucerna na okně,Lantern in the window
 Lupa,Lupa,Magnifying glass
 Mají z nich hnízdo! Je jim zima.,Mají z nich hnízdo! Je jim zima.,They made a nest out of them! They're cold.
 Malinkaté stopičky. Kdo je udělal?,Malinkaté stopičky. Kdo je udělal?,Teeny tiny footprints. Who made them?
@@ -116,58 +274,119 @@ Malinkaté stopičky. Kdo je udělal?,Malinkaté stopičky. Kdo je udělal?,Teen
 Malinový keř,Malinový keř,Raspberry bush
 Malinový keř. Ale je za plotem.,Malinový keř. Ale je za plotem.,A raspberry bush. But it's behind the fence.
 Maliny!,Maliny!,Raspberries!
+"Malé sovičky syčí a chrápou, když mají hlad.","Malé sovičky syčí a chrápou, když mají hlad.",Little owlets hiss and snore when they're hungry.
 Malý kámen,Malý kámen,Small stone
 Malý kámen.,Malý kámen.,A small stone.
 Malý!,Malý!,Small!
 Mapa ke starému rybníku,Mapa ke starému rybníku,The Map to the Old Pond
+Mapa na stole,Mapa na stole,Map on the table
 Menu,Menu,Menu
 Micka,Micka,Micka
+Micka spí celou noc u kamen. To nebyla ona.,Micka spí celou noc u kamen. To nebyla ona.,Micka sleeps by the stove all night. It wasn't her.
 Micka! Ty tu spíš?,Micka! Ty tu spíš?,Micka! Are you sleeping in here?
+Minihry,Minihry,Mini-games
+"Moje půlka spí tam,","Moje půlka spí tam,",My half is sleeping where
 Moucne Stopy,Moucne Stopy,Floury footprints
 Mouka,Mouka,Flour
 Mouka pod šňůrou,Mouka pod šňůrou,Flour under the line
 Mouku? A na co vám bude?,Mouku? A na co vám bude?,Flour? And what do you need it for?
+My jsme přece nové členky! Jdeme k rybníku!,My jsme přece nové členky! Jdeme k rybníku!,But we're the new members! Let's go to the pond!
+Mám baterku.,Mám baterku.,I've got the torch.
 Mám plán! Dnes večer nastražíme past.,Mám plán! Dnes večer nastražíme past.,I have a plan! Tonight we'll set a trap.
+Mám to! Plechovka se hvězdičkou!,Mám to! Plechovka se hvězdičkou!,Got it! A tin with a star!
+Máme hodně stop. Doma to promyslíme!,Máme hodně stop. Doma to promyslíme!,We have lots of clues. Let's think it over at home!
+Máme tě!,Máme tě!,Got you!
+Máme všechny stopy. Tak kdo vykopal poklad?,Máme všechny stopy. Tak kdo vykopal poklad?,We have all the clues. So who dug up the treasure?
+Máš pravdu. Tak naplánujte dvacet dětských kroků!,Máš pravdu. Tak naplánujte dvacet dětských kroků!,You're right. So plan twenty children's steps!
+"Mňam, kakao.","Mňam, kakao.","Yum, cocoa."
 "Mňam, maliny!","Mňam, maliny!","Yum, raspberries!"
 "Mňam, maliny! Jdu zpátky.","Mňam, maliny! Jdu zpátky.","Yum, raspberries! I'm going back."
 Mňau! Micka spinká.,Mňau! Micka spinká.,Meow! Micka is sleeping.
 Na keři visí červená nitka!,Na keři visí červená nitka!,There's a red thread hanging on the bush!
+Na mapě je jedna velká vrba. Ale tady jsou tři!,Na mapě je jedna velká vrba. Ale tady jsou tři!,The map has one big willow. But there are three here!
+Na okně stojí lucerna.,Na okně stojí lucerna.,There's a lantern in the window.
 Na past potřebujeme mouku od babičky.,Na past potřebujeme mouku od babičky.,For the trap we need flour from Grandma.
+Na poslední stránce zápisníku je hádanka.,Na poslední stránce zápisníku je hádanka.,There's a riddle on the last page of the notebook.
+Na půdu se nechodí.,Na půdu se nechodí.,Nobody goes up to the attic.
+Na půdu se nechodí. Jsou tam jen staré krámy…,Na půdu se nechodí. Jsou tam jen staré krámy…,Nobody goes up to the attic. There's only old junk up there…
+Na trámu sedí sova pálená. A v košíku má tři malé sovičky!,Na trámu sedí sova pálená. A v košíku má tři malé sovičky!,A barn owl is sitting on the beam. And she has three little owlets in a basket!
 Na šňůře visí jen jedna ponožka.,Na šňůře visí jen jedna ponožka.,There's only one sock left on the line.
+Nad stropem je půda.,Nad stropem je půda.,The attic is above the ceiling.
+Nahlas,Nahlas,Loud
+Nakreslil jsem mapu a roztrhli jsme ji napůl. Poklad smí hledat jen celý klub!,Nakreslil jsem mapu a roztrhli jsme ji napůl. Poklad smí hledat jen celý klub!,I drew a map and we tore it in half. Only the whole club may look for the treasure!
+Naplánuj kroky od pařezu ke kameni s hvězdičkou. Pak zmáčkni Jdi!,Naplánuj kroky od pařezu ke kameni s hvězdičkou. Pak zmáčkni Jdi!,Plan the steps from the stump to the stone with the star. Then press Go!
 Nastavení,Nastavení,Settings
+Nastraž past,Nastraž past,Set the Trap
 Navnada,Navnada,Bait
+Naše babička. Peče buchty.,Naše babička. Peče buchty.,Our grandma. She's baking buns.
 Naše kočka Micka.,Naše kočka Micka.,"Our cat, Micka."
+Naše postýlky.,Naše postýlky.,Our beds.
 Ne,Ne,No
 "Ne, ne! Velký, malý, velký. Znovu od začátku!","Ne, ne! Velký, malý, velký. Znovu od začátku!","No, no! Big, small, big. Let's start again!"
 "Ne, takhle to nefunguje.","Ne, takhle to nefunguje.","No, it doesn't work like that."
+Nejdřív klikni na stopu vlevo.,Nejdřív klikni na stopu vlevo.,First click a print on the left.
 Nejdřív musíme vyřešit záhadu tady venku.,Nejdřív musíme vyřešit záhadu tady venku.,First we have to solve the mystery out here.
 Nejdřív musíme zpátky přes potok.,Nejdřív musíme zpátky přes potok.,First we have to get back across the stream.
+Nejdřív naplánuj kroky šipkami.,Nejdřív naplánuj kroky šipkami.,First plan the steps with the arrows.
 Nejdřív se musím vrátit zpátky dírou.,Nejdřív se musím vrátit zpátky dírou.,First I have to go back through the gap.
+Nejsem!,Nejsem!,I'm not!
 Nejsou to zloději. Jen si stavěli teplý pelíšek na zimu.,Nejsou to zloději. Jen si stavěli teplý pelíšek na zimu.,They aren't thieves. They were just making a warm bed for winter.
 Nic nevidím. Hanka má baterku!,Nic nevidím. Hanka má baterku!,I can't see a thing. Hanka has a torch!
 Nic zvláštního na tom nevidím.,Nic zvláštního na tom nevidím.,Nothing special about it.
 Nic zvláštního tu nevidím.,Nic zvláštního tu nevidím.,I don't see anything special.
+Nic! Nic nevím!,Nic! Nic nevím!,Nothing! I don't know anything!
+Nikdy jsem ji nenašel. Tak jsem truhlu zamkl a klíč schoval do staré boty.,Nikdy jsem ji nenašel. Tak jsem truhlu zamkl a klíč schoval do staré boty.,I never found it. So I locked the chest and hid the key in an old boot.
 Nitka,Nitka,Thread
 "Nitka i stopy vedou doleva, do zahumenku. Jdeme!","Nitka i stopy vedou doleva, do zahumenku. Jdeme!","The thread and the footprints lead left, to the vegetable patch. Let's go!"
+"Nitka vede tamhle doleva, k zahumenku! Jdeme za ní!","Nitka vede tamhle doleva, k zahumenku! Jdeme za ní!","The thread leads over there to the left, to the kitchen garden! Let's follow it!"
 Noc padajících hvězd,Noc padajících hvězd,The Night of Shooting Stars
 Normálně,Normálně,Normal
 Nová ponožka,Nová ponožka,New sock
 Návnada zmizela. Zloděj přišel!,Návnada zmizela. Zloděj přišel!,The bait is gone. The thief came!
+Něco bílého v trávě.,Něco bílého v trávě.,Something white in the grass.
+Něco je nad námi na půdě. Poslechneme si to!,Něco je nad námi na půdě. Poslechneme si to!,Something is above us in the attic. Let's listen!
+Něco tam leží v trávě… Hanka je blíž u země. Klikni na Hanku!,Něco tam leží v trávě… Hanka je blíž u země. Klikni na Hanku!,Something's lying in the grass… Hanka is closer to the ground. Click on Hanka!
+Něco tam ťuká!,Něco tam ťuká!,Something's tapping up there!
 Něco červeného v trávě.,Něco červeného v trávě.,Something red in the grass.
+Někdo tu byl před námi! Hledejte stopy!,Někdo tu byl před námi! Hledejte stopy!,Someone was here before us! Look for clues!
 Obrazovka:,Obrazovka:,Screen:
+Obrázkový dopis,Obrázkový dopis,Picture letter
+Obě půlky do sebe přesně zapadly. Je to mapa ke starému rybníku!,Obě půlky do sebe přesně zapadly. Je to mapa ke starému rybníku!,Both halves fit together perfectly. It's a map to the old pond!
+Obě půlky jsou slepené. Mapa je celá!,Obě půlky jsou slepené. Mapa je celá!,Both halves are stuck together. The map is whole!
 Obří dýně!,Obří dýně!,Giant pumpkins!
+"Od hvězdičky sedm prken,","Od hvězdičky sedm prken,","Seven planks from the star,"
+Od hvězdičky sedm prken. Klikej na prkna a počítej!,Od hvězdičky sedm prken. Klikej na prkna a počítej!,Seven planks from the star. Click the planks and count!
+Od hvězdičky sedm prken. Počítejte!,Od hvězdičky sedm prken. Počítejte!,Seven planks from the star. Count!
+Od pařezu dvacet kroků. Klikni na pařez!,Od pařezu dvacet kroků. Klikni na pařez!,Twenty steps from the stump. Click the stump!
+Od velké vrby dvacet kroků,Od velké vrby dvacet kroků,Twenty steps from the big willow
+"Od velké vrby dvacet kroků. Běžte, já půjdu s vámi!","Od velké vrby dvacet kroků. Běžte, já půjdu s vámi!","Twenty steps from the big willow. Off you go, I'll come with you!"
+Od velké vrby dvacet kroků. Tam je křížek!,Od velké vrby dvacet kroků. Tam je křížek!,Twenty steps from the big willow. That's where the X is!
+"Odpoledne vyrobíme budku pro sovy, ať tu můžou bydlet napořád.","Odpoledne vyrobíme budku pro sovy, ať tu můžou bydlet napořád.","This afternoon we'll make an owl box, so they can live here for ever."
+Odznak se hvězdičkou,Odznak se hvězdičkou,Badge with a star
 Okno,Okno,Window
 Okno.,Okno.,A window.
+Okýnko má hvězdičku… a klíč taky!,Okýnko má hvězdičku… a klíč taky!,The window has a star… and so does the key!
+Okýnko s hvězdičkou,Okýnko s hvězdičkou,Window with a star
+Okýnko s hvězdičkou.,Okýnko s hvězdičkou.,A window with a star.
 Opravdu skončit a jít do hlavního menu?,Opravdu skončit a jít do hlavního menu?,Really stop and go to the main menu?
 Opravdu ukončit hru?,Opravdu ukončit hru?,Do you really want to quit?
 Opravdu! Tak malé tlapky… to nebyl člověk.,Opravdu! Tak malé tlapky… to nebyl člověk.,Really! Such tiny paws… that wasn't a person.
 Oranžové dýně.,Oranžové dýně.,Orange pumpkins.
+"Otáčej zrcátky, ať ranní sluníčko posvítí hvězdičkou na podlahu.","Otáčej zrcátky, ať ranní sluníčko posvítí hvězdičkou na podlahu.",Turn the mirrors so the morning sun shines a star onto the floor.
+Pak se Věrka odstěhovala daleko do města. Svou půlku schovala a nechala mi hádanku.,Pak se Věrka odstěhovala daleko do města. Svou půlku schovala a nechala mi hádanku.,Then Věrka moved far away to the city. She hid her half and left me a riddle.
+"Pane rybáři, nebyl jste tu minulou neděli ráno?","Pane rybáři, nebyl jste tu minulou neděli ráno?","Mr Fisherman, weren't you here last Sunday morning?"
+Paní od mlýna! Chodí s hůlkou a má lucernu. Ale kdo to je?,Paní od mlýna! Chodí s hůlkou a má lucernu. Ale kdo to je?,The lady from the mill! She walks with a stick and has a lantern. But who is she?
+Paní od mlýna? Ale proč by kopala náš poklad?,Paní od mlýna? Ale proč by kopala náš poklad?,The lady from the mill? But why would she dig up our treasure?
+Paní s kloboukem,Paní s kloboukem,Lady in a hat
+"Paní, nechcete s námi hledat poklad? Jsme Klub Hvězdička!","Paní, nechcete s námi hledat poklad? Jsme Klub Hvězdička!","Excuse me, would you like to look for treasure with us? We're the Little Star Club!"
 Past,Past,Trap
 Past je hotová. Teď počkáme do večera.,Past je hotová. Teď počkáme do večera.,The trap is ready. Now we'll wait until evening.
 "Past? Pojďte za mnou do kuchyně, dám vám mouku!","Past? Pojďte za mnou do kuchyně, dám vám mouku!","A trap? Come with me to the kitchen, I'll give you some flour!"
+Pařez,Pařez,Stump
 Pelisek,Pelisek,Dog bed
 Pila,Pila,Saw
 Pila.,Pila.,A saw.
+Plechovka se hvězdičkou,Plechovka se hvězdičkou,Tin with a star
 Plot,Plot,Fence
 Plsik 1,Plsik 1,Dormouse
 Plsik 2,Plsik 2,Dormouse
@@ -180,55 +399,131 @@ Plšík,Plšík,Dormouse
 Podlaha,Podlaha,Floor
 "Podívejte se pořádně pod šňůru, děvčata.","Podívejte se pořádně pod šňůru, děvčata.","Have a good look under the line, girls."
 Podívám se lupou…,Podívám se lupou…,I'll look with the magnifying glass…
+Poklad je pryč!,Poklad je pryč!,The treasure is gone!
 Poklad na hradě,Poklad na hradě,Treasure at the Castle
+Poklad smí otevřít jen celý klub. Tak jsem čekala.,Poklad smí otevřít jen celý klub. Tak jsem čekala.,Only the whole club may open the treasure. So I waited.
 Pokračovat,Pokračovat,Continue
 Pokračování příště…,Pokračování příště…,To be continued…
 Pomalu,Pomalu,Slow
 Pomozte dědovi s domečkem.,Pomozte dědovi s domečkem.,Help Grandpa with the little house.
+Pomůžeš nám hledat?,Pomůžeš nám hledat?,Will you help us look?
 Ponozka,Ponozka,Sock
 Ponožka,Ponožka,Sock
 Ponožka zmizela!,Ponožka zmizela!,The sock is gone!
 Ponožka! Joey je zloděj!,Ponožka! Joey je zloděj!,A sock! Joey is the thief!
 Ponožky,Ponožky,Socks
 Ponožky! Musíme najít stopy.,Ponožky! Musíme najít stopy.,Socks! We have to find clues.
+Porovnáme stopy u díry! Kdo tu kopal?,Porovnáme stopy u díry! Kdo tu kopal?,Let's compare the prints by the hole! Who dug here?
+Postýlky,Postýlky,Beds
+Posuň pytlíky s moukou na malé stopy. Tudy v noci půjde zloděj!,Posuň pytlíky s moukou na malé stopy. Tudy v noci půjde zloděj!,Push the flour bags onto the tiny footprints. The thief will walk this way tonight!
 Posvítím baterkou!,Posvítím baterkou!,I'll shine my torch!
+Potichu,Potichu,Quiet
 Použít %s na: %s,Použít %s na: %s,Use %s on: %s
 Pověsíme na šňůru novou ponožku…,Pověsíme na šňůru novou ponožku…,We'll hang a new sock on the line…
 "Počkej, jsem ještě za plotem!","Počkej, jsem ještě za plotem!","Wait, I'm still behind the fence!"
+Pravá stříbrná mince!,Pravá stříbrná mince!,A real silver coin!
+Prkno,Prkno,Plank
+"Promiň, Hanko.","Promiň, Hanko.","Sorry, Hanka."
+"Promiň, Tondo. Myslela jsem, žes vzal náš poklad.","Promiň, Tondo. Myslela jsem, žes vzal náš poklad.","Sorry, Tonda. I thought you took our treasure."
+Prázdná díra. Poklad je pryč.,Prázdná díra. Poklad je pryč.,An empty hole. The treasure is gone.
 Pssst!,Pssst!,Shhh!
+Psst! Tamhle u vrby… Někdo kope!,Psst! Tamhle u vrby… Někdo kope!,Shh! Over there by the willow… Someone's digging!
+"Psst, sovička spí.","Psst, sovička spí.","Shh, the owlet is sleeping."
 Pst! Něco se venku hýbe!,Pst! Něco se venku hýbe!,Shh! Something's moving outside!
+"Pst, sovičky spinkají.","Pst, sovičky spinkají.","Shh, the owlets are sleeping."
+Ptáček má nožičky jako vidličky.,Ptáček má nožičky jako vidličky.,A bird has feet like little forks.
+Ptáček to nebyl. Jezevec taky ne. Velká holinka… a hůlka!,Ptáček to nebyl. Jezevec taky ne. Velká holinka… a hůlka!,It wasn't a bird. Nor the badger. A big boot… and a walking stick!
 Pytel mouky na polici.,Pytel mouky na polici.,A bag of flour on the shelf.
+Pět!,Pět!,Five!
 "Přes potok vedou kameny. Velký, malý, velký!","Přes potok vedou kameny. Velký, malý, velký!","Stones go across the stream. Big, small, big!"
+Půlka staré mapy,Půlka staré mapy,Half of an old map
 Rozsvítím!,Rozsvítím!,I'll turn on the light!
+Rybář,Rybář,Fisherman
+Rybář ráno spí. A jeho holinky jsou obří.,Rybář ráno spí. A jeho holinky jsou obří.,The fisherman sleeps in the morning. And his boots are huge.
+Rybářovy holinky jsou obří. To nebyl on.,Rybářovy holinky jsou obří. To nebyl on.,The fisherman's boots are huge. It wasn't him.
 Rychle,Rychle,Fast
 Rychlost textu:,Rychlost textu:,Text speed:
 Ráno jsem viděl něco malého a chlupatého. Mělo to huňatý ocásek!,Ráno jsem viděl něco malého a chlupatého. Mělo to huňatý ocásek!,This morning I saw something small and furry. It had a fluffy tail!
+Ráno spím. Na ryby chodím odpoledne. A moje holinky jsou obří!,Ráno spím. Na ryby chodím odpoledne. A moje holinky jsou obří!,I sleep in the mornings. I go fishing in the afternoon. And my boots are huge!
+Ráno u snídaně…,Ráno u snídaně…,In the morning at breakfast…
 S tím nic neudělám.,S tím nic neudělám.,I can't do anything with that.
+SKŘÍP!,SKŘÍP!,SQUEAK!
+Samé díry! A ráno tu někdo svítí a straší ryby.,Samé díry! A ráno tu někdo svítí a straší ryby.,Holes everywhere! And in the mornings someone shines a light here and scares the fish.
+Sedm!,Sedm!,Seven!
+Sedmé prkno je až vzadu pod střechou.,Sedmé prkno je až vzadu pod střechou.,The seventh plank is right at the back under the roof.
 Silueta,Silueta,Shadow
+Sluníčko svítí okýnkem!,Sluníčko svítí okýnkem!,The sun is shining through the window!
+Sluníčko svítí okýnkem! Klikni na okýnko.,Sluníčko svítí okýnkem! Klikni na okýnko.,The sun is shining through the window! Click on the window.
+Slyšíte? Nahoře na trámu něco je.,Slyšíte? Nahoře na trámu něco je.,Do you hear that? Something is up on the beam.
 Snura,Snura,Washing line
+Sova pálená loví v noci myši a létá úplně potichu.,Sova pálená loví v noci myši a létá úplně potichu.,The barn owl hunts mice at night and flies without a sound.
+Sova? Na naší půdě?,Sova? Na naší půdě?,An owl? In our attic?
+Sovy jsou vzácné. Necháme je tu v klidu bydlet.,Sovy jsou vzácné. Necháme je tu v klidu bydlet.,Owls are rare. We'll let them live here in peace.
+Sovy na trámu,Sovy na trámu,Owls on the beam
 Stará bota,Stará bota,Old boot
 Stará bota. Kouká z ní červená nitka!,Stará bota. Kouká z ní červená nitka!,An old boot. There's a red thread sticking out!
 Stará dřevěná kůlna.,Stará dřevěná kůlna.,An old wooden shed.
+Stará fotka,Stará fotka,Old photo
 Stará ponožka,Stará ponožka,Old sock
+Stará truhla se hvězdičkou na zámku.,Stará truhla se hvězdičkou na zámku.,An old chest with a star on the lock.
+Starý pařez.,Starý pařez.,An old stump.
+"Starý pařez. Zeptáme se dědy, kde byla velká vrba.","Starý pařez. Zeptáme se dědy, kde byla velká vrba.",An old stump. Let's ask Grandpa where the big willow was.
+Starý trám pod střechou.,Starý trám pod střechou.,An old beam under the roof.
+Stejná hvězdička jako na klíči.,Stejná hvězdička jako na klíči.,The same star as on the key.
+Stopa vede ke mlýnu! Za Joeym!,Stopa vede ke mlýnu! Za Joeym!,The trail leads to the mill! After Joey!
+Stopa číslo jedna: bílé peříčko.,Stopa číslo jedna: bílé peříčko.,Clue number one: a white feather.
+Stopa číslo čtyři!,Stopa číslo čtyři!,Clue number four!
 Stopy,Stopy,Footprints
+Stopy od velkých bot!,Stopy od velkých bot!,Prints of big boots!
 Stopy u potoka,Stopy u potoka,Tracks by the Stream
+Stopy v bahně,Stopy v bahně,Prints in the mud
+Stopy v bahně.,Stopy v bahně.,Prints in the mud.
 Stopy v mouce,Stopy v mouce,Footprints in the flour
 Stopy ve sněhu,Stopy ve sněhu,Tracks in the Snow
 Stopy vedou k plotu. Tam je nějaká díra!,Stopy vedou k plotu. Tam je nějaká díra!,The footprints lead to the fence. There's a gap there!
 Stopy vedou ke kůlně!,Stopy vedou ke kůlně!,The footprints lead to the shed!
 Stopy? A nebyl to náhodou Joey?,Stopy? A nebyl to náhodou Joey?,"Footprints? Wasn't it Joey, by any chance?"
+Strop,Strop,Ceiling
+Stříbrný tolar,Stříbrný tolar,Silver thaler
+"Stříbrný tolar. Našli jsme ho v bahně, když vypustili rybník. Je moc vzácný. Ale poklad klubu se neprodává.","Stříbrný tolar. Našli jsme ho v bahně, když vypustili rybník. Je moc vzácný. Ale poklad klubu se neprodává.",A silver thaler. We found it in the mud when they drained the pond. It's very rare. But the club's treasure is not for sale.
+Svítí? Kdo?,Svítí? Kdo?,A light? Who?
+Ta hlína je nějaká měkká…,Ta hlína je nějaká měkká…,This earth is kind of soft…
 Tady Joey spí.,Tady Joey spí.,This is where Joey sleeps.
+Tady byla Věrčina půlka mapy.,Tady byla Věrčina půlka mapy.,This is where Věrka's half of the map was.
+Tady je naše chalupa. A tady starý rybník u mlýna.,Tady je naše chalupa. A tady starý rybník u mlýna.,Here's our cottage. And here's the old pond by the mill.
 Tady je tma jako v pytli!,Tady je tma jako v pytli!,It's pitch dark in here!
+Tady kámen není. Oprav plán a zkus to znovu.,Tady kámen není. Oprav plán a zkus to znovu.,The stone isn't here. Fix the plan and try again.
 "Tady máte kakao, detektivky.","Tady máte kakao, detektivky.","Here's your cocoa, detectives."
+Tady nahoře je okýnko na půdu. Hledejte stopy!,Tady nahoře je okýnko na půdu. Hledejte stopy!,The attic window is up there. Look for clues!
+Tady někde byla moje truhla…,Tady někde byla moje truhla…,My chest was somewhere here…
+Tady stála velká vrba.,Tady stála velká vrba.,The big willow stood here.
+Tady v trávě je kámen! A má hvězdičku!,Tady v trávě je kámen! A má hvězdičku!,There's a stone in the grass! And it has a star!
+Tady! Velká vrba spadla. Zbyl z ní jen pařez.,Tady! Velká vrba spadla. Zbyl z ní jen pařez.,Here! The big willow fell. Only the stump is left.
+Tahle vrba je moc malá.,Tahle vrba je moc malá.,This willow is too small.
 Tajemné šipky,Tajemné šipky,The Mysterious Arrows
 Tajemství starého klíče,Tajemství starého klíče,The Secret of the Old Key
 Tajná zpráva v knihovně,Tajná zpráva v knihovně,A Secret Message in the Library
 "Tak co, chytily jste zloděje?","Tak co, chytily jste zloděje?","So, did you catch the thief?"
+"Tak co, detektivky? Našly jste toho, kdo tu straší ryby?","Tak co, detektivky? Našly jste toho, kdo tu straší ryby?","So, detectives? Did you find who's scaring the fish?"
+Tak dobře. Půjdeme nahoru spolu. A potichu!,Tak dobře. Půjdeme nahoru spolu. A potichu!,All right. We'll go up together. And quietly!
 "Tak jim postavíme domeček, ať nemusí brát ponožky!","Tak jim postavíme domeček, ať nemusí brát ponožky!","Then let's build them a little house, so they don't have to take socks!"
+Tak jsem ho minulou neděli za svítání vykopala. S lucernou a s hůlkou.,Tak jsem ho minulou neděli za svítání vykopala. S lucernou a s hůlkou.,So last Sunday at dawn I dug it up. With my lantern and my stick.
+"Tak ráno zjistíme, co Tonda kopal. Spolu!","Tak ráno zjistíme, co Tonda kopal. Spolu!",Then in the morning we'll find out what Tonda was digging. Together!
 "Tak tady je. A vezměte si i novou ponožku, ať má zloděj co brát.","Tak tady je. A vezměte si i novou ponožku, ať má zloděj co brát.","Here you are. And take a new sock too, so the thief has something to take."
+Tak to byla Věrka!,Tak to byla Věrka!,So it was Věrka!
+Tak to je typický Joey.,Tak to je typický Joey.,That's typical Joey.
+Tak to vy jste dělaly ty zvuky!,Tak to vy jste dělaly ty zvuky!,So it was you making those noises!
+Tak vy jste vykopala poklad?,Tak vy jste vykopala poklad?,So you dug up the treasure?
+Taková velká stopa je od velké holinky.,Taková velká stopa je od velké holinky.,A print that big is from a big boot.
+Tak… Od pařezu dvacet kroků. Jedna… dva… tři…,Tak… Od pařezu dvacet kroků. Jedna… dva… tři…,Right… Twenty steps from the stump. One… two… three…
+"Tak… raz, dva, tři!","Tak… raz, dva, tři!","Right… one, two, three!"
+Tam se nevejdu.,Tam se nevejdu.,I won't fit in there.
+Tam! Truhla se hvězdičkou!,Tam! Truhla se hvězdičkou!,There! A chest with a star!
 Tam! V botě!,Tam! V botě!,There! In the boot!
+Tenhle pytlík dál nepůjde.,Tenhle pytlík dál nepůjde.,This bag won't go any further.
 Text dál:,Text dál:,Text continues:
 Teď jdu já!,Teď jdu já!,My turn now!
+Teď je ticho. Ráno to prozkoumáme!,Teď je ticho. Ráno to prozkoumáme!,It's quiet now. We'll investigate in the morning!
 Teď vedu já!,Teď vedu já!,I'm leading now!
 To je Joeyho hračka. Joey je nevinný!,To je Joeyho hračka. Joey je nevinný!,It's Joey's toy. Joey is innocent!
 To je Tonda od sousedů.,To je Tonda od sousedů.,That's Tonda from next door.
@@ -238,46 +533,133 @@ To je detektivní tajemství!,To je detektivní tajemství!,That's a detective s
 To je moje malá ségra Hanka. A její opička.,To je moje malá ségra Hanka. A její opička.,That's my little sister Hanka. And her monkey.
 To je moje velká ségra Alica.,To je moje velká ségra Alica.,That's my big sister Alica.
 To je naše babička. Věší prádlo.,To je naše babička. Věší prádlo.,That's our Grandma. She's hanging up the washing.
+To je nora. Tady bydlí jezevec.,To je nora. Tady bydlí jezevec.,That's a burrow. A badger lives here.
 To je náš děda.,To je náš děda.,That's our Grandpa.
+To je přece… můj starý klíč od truhly!,To je přece… můj starý klíč od truhly!,"Why, that's… my old key to the chest!"
 To je případ pro detektivky Alicu a Hanku!,To je případ pro detektivky Alicu a Hanku!,This is a case for detectives Alica and Hanka!
+To je případ pro detektivky! Venku pod okýnkem najdeme stopy.,To je případ pro detektivky! Venku pod okýnkem najdeme stopy.,That's a case for the detectives! We'll find clues outside under the window.
+To jsou vývržky! Vyplivují je sovy. Učili jsme se to ve škole.,To jsou vývržky! Vyplivují je sovy. Učili jsme se to ve škole.,Those are pellets! Owls cough them up. We learned it at school.
+To jsou zrcátka z našeho klubu! Natočte je.,To jsou zrcátka z našeho klubu! Natočte je.,Those are our club's mirrors! Turn them.
+To jste vy?,To jste vy?,Is that you?
+To já nevím. Ráno spím.,To já nevím. Ráno spím.,I don't know. I sleep in the mornings.
 To k sobě nepasuje.,To k sobě nepasuje.,Those don't go together.
+To nakreslil Franta. Byl nejmenší. Psát ještě neuměl.,To nakreslil Franta. Byl nejmenší. Psát ještě neuměl.,Franta drew that. He was the youngest. He couldn't write yet.
+Tohle je zápisník našeho klubu. Klub Hvězdička!,Tohle je zápisník našeho klubu. Klub Hvězdička!,This is our club's notebook. The Little Star Club!
+Tohle prkno zpívá!,Tohle prkno zpívá!,This plank sings!
+Tolik let!,Tolik let!,So many years!
+Tolik let… Věrka je zpátky!,Tolik let… Věrka je zpátky!,So many years… Věrka is back!
 Tonda,Tonda,Tonda
+Tonda byl v neděli ráno s tátou pro rohlíky. A hůlku nemá.,Tonda byl v neděli ráno s tátou pro rohlíky. A hůlku nemá.,On Sunday morning Tonda was getting rolls with his dad. And he has no stick.
+Tonda je hodný! On to nebyl!,Tonda je hodný! On to nebyl!,Tonda is nice! It wasn't him!
 Tonda za plotem prý něco viděl.,Tonda za plotem prý něco viděl.,Tonda by the fence says he saw something.
 Trava,Trava,Grass
+Truhla je prázdná. Všechno máme.,Truhla je prázdná. Všechno máme.,The chest is empty. We have everything.
+Truhla se hvězdičkou,Truhla se hvězdičkou,Chest with a star
+Trám pod střechou,Trám pod střechou,Beam under the roof
 Tráva pod šňůrou,Tráva pod šňůrou,Grass under the line
 Tráva pod šňůrou.,Tráva pod šňůrou.,The grass under the line.
 Tráva. Něco se v ní třpytí?,Tráva. Něco se v ní třpytí?,Grass. Is something shiny in there?
+Tu hádanku jsem nikdy nerozluštil.,Tu hádanku jsem nikdy nerozluštil.,I never solved that riddle.
+Tu hádanku zná jen… Věrka!,Tu hádanku zná jen… Věrka!,Only… Věrka knows that riddle!
 Tudy se jde do zahumenku. Teď tam nic nehledáme.,Tudy se jde do zahumenku. Teď tam nic nehledáme.,This way goes to the vegetable patch. We're not looking for anything there yet.
 Tudy se neprotáhnu. Jsem moc velká.,Tudy se neprotáhnu. Jsem moc velká.,I can't squeeze through here. I'm too big.
+"Ty jsi ale krásný pejsek! Na, máš piškot.","Ty jsi ale krásný pejsek! Na, máš piškot.","What a lovely dog you are! Here, have a biscuit."
+Ty tomu nerozumíš. Jsi malá.,Ty tomu nerozumíš. Jsi malá.,You don't understand. You're little.
+Tři!,Tři!,Three!
 Ukaž… Tahle ponožka je stará a celá rozkousaná.,Ukaž… Tahle ponožka je stará a celá rozkousaná.,Let me see… This sock is old and all chewed up.
 Ukaž… To je přece klíč od Klubu Hvězdička!,Ukaž… To je přece klíč od Klubu Hvězdička!,"Let me see… Why, it's the key to the Little Star Club!"
 Ukončit hru,Ukončit hru,Quit game
+Ukážeme dědovi klíč s hvězdičkou!,Ukážeme dědovi klíč s hvězdičkou!,Let's show Grandpa the key with the star!
+Ukážeme ho dědovi!,Ukážeme ho dědovi!,Let's show it to Grandpa!
+Utekl! A byl celý od bláta. Podezřelý číslo jedna: Tonda!,Utekl! A byl celý od bláta. Podezřelý číslo jedna: Tonda!,He ran away! And he was all muddy. Suspect number one: Tonda!
+Už máš všechny stopy. Kdo vykopal poklad?,Už máš všechny stopy. Kdo vykopal poklad?,You have all the clues. Who dug up the treasure?
 "V botě je teď plšíkův pelíšek. Pst, spinkají.","V botě je teď plšíkův pelíšek. Pst, spinkají.","The boot is the dormice's bed now. Shh, they're sleeping."
 V pelíšku je nějaká ponožka.,V pelíšku je nějaká ponožka.,There's a sock in the dog bed.
+V truhle je půlka mapy!,V truhle je půlka mapy!,There's half a map in the chest!
+VRZ!,VRZ!,CREAK!
 Velká a malá detektivka,Velká a malá detektivka,The Big and Little Detectives
+Velká holinka a hůlka… Kdo chodí s hůlkou?,Velká holinka a hůlka… Kdo chodí s hůlkou?,A big boot and a stick… Who walks with a stick?
+Velké boty. A vedle nich malé dírky… Hanka je vidí líp.,Velké boty. A vedle nich malé dírky… Hanka je vidí líp.,Big boots. And little holes next to them… Hanka sees them better.
 Velký kámen,Velký kámen,Big stone
 Velký kámen.,Velký kámen.,A big stone.
 Velký!,Velký!,Big!
 Ven,Ven,Out
 Ven z kůlny,Ven z kůlny,Out of the shed
+Venku je tma. Svítí měsíc.,Venku je tma. Svítí měsíc.,It's dark outside. The moon is shining.
+Venku svítí sluníčko.,Venku svítí sluníčko.,The sun is shining outside.
+"Viděla jsem ceduli: Bagry od pondělí. Bála jsem se, že bagr poklad rozbije.","Viděla jsem ceduli: Bagry od pondělí. Bála jsem se, že bagr poklad rozbije.",I saw the sign: Diggers from Monday. I was afraid a digger would break the treasure.
+Vrba,Vrba,Willow
 Vyber si příběh,Vyber si příběh,Choose a story
+Vypnuto,Vypnuto,Off
+Váš poklad? Ten jsem nevzal.,Váš poklad? Ten jsem nevzal.,Your treasure? I didn't take it.
+Víc kroků se do plánu nevejde.,Víc kroků se do plánu nevejde.,No more steps fit in the plan.
+"Víte, co říkala Věrka? Klub Hvězdička drží spolu.","Víte, co říkala Věrka? Klub Hvězdička drží spolu.",Do you know what Věrka used to say? The Little Star Club sticks together.
+Vývržky. Vyplivují je sovy.,Vývržky. Vyplivují je sovy.,Pellets. Owls cough them up.
+"Věrka bydlí daleko ve městě, Hanko.","Věrka bydlí daleko ve městě, Hanko.","Věrka lives far away in the city, Hanka."
+Věrko?!,Věrko?!,Věrka?!
+Věrčina půlka mapy! Po tolika letech!,Věrčina půlka mapy! Po tolika letech!,Věrka's half of the map! After so many years!
 Z okna je vidět celá zahrada.,Z okna je vidět celá zahrada.,You can see the whole garden from the window.
+Za oknem je zahrada.,Za oknem je zahrada.,The garden is outside the window.
 Zahrada,Zahrada,Garden
+Zakopávám svůj poklad. Slyšel jsem vás přes plot. O klubu a o pokladu.,Zakopávám svůj poklad. Slyšel jsem vás přes plot. O klubu a o pokladu.,I'm burying my treasure. I heard you over the fence. About the club and the treasure.
+"Založili jsme ho tady na půdě, když jsem byl malý kluk…","Založili jsme ho tady na půdě, když jsem byl malý kluk…",We started it up here in the attic when I was a little boy…
+Zapíšu si to. Zvuk číslo jedna: ťuk ťuk.,Zapíšu si to. Zvuk číslo jedna: ťuk ťuk.,I'll write it down. Noise number one: tap tap.
+Zase ty zvuky! Nahoře na trámu!,Zase ty zvuky! Nahoře na trámu!,Those noises again! Up on the beam!
 Zase venku!,Zase venku!,Out again!
 "Zatlučte tři hřebíky. Ťuk, ťuk, ťuk!","Zatlučte tři hřebíky. Ťuk, ťuk, ťuk!","Hammer in three nails. Tap, tap, tap!"
 Zatím tu nic není.,Zatím tu nic není.,Nothing here yet.
+Zavřít,Zavřít,Close
+Začít příběh znovu? Uložená hra se přepíše.,Začít příběh znovu? Uložená hra se přepíše.,Start the story again? The saved game will be replaced.
 Zelená konvička.,Zelená konvička.,A green watering can.
+Zeptám se jí. Je hodná!,Zeptám se jí. Je hodná!,I'll ask her. She's nice!
+Znovu,Znovu,Again
+Znovu od začátku,Znovu od začátku,Start over
 "Ztratil jsem ho, když jsem byl malý kluk. Co asi odemyká?","Ztratil jsem ho, když jsem byl malý kluk. Co asi odemyká?",I lost it when I was a little boy. I wonder what it opens?
+Zvuk číslo dvě: šššš.,Zvuk číslo dvě: šššš.,Noise number two: hsss.
+Zvuk číslo tři: chrrr.,Zvuk číslo tři: chrrr.,Noise number three: snorrr.
 Záhada ve škole,Záhada ve škole,The Mystery at School
 Záhada zmizelých ponožek,Záhada zmizelých ponožek,The Mystery of the Missing Socks
 Zápisník,Zápisník,Notebook
+kam ráno svítí hvězdička.,kam ráno svítí hvězdička.,the star shines in the morning.
+"pod prknem, které zpívá.","pod prknem, které zpívá.",under the plank that sings.
+příběh 1 · posouvání pytlíků,příběh 1 · posouvání pytlíků,story 1 · pushing bags
+příběh 2 · zrcátka a paprsek,příběh 2 · zrcátka a paprsek,story 2 · mirrors and a sunbeam
+příběh 3 · kdo vykopal poklad,příběh 3 · kdo vykopal poklad,story 3 · who dug up the treasure
+příběh 3 · plánování kroků,příběh 3 · plánování kroků,story 3 · planning steps
+příběh 3 · stopy v bahně,příběh 3 · stopy v bahně,story 3 · prints in the mud
 Červená nitka,Červená nitka,Red thread
 Červená nitka! Z naší ponožky!,Červená nitka! Z naší ponožky!,A red thread! From our sock!
+Čeština,Čeština,Čeština
 Čmuch čmuch!,Čmuch čmuch!,Sniff sniff!
+Čmuch čmuch! Joey ukazuje cestu.,Čmuch čmuch! Joey ukazuje cestu.,Sniff sniff! Joey shows the way.
+Čmuch čmuch! Joey šel od díry až k lavičce u mlýna.,Čmuch čmuch! Joey šel od díry až k lavičce u mlýna.,Sniff sniff! Joey went from the hole all the way to the bench by the mill.
+Čmuch čmuch! Tohle zrcátko otoč.,Čmuch čmuch! Tohle zrcátko otoč.,Sniff sniff! Turn this mirror.
+Čmuch čmuch! Tyhle dvě patří k sobě.,Čmuch čmuch! Tyhle dvě patří k sobě.,Sniff sniff! These two go together.
+Čmuch čmuch! Zkus to tudy.,Čmuch čmuch! Zkus to tudy.,Sniff sniff! Try this way.
+Čmuch… Tady to nepůjde. Zmáčkni Znovu.,Čmuch… Tady to nepůjde. Zmáčkni Znovu.,Sniff… This won't work. Press Again.
+"Čmuch… Tady už to nepůjde. Zmáčkni Zpět, nebo Znovu.","Čmuch… Tady už to nepůjde. Zmáčkni Zpět, nebo Znovu.",Sniff… You're stuck here. Press Back or Again.
+Čtyři!,Čtyři!,Four!
+Čí je to stopa?,Čí je to stopa?,Whose Print Is It?
+ŠPLOUCH!,ŠPLOUCH!,SPLASH!
+Šedé kuličky,Šedé kuličky,Grey little balls
+Šest!,Šest!,Six!
 Šňůra na prádlo,Šňůra na prádlo,Washing line
+ŠŠŠŠ!,ŠŠŠŠ!,HSSS!
+ŠŠŠŠ…,ŠŠŠŠ…,HSSS…
+ŤUK!,ŤUK!,TAP!
+ŤUK! ŤUK!,ŤUK! ŤUK!,TAP! TAP!
+ŤUK…,ŤUK…,TAP…
 Ťuk!,Ťuk!,Tap!
 "Ťuk, ťuk, ťuk! Zatlučte hřebíky.","Ťuk, ťuk, ťuk! Zatlučte hřebíky.","Tap, tap, tap! Hammer in the nails."
 Žbluňk!,Žbluňk!,Splash!
+Žebřík na půdu,Žebřík na půdu,Ladder to the attic
+Žebřík na půdu.,Žebřík na půdu.,The ladder to the attic.
+"Žebřík stojí. Hanka půjde první, má baterku.","Žebřík stojí. Hanka půjde první, má baterku.","The ladder is up. Hanka goes first, she has the torch."
+"Žebřík stojí. Tak nahoru, ale potichu!","Žebřík stojí. Tak nahoru, ale potichu!","The ladder is up. Up you go, but quietly!"
+"„Od hvězdičky sedm prken, pod prknem, které zpívá…“","„Od hvězdičky sedm prken, pod prknem, které zpívá…“","“Seven planks from the star, under the plank that sings…”"
 …a já pod ni nasypu mouku!,…a já pod ni nasypu mouku!,…and I'll sprinkle flour underneath!
 ← Zpět,← Zpět,← Back
+↶ Zpět,↶ Zpět,↶ Back
 ▶ Hrát,▶ Hrát,▶ Play
+▶ Pokračovat,▶ Pokračovat,▶ Continue
+▶ Pokračovat: %s,▶ Pokračovat: %s,▶ Continue: %s

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://game/inventory_items/pulmapa/inventory_item_pulmapa_state.gd" id="1_s"]
+
+[resource]
+resource_name = "Pulmapa"
+script = ExtResource("1_s")
+script_name = "Pulmapa"
+scene = "res://game/inventory_items/pulmapa/inventory_item_pulmapa.tscn"

@@ -18,3 +18,7 @@ func _init() -> void:
 	add_child(Kit.option_row(tr("Rychlost textu:"),
 			[[tr("Pomalu"), "slow"], [tr("Normálně"), "normal"], [tr("Rychle"), "fast"]],
 			Prefs.speed, Prefs.set_speed))
+	add_child(Kit.option_row(tr("Hudba:"),
+			[[tr("Vypnuto"), "off"], [tr("Potichu"), "quiet"], [tr("Nahlas"), "normal"]],
+			Prefs.music, Prefs.set_music))
+	add_child(Kit.label(tr("Hudba: Kevin MacLeod (incompetech.com), licence CC BY 4.0"), 20, Color("8a7f6a")))

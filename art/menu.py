@@ -1,17 +1,15 @@
 """Menu art: background, series and story covers, hand-inked UI skins."""
 import math
-from reportlab.pdfbase import pdfmetrics
 from lib import C, ell, bez, rrect
 import palette as P
 from style3 import *
 from chars3 import star, torch, sock_item, footprints
 from scenes3 import BG, sky, cloud, hills, ground, tufts, tree, house, clothesline, fence
-from letter import sfx, hand_text
+from letter import sfx, sfx_width, series_title, hand_text
 
 
 def title_text(cx, y, txt, size, fill_g=P.TITLE_FILL):
-    w = sum(pdfmetrics.stringWidth(ch, "BG", size) + size*0.06 for ch in txt)
-    sfx(cx - w/2, y, txt, size, 0, fill_g, True, seed=7)
+    sfx(cx - sfx_width(txt, size, 7)/2, y, txt, size, 0, fill_g, True, seed=7)
 
 
 def inked_box(x, y, w, h, fill_g, r=10, lw=2.2, shadow=True):
@@ -52,8 +50,7 @@ def series_cover(b):
     alica(s.x+s.w*0.3, s.y+4, 2.05, right="lens", lens=True, mood="determined", look=(1, -0.3))
     C.restoreState()
     stroke(scene, 2.0, closed=True)
-    title_text(b.w/2, y+h*0.86, "VELKÁ A MALÁ", 26)
-    title_text(b.w/2, y+h*0.76, "DETEKTIVKA", 38)
+    series_title(b.w/2, y+h*0.86, y+h*0.76, 26, 38, P.TITLE_FILL)
 
 
 def episode_cover(b):
@@ -74,6 +71,48 @@ def episode_cover(b):
     C.restoreState()
     stroke(scene, 1.8, closed=True)
     _number_badge(x+w-26, y+h-26, "1")
+
+
+def episode_cover_2(b):
+    """story 2: the attic, the star window, an owl on the beam and the star key"""
+    from attic import attic as attic_room, owl, owlet, chest
+    from chars3 import key
+    x, y, w, h = 5, 5, b.w-10, b.h-10
+    inked_box(x, y, w, h, P.PAPER, r=6, shadow=False)
+    scene = [(x+8, y+8), (x+w-8, y+8), (x+w-8, y+h-8), (x+8, y+h-8)]
+    C.saveState(); C.clipPath(poly(scene), stroke=0, fill=0)
+    class _S: pass
+    s = _S(); s.x, s.y, s.w, s.h = x+8, y+8, w-16, h-16
+    s.X = lambda f: s.x + s.w*f; s.Y = lambda f: s.y + s.h*f
+    attic_room(s, floor_y=0.2, window=(0.3, 0.55), seed=5, beam=0.72, herbs_=False)
+    owl(s.X(0.62), s.Y(0.72) + 4, 1.2, flip=True, mood="wide")
+    owlet(s.X(0.4), s.Y(0.72) + 5, 0.8, mood="sleepy")
+    chest(s.X(0.5), s.Y(0.04), 0.5)
+    key(s.X(0.3), s.Y(0.3), 1.3, rot=20, tag=True)
+    C.restoreState()
+    stroke(scene, 1.8, closed=True)
+    _number_badge(x+w-26, y+h-26, "2")
+
+
+def episode_cover_3(b):
+    """story 3: the old pond, the willow stump, the map and the star stone"""
+    from pond import pond_bg, willow, stump, star_stone, full_map, mill
+    x, y, w, h = 5, 5, b.w-10, b.h-10
+    inked_box(x, y, w, h, P.PAPER, r=6, shadow=False)
+    scene = [(x+8, y+8), (x+w-8, y+8), (x+w-8, y+h-8), (x+8, y+h-8)]
+    C.saveState(); C.clipPath(poly(scene), stroke=0, fill=0)
+    class _S: pass
+    s = _S(); s.x, s.y, s.w, s.h = x+8, y+8, w-16, h-16
+    s.X = lambda f: s.x + s.w*f; s.Y = lambda f: s.y + s.h*f
+    fy = pond_bg(s, 0.35, 0.62, seed=3)
+    mill(s.X(0.78), fy + 2, 0.35)
+    willow(s.X(0.2), s.Y(0.33), 0.7, seed=4)
+    stump(s.X(0.62), s.Y(0.25), 0.55)
+    star_stone(s.X(0.45), s.Y(0.1), 1.0)
+    full_map(s.X(0.08), s.Y(0.66), 0.32, rot=-6)
+    C.restoreState()
+    stroke(scene, 1.8, closed=True)
+    _number_badge(x+w-26, y+h-26, "3")
 
 
 def episode_locked(b):

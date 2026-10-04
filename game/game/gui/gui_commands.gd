@@ -13,8 +13,13 @@ func fallback() -> void:
 
 
 # Called when the player left-clicks a `PopochiuClickable`.
+# Using an item on something that has no use for it counts as clicking it: children try items on
+# everything, and the story moves on by clicking.
 func click_clickable() -> void:
-	if I.active:
+	if I.active and E.clicked and E.clicked.has_method("_on_click"):
+		I.deselect_active()
+		await E.clicked._on_click()
+	elif I.active:
 		await _cannot_combine()
 	else:
 		await C.player.say("S tím nic neudělám.")

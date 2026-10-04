@@ -1,0 +1,274 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/puda/room_puda.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/attic.png" id="5_r"]
+[ext_resource type="Texture2D" path="res://assets/props/chest_closed.png" id="6_r"]
+[ext_resource type="Texture2D" path="res://assets/props/owls_beam.png" id="7_r"]
+[ext_resource type="Texture2D" path="res://assets/props/star_light.png" id="8_r"]
+[ext_resource type="Texture2D" path="res://assets/props/tin_star.png" id="9_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(60, 880, 1500, 880, 1520, 1060, 40, 1060)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(60, 880, 1500, 880, 1520, 1060, 40, 1060)])
+agent_radius = 0.0
+
+[node name="RoomPuda" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Puda"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(60, 880, 1500, 880, 1520, 1060, 40, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Truhla" type="Area2D" parent="Props"]
+position = Vector2(250, 840)
+script = ExtResource("2_r")
+script_name = "Truhla"
+texture = ExtResource("6_r")
+description = "Truhla se hvězdičkou"
+baseline = 90
+cursor = 1
+interaction_polygon = PackedVector2Array(-150, -100, 150, -100, 150, 100, -150, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Truhla"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Truhla"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Truhla"]
+visible = false
+polygon = PackedVector2Array(-150, -100, 150, -100, 150, 100, -150, 100)
+
+[node name="Sovy" type="Area2D" parent="Props"]
+position = Vector2(1150, 128)
+visible = false
+script = ExtResource("2_r")
+script_name = "Sovy"
+texture = ExtResource("7_r")
+description = "Sovy na trámu"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-300, -100, 300, -100, 300, 100, -300, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Sovy"]
+texture_filter = 1
+texture = ExtResource("7_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Sovy"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Sovy"]
+visible = false
+polygon = PackedVector2Array(-300, -100, 300, -100, 300, 100, -300, 100)
+
+[node name="Svetlo" type="Area2D" parent="Props"]
+position = Vector2(538, 960)
+visible = false
+script = ExtResource("2_r")
+script_name = "Svetlo"
+texture = ExtResource("8_r")
+description = "Hvězdička ze sluníčka"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-150, -45, 150, -45, 150, 45, -150, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Svetlo"]
+texture_filter = 1
+texture = ExtResource("8_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Svetlo"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Svetlo"]
+visible = false
+polygon = PackedVector2Array(-150, -45, 150, -45, 150, 45, -150, 45)
+
+[node name="Plechovka" type="Area2D" parent="Props"]
+position = Vector2(1616, 990)
+visible = false
+script = ExtResource("2_r")
+script_name = "Plechovka"
+texture = ExtResource("9_r")
+description = "Plechovka se hvězdičkou"
+baseline = -200
+cursor = 1
+interaction_polygon = PackedVector2Array(-80, -50, 80, -50, 80, 50, -80, 50)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Plechovka"]
+texture_filter = 1
+texture = ExtResource("9_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Plechovka"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Plechovka"]
+visible = false
+polygon = PackedVector2Array(-80, -50, 80, -50, 80, 50, -80, 50)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Okynko" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Okynko"
+description = "Okýnko s hvězdičkou"
+cursor = 1
+walk_to_point = Vector2(400, 940)
+interaction_polygon = PackedVector2Array(289, 315, 479, 315, 479, 505, 289, 505)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Okynko"]
+visible = false
+polygon = PackedVector2Array(289, 315, 479, 315, 479, 505, 289, 505)
+
+[node name="Tram" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Tram"
+description = "Trám pod střechou"
+cursor = 1
+walk_to_point = Vector2(1100, 940)
+interaction_polygon = PackedVector2Array(700, 30, 1600, 30, 1600, 250, 700, 250)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Tram"]
+visible = false
+polygon = PackedVector2Array(700, 30, 1600, 30, 1600, 250, 700, 250)
+
+[node name="Dolu" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Dolu"
+description = "Dolů po žebříku"
+cursor = 1
+walk_to_point = Vector2(120, 960)
+interaction_polygon = PackedVector2Array(0, 600, 90, 600, 90, 1060, 0, 1060)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Dolu"]
+visible = false
+polygon = PackedVector2Array(0, 600, 90, 600, 90, 1060, 0, 1060)
+
+[node name="Prkno1" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno1"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(692, 960)
+interaction_polygon = PackedVector2Array(615, 870, 769, 870, 769, 1075, 615, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno1"]
+visible = false
+polygon = PackedVector2Array(615, 870, 769, 870, 769, 1075, 615, 1075)
+
+[node name="Prkno2" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno2"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(846, 960)
+interaction_polygon = PackedVector2Array(769, 870, 923, 870, 923, 1075, 769, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno2"]
+visible = false
+polygon = PackedVector2Array(769, 870, 923, 870, 923, 1075, 769, 1075)
+
+[node name="Prkno3" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno3"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(1000, 960)
+interaction_polygon = PackedVector2Array(923, 870, 1077, 870, 1077, 1075, 923, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno3"]
+visible = false
+polygon = PackedVector2Array(923, 870, 1077, 870, 1077, 1075, 923, 1075)
+
+[node name="Prkno4" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno4"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(1154, 960)
+interaction_polygon = PackedVector2Array(1077, 870, 1231, 870, 1231, 1075, 1077, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno4"]
+visible = false
+polygon = PackedVector2Array(1077, 870, 1231, 870, 1231, 1075, 1077, 1075)
+
+[node name="Prkno5" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno5"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(1308, 960)
+interaction_polygon = PackedVector2Array(1231, 870, 1385, 870, 1385, 1075, 1231, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno5"]
+visible = false
+polygon = PackedVector2Array(1231, 870, 1385, 870, 1385, 1075, 1231, 1075)
+
+[node name="Prkno6" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno6"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(1462, 960)
+interaction_polygon = PackedVector2Array(1385, 870, 1539, 870, 1539, 1075, 1385, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno6"]
+visible = false
+polygon = PackedVector2Array(1385, 870, 1539, 870, 1539, 1075, 1385, 1075)
+
+[node name="Prkno7" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prkno7"
+description = "Prkno"
+cursor = 1
+walk_to_point = Vector2(1480, 960)
+interaction_polygon = PackedVector2Array(1539, 870, 1693, 870, 1693, 1075, 1539, 1075)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prkno7"]
+visible = false
+polygon = PackedVector2Array(1539, 870, 1693, 870, 1693, 1075, 1539, 1075)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Vstup" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(560, 1000)
+
+[node name="Characters" type="Node2D" parent="."]

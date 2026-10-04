@@ -10,6 +10,7 @@ from style3 import *
 from chars3 import star, sock_item, footprints
 from scenes3 import sky, cloud, hills, ground, tufts, house, clothesline
 from menu import title_text, inked_box
+from letter import series_title
 
 E.OUT = os.path.join(E.HERE, "..", "docs")
 
@@ -35,8 +36,7 @@ def logo(b):
     stroke(circle, 3.2, closed=True)
     stroke(ell(cx, cy, r+7, r+7, 60), 1.6, closed=True)
     inked_box(cx-r*0.95, cy-r-34, r*1.9, 70, P.BUTTON, r=14, lw=2.6)
-    title_text(cx, cy-r+1, "VELKÁ A MALÁ", 24)
-    title_text(cx, cy-r-27, "DETEKTIVKA", 36)
+    series_title(cx, cy-r+1, cy-r-27, 24, 36, P.TITLE_FILL)
 
 
 def banner(b):
@@ -53,8 +53,7 @@ def banner(b):
     alica(b.X(0.15), b.Y(0.03), 2.6, right="lens", lens=True, mood="determined", look=(1, -0.3))
     for (sx, sy) in ((0.36, 0.78), (0.9, 0.7), (0.58, 0.9)):
         star(b.X(sx), b.Y(sy), 6, P.TITLE_FILL)
-    title_text(b.X(0.5), b.Y(0.62), "VELKÁ A MALÁ", 38)
-    title_text(b.X(0.5), b.Y(0.4), "DETEKTIVKA", 56)
+    series_title(b.X(0.5), b.Y(0.62), b.Y(0.4), 38, 56, P.TITLE_FILL)
     stroke([(2, 2), (b.w-2, 2), (b.w-2, b.h-2), (2, b.h-2)], 3.0, closed=True)
 
 

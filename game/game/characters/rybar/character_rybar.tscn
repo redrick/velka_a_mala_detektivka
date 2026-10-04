@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/characters/rybar/character_rybar.gd" id="1_s"]
+[ext_resource type="Texture2D" path="res://assets/characters/rybar_happy.png" id="2_t"]
+
+[node name="CharacterRybar" type="Area2D"]
+script = ExtResource("1_s")
+text_color = Color(0.25, 0.32, 0.18, 1)
+walk_speed = 400.0
+dialog_pos = Vector2(0, -650)
+sprite_prefix = "rybar"
+default_mood = "happy"
+script_name = "Rybar"
+description = "Rybář"
+cursor = 8
+interaction_polygon = PackedVector2Array(-130, -620, 130, -620, 130, 0, -130, 0)
+
+[node name="ScalingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t")
+offset = Vector2(0, -310)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-130, -620, 130, -620, 130, 0, -130, 0)

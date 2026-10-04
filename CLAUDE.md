@@ -52,9 +52,21 @@ issue gets a matching playable story. "Velká a malá detektivka" is series 1 (`
   playable; the others show as "Brzy".
 - To add a story: build its rooms, draw a cover in `art/menu.py` (`ep_<series>_<nn>`), and add
   `start_room` and `cover` to its entry in `series.json`. To add a series: add a series entry with its cover.
-- `Globals.start_episode(room)` starts fresh (flags, inventory, room states, fresh character instances).
+- `Globals.start_episode(room, number)` starts fresh (flags, inventory, room states, fresh character instances,
+  the story's starting items). `Globals.continue_episode(number)` loads that story's save.
   `Globals.go_to_menu()` returns. The house button (autoload `Home`) asks before leaving a story.
-- `Globals` currently holds story 1's flags. When story 2 arrives, give each story its own state.
+- Each story is its own save slot: `user://save_<number>.json` (Popochiu save) plus `user://progress.cfg`
+  (saved / finished / last story). Autosave runs on every room entry, on going back to the menu and on quit
+  (`Globals.save_now()`, skipped while a minigame is open). The menu offers "Pokračovat" for the last story and on
+  each saved story card, and "Znovu od začátku" with a confirm.
+- `Globals` holds all stories' flags: story 1 unprefixed, story 2 `k_`, story 3 `r_` (add a new prefix per story).
+  They're all reset when a story starts, and each save holds only the story being played.
+- Stories 2+ are built with `tools/popochiu_gen.py` (rooms, items and characters from a short Python description, e.g.
+  `tools/rooms_story2.py`, `tools/rooms_story3.py`; re-running rewrites scenes but keeps the hand-written room scripts). Their props and
+  hotspots use `game/game/shared/story_prop.gd` / `story_hotspot.gd`, which pass clicks to the room script's
+  `on_click / on_look / on_item`, and characters ask the room's `on_character` first. `shared/story_room.gd`
+  has the helpers: darkness + Hanka's torch, sound words, pop-in props, fades, flashback slides, the end card.
+- Logic minigames: `game/game/minigames/` (see `docs/game-chapters.md`). Check levels with `python3 tools/check_levels.py`.
 
 ## Languages (Czech + English)
 Every text the player sees exists in Czech and English, switchable in the main menu and the in-game menu
@@ -133,6 +145,16 @@ After re-exporting, run `godot --headless --import --path game` so Godot picks u
 - For walk and talk animation, prefer exporting body parts separately and animating them as a
   cut-out in Godot (AnimationPlayer). A 2–4 frame bob is fine for a first version.
 - Rooms are 960x540 pt, rendered at 2x, which gives 1920x1080.
+- **Personal style ("osobni")**: the family fills in printed sheets (`art/scan_sheets.py`), the scans are read by
+  `art/scan_reader.py` and turned into `art/style_data/` + `art/fonts/TataHand*.ttf`, `AlicaHand.ttf` by
+  `art/build_style.py`. **It is on by default** (game + comics since 2026-10-03; `VMD_STYLE=puvodni` renders the
+  old look): táta's line, hatching, face
+  expressions, lettering and speech balloons, the girls' palette and their drawings taped to room walls
+  (`osobni.WALL_ART`), crayon-textured fills, a retraced graphite line and paper grain
+  (`art/osobni.py`; `VMD_STYLE_PARTS=crayon,pencil,...` picks parts). The game's subtitles and menus use
+  `game/assets/fonts/TataHand.ttf` (copy it again after rebuilding the font). Rebuild order after new scans:
+  `scan_reader.py` → `build_style.py` → `export_assets.py` → `godot --headless --import` → `comic_issue<n>.py`.
+  `art/preview_style.py <dir>` renders a before/after sample.
 
 ## First milestone: "Záhada zmizelých ponožek" playable (see docs/game-design.md)
 5 rooms, ~4 puzzles, about 15–20 minutes of play.

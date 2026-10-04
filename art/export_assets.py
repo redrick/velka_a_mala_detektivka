@@ -9,6 +9,7 @@ import os, sys, math, zlib
 from reportlab.pdfgen import canvas
 import pymupdf
 import lib
+import osobni
 import style3
 import palette as P
 lib.MODE = "bw" if "--bw" in sys.argv else "color"
@@ -20,6 +21,9 @@ from props_extra import *
 from interior import room_kitchen
 from outdoor import room_zahumenek, fence_with_gap, nail
 import menu
+import minigames
+import story2
+import story3
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "game", "assets")
@@ -40,6 +44,7 @@ def render(name, w, h, draw, folder):
     doc = pymupdf.open(tmp)
     pix = doc[0].get_pixmap(matrix=pymupdf.Matrix(SCALE, SCALE), alpha=True)
     path = os.path.join(OUT, folder, name + ".png"); pix.save(path); doc.close(); os.remove(tmp)
+    if folder in ("rooms", "slides"): osobni.paper(path)  # scanned paper grain (personal style)
     print("wrote", os.path.relpath(path, HERE))
 
 # ------------------------------------------------------------------ characters
@@ -124,6 +129,7 @@ def room_shed_inside(b):
     shelf(b.X(0.55), b.X(0.95), b.Y(0.55)); rake(b.X(0.1), b.Y(0.3), 1.4)
     saw(b.X(0.3), b.Y(0.78), 1.3); crate(b.X(0.6), b.Y(0.08), 90, 70); crate(b.X(0.8), b.Y(0.08), 70, 100, P.CRATE_DARK)
     watering_can(b.X(0.45), b.Y(0.1), 1.6)
+    style3.wall_art(b, "kulna")
 
 def room_pond_trail(b):
     sky(b, P.SKY); hills(b, b.Y(0.6), 20, P.HILLS, 5); ground(b, b.Y(0.58), P.GRASS_TRAIL)
@@ -134,6 +140,8 @@ MENU = [
     ("bg", 960, 540, menu.menu_bg),
     ("series_vamd", 300, 400, menu.series_cover),
     ("ep_vamd_01", 180, 240, menu.episode_cover),
+    ("ep_vamd_02", 180, 240, menu.episode_cover_2),
+    ("ep_vamd_03", 180, 240, menu.episode_cover_3),
     ("ep_locked", 180, 240, menu.episode_locked),
     ("panel", 120, 90, menu.panel),
     ("button", 120, 44, menu.button(P.BUTTON)),
@@ -144,8 +152,20 @@ MENU = [
 
 ROOMS = [("garden", 960, 540, room_garden), ("kitchen", 960, 540, room_kitchen), ("zahumenek", 960, 540, room_zahumenek), ("shed_inside", 960, 540, room_shed_inside), ("trail", 960, 540, room_pond_trail)]
 
+MINIGAMES = [(name, 64, 64, fn) for name, fn in minigames.TILES]
+
 if __name__ == "__main__":
-    for name, w, h, fn in CHARACTERS: render(name, w, h, fn, "characters")
-    for name, w, h, fn in PROPS: render(name, w, h, fn, "props")
-    for name, w, h, fn in ROOMS: render(name, w, h, fn, "rooms")
-    for name, w, h, fn in MENU: render(name, w, h, fn, "menu")
+    # --only <folder> renders just one group, e.g. --only minigames
+    only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+    for folder, items in (("characters", CHARACTERS), ("props", PROPS), ("rooms", ROOMS), ("menu", MENU), ("minigames", MINIGAMES)):
+        if only in (None, folder):
+            for name, w, h, fn in items: render(name, w, h, fn, folder)
+    if only in (None, "story2"):
+        for name, fn in story2.ROOMS: render(name, 960, 540, fn, "rooms")
+        for name, w, h, fn in story2.PROPS + story2.ITEMS: render(name, w, h, fn, "props")
+        for name, fn in story2.SLIDES: render(name, 960, 540, fn, "slides")
+    if only in (None, "story3"):
+        for name, fn in story3.ROOMS: render(name, 960, 540, fn, "rooms")
+        for name, w, h, fn in story3.CHARACTERS: render(name, w, h, fn, "characters")
+        for name, w, h, fn in story3.PROPS + story3.ITEMS: render(name, w, h, fn, "props")
+        for name, fn in story3.MG: render(name, 64, 64, fn, "minigames")

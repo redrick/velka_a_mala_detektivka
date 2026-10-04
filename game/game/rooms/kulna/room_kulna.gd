@@ -18,6 +18,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_room_entered() -> void:
+	Globals.exit_arrow(self, "Ven", true)
 	C.player.position = get_marker_position("Vstup")
 	Globals.bring_sister(self, Vector2(170, 10))
 	for n in ["Plsik1", "Plsik2", "Hnizdo"]:
@@ -52,6 +53,7 @@ func reveal() -> void:
 	await C.Hanka.say("Tam! V botě!")
 	await C.Alica.say("Rozsvítím!")
 	_torch.hide()
+	Music.play("day")
 	var tw := create_tween()
 	tw.tween_property(_dark, "color", Color.WHITE, 1.5)
 	await tw.finished
@@ -84,6 +86,8 @@ func reveal() -> void:
 
 #region Private ####################################################################################
 func _setup_dark() -> void:
+	set_meta("mood", "night")
+	Music.play("night")
 	_dark = CanvasModulate.new()
 	_dark.color = DARK
 	add_child(_dark)

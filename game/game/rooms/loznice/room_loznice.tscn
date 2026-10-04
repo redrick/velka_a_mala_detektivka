@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/loznice/room_loznice.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/bedroom.png" id="5_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(40, 880, 1880, 880, 1900, 1060, 20, 1060)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 880, 1880, 880, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="RoomLoznice" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Loznice"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 880, 1880, 880, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Strop" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Strop"
+description = "Strop"
+cursor = 1
+walk_to_point = Vector2(960, 940)
+interaction_polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 125, 0, 125)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Strop"]
+visible = false
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 125, 0, 125)
+
+[node name="Okno" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Okno"
+description = "Okno"
+cursor = 1
+walk_to_point = Vector2(300, 940)
+interaction_polygon = PackedVector2Array(95, 237.5, 385, 237.5, 385, 582.5, 95, 582.5)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Okno"]
+visible = false
+polygon = PackedVector2Array(95, 237.5, 385, 237.5, 385, 582.5, 95, 582.5)
+
+[node name="Postele" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Postele"
+description = "Postýlky"
+cursor = 1
+walk_to_point = Vector2(960, 920)
+interaction_polygon = PackedVector2Array(470, 650, 1510, 650, 1510, 780, 470, 780)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Postele"]
+visible = false
+polygon = PackedVector2Array(470, 650, 1510, 650, 1510, 780, 470, 780)
+
+[node name="Dvere" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Dvere"
+description = "Dveře do kuchyně"
+cursor = 1
+walk_to_point = Vector2(1700, 930)
+interaction_polygon = PackedVector2Array(1651, 324, 1843, 324, 1843, 864, 1651, 864)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Dvere"]
+visible = false
+polygon = PackedVector2Array(1651, 324, 1843, 324, 1843, 864, 1651, 864)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(700, 960)
+
+[node name="Characters" type="Node2D" parent="."]

@@ -76,7 +76,7 @@ position = Vector2(880, 860)
 [node name="Characters" type="Node2D" parent="." unique_id=1013767329]
 
 [node name="CharacterBabicka" type="Area2D" parent="Characters" unique_id=1387522685 instance=ExtResource("15_fk7xn")]
-position = Vector2(1250, 840)
+position = Vector2(1250, 900)
 script = ExtResource("16_jugb3")
 text_color = Color(0.18431373, 0.41960785, 0.22745098, 1)
 walk_speed = 400.0

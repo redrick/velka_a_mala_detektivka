@@ -16,6 +16,10 @@ func _on_click() -> void:
 	hide()
 	await I.Nitka.add()
 	Globals.thread_found = true
+	Globals.show_exit(R.current, "Cesta")
+	C.Alica.pose("point")
+	await C.Alica.say("Nitka vede tamhle doleva, k zahumenku! Jdeme za ní!")
+	C.Alica.pose()
 	await C.Alica.say("Nitka i stopy vedou doleva, do zahumenku. Jdeme!")
 
 

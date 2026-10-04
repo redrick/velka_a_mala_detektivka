@@ -11,6 +11,8 @@ var state: Data = load("res://game/rooms/kuchyne/room_kuchyne.tres")
 #region Virtual ####################################################################################
 func _on_room_entered() -> void:
 	var evening := Globals.phase == "evening"
+	if evening:
+		set_meta("mood", "night")
 	C.player.position = get_marker_position("Okno" if evening else "Vstup")
 	Globals.bring_sister(self, Vector2(170, 10) if evening else Vector2(-170, 10))
 	get_prop("Mouka").visible = not Globals.got_flour

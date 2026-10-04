@@ -9,8 +9,15 @@ from style3 import C, stroke, fill, poly, _SC
 
 import os
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts") + os.sep
-pdfmetrics.registerFont(TTFont("SH", D+"ShantellHand.ttf"))
-pdfmetrics.registerFont(TTFont("SHB", D+"ShantellHandBold.ttf"))
+import osobni
+if osobni.on("font"):
+    # táta's handwriting; the B font holds his second version of every letter, swapped in for every other letter
+    pdfmetrics.registerFont(TTFont("SH", D+"TataHand.ttf"))
+    pdfmetrics.registerFont(TTFont("SHB", D+"TataHand.ttf"))
+    pdfmetrics.registerFont(TTFont("SH2", D+"TataHandB.ttf"))
+else:
+    pdfmetrics.registerFont(TTFont("SH", D+"ShantellHand.ttf"))
+    pdfmetrics.registerFont(TTFont("SHB", D+"ShantellHandBold.ttf"))
 pdfmetrics.registerFont(TTFont("BG", D+"f_Bangers-Regular.ttf"))
 
 def _rng(txt): return random.Random(zlib.crc32(txt.encode("utf-8")))
@@ -22,14 +29,17 @@ def lines_of(txt, font, size, w):
 
 def hand_line(x, y, line, font, size, r, rot_amp=2.2, dy_amp=0.035, g=0.0):
     cx = x
-    for ch in line:
-        sw = pdfmetrics.stringWidth(ch, font, size)
+    for i, ch in enumerate(line):
+        if osobni.on("font") and font in ("SH", "SHB") and i % 2: font_i = "SH2"
+        else: font_i = font
+        sw = pdfmetrics.stringWidth(ch, font_i, size)
         k = 1 + r.uniform(-0.035, 0.035)
         C.saveState(); C.translate(cx, y + r.uniform(-1, 1)*size*dy_amp)
-        C.rotate(r.uniform(-rot_amp, rot_amp)); C.setFont(font, size*k); C.setFillColor(G(g))
+        C.rotate(r.uniform(-rot_amp, rot_amp)); C.setFont(font_i, size*k); C.setFillColor(G(g))
         C.drawString(0, 0, ch); C.restoreState()
         cx += sw*k + r.uniform(-0.15, 0.2)
     return cx - x
+
 
 def hand_text(x, y, w, txt, font="SH", size=14, align="center", lead=None, g=0.0):
     """y = baseline of first line"""
@@ -43,7 +53,9 @@ def hand_text(x, y, w, txt, font="SH", size=14, align="center", lead=None, g=0.0
     return len(L)
 
 # ------------------------------------------------------------------ bubbles
-def wobbly_ellipse(cx, cy, rx, ry, seed, n=72):
+def wobbly_ellipse(cx, cy, rx, ry, seed, n=72, kind="speech"):
+    mine = osobni.balloon_outline(kind, cx, cy, rx, ry, n)
+    if mine: return mine  # táta's balloon; bubble() hangs the tail on it by angle, so the order must stay
     r = random.Random(seed)
     ph1, ph2 = r.random()*6.28, r.random()*6.28
     pts = []
@@ -62,7 +74,7 @@ def bubble(x, y, w, txt, tx, ty, size=14.5, whisper=False, font="SH"):
     cx, cy = x + w/2, y - h/2
     rx, ry = w/2*1.02, h/2*1.12
     seed = zlib.crc32(txt.encode())
-    E = wobbly_ellipse(cx, cy, rx, ry, seed)
+    E = wobbly_ellipse(cx, cy, rx, ry, seed, kind="whisper" if whisper else "speech")
     ang = math.atan2(ty-cy, tx-cx)
     # make sure the tail tip is outside the balloon
     ex_r = 1/math.sqrt((math.cos(ang)/rx)**2 + (math.sin(ang)/ry)**2)
@@ -93,10 +105,14 @@ def bubble(x, y, w, txt, tx, ty, size=14.5, whisper=False, font="SH"):
     outline = seq + bez(p0, c0, c0, (tx, ty), 10)[1:] + bez((tx, ty), c1, c1, p1, 10)[1:]
     fill(outline, 1.0)
     if whisper:
-        # hand dashes
+        # hand dashes (táta's: long, uneven dashes with short gaps)
         P = lib.resample(outline, 1.0, True)
+        mine = osobni.whisper_dashes()
+        rd = random.Random(seed)
         dash, gap = 5, 4; i = 0
         while i < len(P)-1:
+            if mine:
+                dash = max(2, int(mine[0]*(1 + rd.uniform(-1, 1)*mine[1]))); gap = max(2, int(mine[2]))
             seg = P[i:i+dash]
             if len(seg) > 1: stroke(seg, 1.1)
             i += dash + gap
@@ -105,8 +121,34 @@ def bubble(x, y, w, txt, tx, ty, size=14.5, whisper=False, font="SH"):
     hand_text(x+15, cy + (len(L)*lead)/2 - size*0.82, w-30, txt, font, size, lead=lead)
     return h
 
+def shout(x, y, w, txt, tx=None, ty=None, size=15, font="SH"):
+    """a shouted line: spiky balloon (táta's, when the personal style is on), no tail needed"""
+    L = lines_of(txt, font, size, w-36)
+    lead = size*1.15
+    h = len(L)*lead + 26
+    cx, cy = x + w/2, y - h/2
+    seed = zlib.crc32(txt.encode())
+    E = osobni.balloon_outline("shout", cx, cy, w/2*1.05, h/2*1.25)
+    if not E:
+        r = random.Random(seed); E = []
+        for i in range(48):
+            a = math.tau*i/48; k = 1.0 if i % 2 else 1.18 + r.uniform(-0.05, 0.05)
+            E.append((cx + math.cos(a)*w/2*k, cy + math.sin(a)*h/2*1.2*k))
+    fill(E, 1.0); stroke(E, 1.3, closed=True)
+    hand_text(x+18, cy + (len(L)*lead)/2 - size*0.82, w-36, txt, font, size, lead=lead)
+    return h
+
+
 def thought(x, y, w, h, tx, ty, seed=1):
     cx, cy = x + w/2, y - h/2
+    mine = osobni.balloon_outline("thought", cx, cy, w/2, h/2)
+    if mine:
+        # táta draws a thought as a calm oval with two small rings trailing to the thinker
+        fill(mine, 1.0); stroke(mine, 1.2, closed=True)
+        for k, rr in ((0.45, 4.2), (0.78, 2.6)):
+            bx = cx + (tx-cx)*k; by = cy - h/2 + (ty-(cy-h/2))*k
+            e = ell(bx, by, rr, rr*0.95, 16); fill(e, 1.0); stroke(e, 1.0, closed=True)
+        return
     r = random.Random(seed)
     pts = []; N = 11
     for i in range(N):
@@ -141,7 +183,114 @@ def caption(p, txt, w=None, size=12.5, where="tl", font="SHB"):
     hand_text(x+8, y+h-size-2.5, w-16, txt, font, size, align="left", lead=lead)
 
 # ------------------------------------------------------------------ SFX / title
+# Personal style: a word táta drew on the "Zvuky a nadpisy" sheet is placed as his drawing; any other word is
+# built from his handwriting as block letters the way he draws them (blockletters.py).
+STAMP_H = 1.5  # a stamp's height in sfx sizes: his capitals plus the háčky above them
+BAR, WIDEN = 0.15, 1.3  # block letters: bar width in sizes, and how much wider than his handwriting
+
+def _rgb(g):
+    c = G(g); return (c.red, c.green, c.blue)
+
+def _stamp_wh(path, size):
+    from PIL import Image
+    w, h = Image.open(path).size
+    return size*STAMP_H*w/h, size*STAMP_H
+
+def _draw_stamp(path, x, y, w, h, fill_g, shadow):
+    if shadow:
+        C.drawImage(osobni.filled_stamp(path, (0, 0, 0), True), x + h*0.025, y - h*0.025, w, h, mask="auto")
+    C.drawImage(osobni.filled_stamp(path, _rgb(fill_g)), x, y, w, h, mask="auto")
+
+def _hollow_layout(txt, size, seed):
+    """place the block letters by their real edges, band by band: a narrow I or the open side of T, V, L
+    gets the same visible gap as any other pair, not the gap of its bounding box"""
+    import blockletters
+    r = random.Random(seed if seed is not None else zlib.crc32(txt.encode()))
+    alt = "SH2" if osobni.on("font") else "SH"
+    gap = size*BAR*0.75
+    ink = max(0.8, size*0.04)  # the outline, as _draw_hollow draws it
+    out, cx, prev = [], 0, None  # prev: right edges of the last letter, page x by band
+    for i, ch in enumerate(txt):
+        font = alt if i % 2 else "SH"
+        k = 1 + r.uniform(-0.05, 0.08)
+        em = size*k
+        dy, rot = r.uniform(-1, 1)*size*0.05, r.uniform(-6, 6)
+        prof = blockletters.profile(_font_file(font), ch, BAR/2, WIDEN, rot)  # measured tilted, as drawn
+        if not prof:  # a space
+            cx += size*0.45; prev = None; continue
+        left = min(l for l, _ in prof.values())*em
+        if prev is None: ox = cx - left + ink
+        else:
+            # where this letter's left edge would sit gap away from the last one's right edge, band by band
+            need = [prev[b + d] - l*em + 2*ink + gap
+                    for b, (l, _) in prof.items() for d in (-1, 0, 1) if b + d in prev]
+            # spaced by the average gap, so one jutting stroke doesn't hold the whole letter off,
+            # but never closer than 3/4 of the gap anywhere
+            ox = max(sum(need)/len(need), max(need) - gap*0.25) if need else cx - left + ink + gap
+            if ch in ",.…!?:;": ox = max(ox, cx - left + ink + gap*0.3)  # stops stand after the letter, not under it
+        out.append((ch, font, ox, dy, rot, k))
+        prev = {b: ox + rr*em for b, (_, rr) in prof.items()}
+        cx = max(cx, max(prev.values()) + ink)  # a comma tucked under P doesn't pull the next word in
+    return out, cx
+
+def _font_file(font):
+    if font == "SH2": return D + "TataHandB.ttf"
+    return D + ("TataHand.ttf" if osobni.on("font") else "ShantellHand.ttf")
+
+def _bar_path(pts, closed, free_s, free_e, ext_free, ext_join):
+    """one bar's centre line, its ends pushed out: free ends by ext_free, ends inside a junction by ext_join"""
+    pts = [list(p) for p in pts]
+    if not closed and len(pts) > 1:
+        for i, j, free in ((0, 1, free_s), (-1, -2, free_e)):
+            dx, dy = pts[i][0] - pts[j][0], pts[i][1] - pts[j][1]
+            d = math.hypot(dx, dy) or 1
+            e = ext_free if free else ext_join
+            pts[i] = [pts[i][0] + dx/d*e, pts[i][1] + dy/d*e]
+    path = C.beginPath(); path.moveTo(*pts[0])
+    for x, y in pts[1:]: path.lineTo(x, y)
+    if closed: path.close()
+    return path
+
+def _draw_hollow(glyphs, size, fill_g, shadow):
+    """his block letters: wide bars of even width, cut straight across at the ends, sharp where they bend.
+    A wide stroke in ink, then the bar's own width in the fill on top: the outline, merged where bars meet."""
+    import blockletters
+    ink = max(0.8, size*0.04)
+    for mode in (("shadow",) if shadow else ()) + ("ink", "fill"):
+        col = G(0.25) if mode == "shadow" else black if mode == "ink" else G(fill_g)
+        for ch, font, gx, gy, a, k in glyphs:
+            em = size*k; w = BAR*em
+            C.saveState()
+            off = size*0.05 if mode == "shadow" else 0
+            C.translate(gx + off, gy - off); C.rotate(a)
+            C.setLineJoin(0); C.setMiterLimit(3); C.setLineCap(0); C.setStrokeColor(col)
+            C.setLineWidth(w + (0 if mode == "fill" else 2*ink))
+            for b in blockletters.bars(_font_file(font), ch):
+                pts, closed, fs, fe = b[:4]
+                bw = w*(b[4] if len(b) > 4 else 1)
+                C.setLineWidth(bw + (0 if mode == "fill" else 2*ink))
+                P = [(x*em*WIDEN, y*em) for x, y in pts]
+                C.drawPath(_bar_path(P, closed, fs, fe, 0 if mode == "fill" else ink, bw*0.35), stroke=1, fill=0)
+            C.restoreState()
+
+def sfx_width(txt, size, seed=None):
+    if osobni.on("lettering"):
+        stamp = osobni.sound_stamp(txt)
+        return _stamp_wh(stamp, size)[0] if stamp else _hollow_layout(txt, size, seed)[1]
+    return sum(pdfmetrics.stringWidth(ch, "BG", size) + size*0.06 for ch in txt)
+
 def sfx(x, y, txt, size=22, rot=0, fill_g=1.0, shadow=True, seed=None):
+    if osobni.on("lettering"):
+        C.saveState(); C.translate(x, y); C.rotate(rot)
+        stamp = osobni.sound_stamp(txt)
+        if stamp:
+            w, h = _stamp_wh(stamp, size)
+            _draw_stamp(stamp, 0, -size*0.3, w, h, fill_g, shadow)
+        else:
+            glyphs, w = _hollow_layout(txt, size, seed)
+            _draw_hollow(glyphs, size, fill_g, shadow)
+        C.restoreState()
+        return w
     r = random.Random(seed if seed is not None else zlib.crc32(txt.encode()))
     C.saveState(); C.translate(x, y); C.rotate(rot)
     cx = 0
@@ -163,9 +312,25 @@ def sfx(x, y, txt, size=22, rot=0, fill_g=1.0, shadow=True, seed=None):
     C.restoreState()
     return cx
 
-def title(cx, y, txt, size=80):
-    w = sum(pdfmetrics.stringWidth(ch, "BG", size) + size*0.06 for ch in txt)
-    sfx(cx - w/2, y, txt, size, 0, 1.0, True, seed=7)
+def title(cx, y, txt, size=80, fill_g=1.0, max_w=None):
+    """centred on cx; shrunk to fit max_w (default: the page less a 60 pt margin each side)"""
+    max_w = max_w or C._pagesize[0] - 120
+    w = sfx_width(txt, size, 7)
+    if w > max_w: size *= max_w / w; w = sfx_width(txt, size, 7)
+    sfx(cx - w/2, y, txt, size, 0, fill_g, True, seed=7)
+
+def series_title(cx, y1, y2, s1, s2, fill_g=1.0):
+    """'VELKÁ A MALÁ' over 'DETEKTIVKA' (baselines y1, y2, sizes s1, s2); in the personal style it is the
+    series title táta drew, filling the same space"""
+    stamp = osobni.title_stamp()
+    if not stamp:
+        title(cx, y1, "VELKÁ A MALÁ", s1, fill_g); title(cx, y2, "DETEKTIVKA", s2, fill_g)
+        return
+    from PIL import Image
+    iw, ih = Image.open(stamp).size
+    top, bottom = y1 + s1*0.95, y2 - s2*0.12
+    h = top - bottom; w = h*iw/ih
+    _draw_stamp(stamp, cx - w/2, bottom, w, h, fill_g, True)
 
 # ------------------------------------------------------------------ hand ruled panel
 class Panel:
@@ -178,7 +343,8 @@ class Panel:
     def __exit__(self, *e):
         C.restoreState()
         x, y, w, h = self.x, self.y, self.w, self.h
-        o = 2.2
+        mine = osobni.frame_overshoot()
+        o = mine[0]*1.6 if mine else 2.2  # how far táta's frame lines run past the corners
         stroke([(x-o, y), (x+w+o*0.6, y)], 1.9)
         stroke([(x+w, y-o*0.7), (x+w, y+h+o)], 1.9)
         stroke([(x+w+o*0.5, y+h), (x-o, y+h)], 1.9)

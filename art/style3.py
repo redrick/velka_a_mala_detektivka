@@ -35,10 +35,20 @@ def _noise(n, amp, freqs=((1.0, 0.7), (2.6, 0.3)), step_pt=1.1, period_pt=45.0):
     ph = [_R.random()*6.28 for _ in freqs]
     return [amp*sum(a*math.sin((t*step_pt/period_pt)*f*6.28 + p) for (f, a), p in zip(freqs, ph)) for t in range(n)]
 
+import osobni
+_OS = osobni.stroke_params() if osobni.on("lines") else None
+_OH = osobni.hatch_params() if osobni.on("hatch") else None
+
+def graphite():
+    """soft pencil grey instead of ink black; in the B&W comic a touch lighter than black"""
+    from reportlab.lib.colors import HexColor, Color
+    return HexColor("#2e2d33") if lib.MODE == "color" else Color(0.16, 0.16, 0.16)
+
 HAND = True
-def stroke(pts, w=LINE, closed=False, g=0.0, alpha=None, taper=True):
+def stroke(pts, w=LINE, closed=False, g=0.0, alpha=None, taper=True, end_heavy=False):
     """hand-inked stroke: gentle wobble, pressure variation, tapered ends, overlapping closures"""
     sc = _SC[-1]
+    if _OS: w *= _OS["width_k"]
     if not HAND:
         C.saveState(); C.setStrokeColor(G(g)); C.setLineWidth(w/sc); C.setLineCap(1); C.setLineJoin(1)
         C.drawPath(poly(pts, closed), fill=0, stroke=1); C.restoreState(); return
@@ -52,9 +62,16 @@ def stroke(pts, w=LINE, closed=False, g=0.0, alpha=None, taper=True):
         ov = max(2, int(len(P)*0.05))
         P = P + P[:ov]
     n = len(P)
-    wob = _noise(n, 0.3/sc)
-    prs = _noise(n, 0.28, ((1.4, 0.7), (3.3, 0.3)), period_pt=30.0)
-    left, right = [], []
+    if _OS:
+        # táta's line: his wobble spectrum, a slight bow over the whole stroke, his pressure swing
+        wob = _noise(n, _OS["wob_amp"]/sc, _OS["wob_freqs"], step_pt=1.1, period_pt=_OS["wob_period"])
+        bow = _R.choice((-1, 1)) * _OS["bow"] * n * 1.1/sc
+        wob = [v + bow*math.sin(math.pi*i/(n-1)) for i, v in enumerate(wob)] if not closed else wob
+        prs = _noise(n, _OS["prs_amp"], ((1.4, 0.7), (3.3, 0.3)), period_pt=30.0)
+    else:
+        wob = _noise(n, 0.3/sc)
+        prs = _noise(n, 0.28, ((1.4, 0.7), (3.3, 0.3)), period_pt=30.0)
+    left, right, centre = [], [], []
     for i in range(n):
         a = P[max(0, i-1)]; b = P[min(n-1, i+1)]
         dx, dy = b[0]-a[0], b[1]-a[1]; L = math.hypot(dx, dy) or 1
@@ -63,19 +80,36 @@ def stroke(pts, w=LINE, closed=False, g=0.0, alpha=None, taper=True):
         px, py = P[i][0]+nx*wob[i], P[i][1]+ny*wob[i]
         if taper or closed:
             tp = min(1.0, t/0.12, (1-t)/0.12) if n > 8 else 1.0
-            tp = 0.25 + 0.75*math.sin(tp*math.pi/2)
+            floor = _OS["taper_floor"] if _OS else 0.25
+            tp = floor + (1-floor)*math.sin(tp*math.pi/2)
         else:
             tp = 1.0
+        if end_heavy: tp *= 0.45 + 0.75*t  # a hatch stroke pressed harder toward its end
         ww = (w/sc)*tp*(1.0+prs[i])/2
         left.append((px+nx*ww, py+ny*ww)); right.append((px-nx*ww, py-ny*ww))
+        centre.append((px, py, nx, ny, ww))
     alpha = lib.alpha_for(g, alpha)
-    C.saveState(); C.setFillColor(G(g))
+    pencil = osobni.on("pencil") and not isinstance(g, lib.Col) and g == 0.0
+    col = graphite() if pencil else G(g)
+    C.saveState(); C.setFillColor(col)
     if alpha is not None: C.setFillAlpha(alpha)
+    elif pencil: C.setFillAlpha(0.88)
     C.drawPath(poly(left + list(reversed(right))), fill=1, stroke=0); C.restoreState()
+    if pencil and n > 12 and _R.random() < 0.55:
+        # drawn over a second time: thinner, a hair off the first line, over part of its length
+        i0 = int(n*_R.uniform(0.0, 0.3)); i1 = int(n*_R.uniform(0.7, 1.0))
+        off = _R.choice((-1, 1))*_R.uniform(0.25, 0.55)/sc
+        seg = centre[i0:i1]
+        if len(seg) > 3:
+            L2 = [(x+nx*(off+ww*0.45), y+ny*(off+ww*0.45)) for x, y, nx, ny, ww in seg]
+            R2 = [(x+nx*(off-ww*0.45), y+ny*(off-ww*0.45)) for x, y, nx, ny, ww in seg]
+            C.saveState(); C.setFillColor(graphite()); C.setFillAlpha(0.45 if alpha is None else alpha*0.5)
+            C.drawPath(poly(L2 + list(reversed(R2))), fill=1, stroke=0); C.restoreState()
 
 def hatch(clip, spacing=1.6, ang=45, lw=0.45, g=0.0, alpha=0.85, wob=True):
     """hand hatching inside clip (spacing, lw in page pt)"""
     sc = _SC[-1]
+    if _OH: spacing *= _OH["spacing_k"]
     x0, y0, x1, y1 = bbox(clip)
     C.saveState(); C.clipPath(poly(clip), stroke=0, fill=0)
     L = math.hypot(x1-x0, y1-y0)
@@ -85,15 +119,46 @@ def hatch(clip, spacing=1.6, ang=45, lw=0.45, g=0.0, alpha=0.85, wob=True):
     while k < L/2:
         ox, oy = cx - dy*k, cy + dx*k
         j = (_R.random()-0.5)*spacing/sc*0.4
-        stroke([(ox-dx*L/2+j, oy-dy*L/2), (ox+dx*L/2, oy+dy*L/2+j)], lw, g=g, alpha=alpha)
+        stroke([(ox-dx*L/2+j, oy-dy*L/2), (ox+dx*L/2, oy+dy*L/2+j)], lw, g=g, alpha=alpha,
+               end_heavy=bool(_OH and _OH["end_heavy"]))
         k += spacing/sc; i += 1
     C.restoreState()
 
 def fill(pts, g, alpha=None):
     alpha = lib.alpha_for(g, alpha)
+    if alpha is None and osobni.on("crayon") and crayon_fill(pts, g): return
     C.saveState(); C.setFillColor(G(g))
     if alpha is not None: C.setFillAlpha(alpha)
     C.drawPath(poly(pts), fill=1, stroke=0); C.restoreState()
+
+
+def crayon_fill(pts, g):
+    """coloured in by hand: a pale wash of the colour, then real crayon strokes in full colour on top.
+    Very light (paper-like) and very dark (ink) areas stay flat."""
+    col = G(g)
+    rgb = (col.red, col.green, col.blue)
+    lum = 0.3*rgb[0] + 0.59*rgb[1] + 0.11*rgb[2]
+    if lum > 0.97 or lum < 0.12: return False
+    x0, y0, x1, y1 = bbox(pts)
+    sc = _SC[-1]
+    if (x1-x0)*sc < 3 or (y1-y0)*sc < 3: return False  # buttons, dots: too small to show strokes
+    bw = lib.MODE == "bw"
+    tile = osobni.crayon_tile(rgb, int(abs(hash((round(x0), round(y0))))) % 997, bw)
+    if tile is None: return False
+    C.saveState(); C.clipPath(poly(pts), stroke=0, fill=0)
+    # the paper showing through the strokes, tinted; a dark colour is pressed in hard, so little paper shows
+    wash = tuple(c + (1-c)*0.55*min(1.0, lum/0.5) for c in rgb)
+    C.setFillColorRGB(*wash); C.drawPath(poly(pts), fill=1, stroke=0)
+    t = osobni.TILE_MM*72/25.4/sc
+    C.translate((x0+x1)/2, (y0+y1)/2); C.rotate(_R.uniform(-25, 25))
+    # whatever the rotation, the area stays inside this circle; cover just that, each tile is a soft-masked
+    # image and PDF viewers slow to a crawl at thousands of them per page
+    n = max(1, math.ceil(math.hypot(x1-x0, y1-y0)/t))
+    for iy in range(n):
+        for ix in range(n):
+            C.drawImage(tile, (ix - n/2)*t, (iy - n/2)*t, t, t, mask="auto")
+    C.restoreState()
+    return True
 
 def shape(pts, g, w=LINE, shadow=None):
     """flat fill; optional crisp shadow shape clipped inside; outline"""
@@ -202,7 +267,28 @@ def bunny(x, y, s=1.0):
         for sx in (-1, 1): shape(ell(sx*2.6, -5.2, 1.6, 1.1, 12), 0.92, LINE*0.7)
 
 # ------------------------------------------------------------------ faces
+def hand_face(cx, cy, r, mood):
+    """táta's drawn expression, scaled into the head circle; False when there is none for this mood"""
+    polys = osobni.FACES.get(osobni.FACE_FOR.get(mood, "happy")) if osobni.on("faces") else None
+    if not polys: return False
+    p = C.beginPath()
+    for pl in polys:
+        pts = [(cx + x*r, cy + y*r) for x, y in pl["pts"]]
+        p.moveTo(*pts[0])
+        for q in pts[1:]: p.lineTo(*q)
+        p.close()
+    C.saveState(); C.setFillColor(black)
+    C.drawPath(p, fill=1, stroke=0, fillMode=0)  # even-odd: an eye drawn as a ring keeps its white
+    C.restoreState()
+    return True
+
+
 def face(cx, cy, r, mood="happy", look=(0, 0), young=False, freckles=False):
+    if hand_face(cx, cy, r, mood):
+        if young:
+            for s in (-1, 1):
+                fill(ell(cx+s*r*0.6, cy-r*0.33, r*0.16, r*0.1, 16), P.BLUSH, 0.07)
+        return
     ex = r*0.40 if not young else r*0.42
     ey = cy - r*0.02 if not young else cy - r*0.12
     erx, ery = r*0.095, r*0.135
@@ -663,3 +749,22 @@ def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True):
         shape(e1, BLK)
         shape([(0.8, 14.3), (4.2, 12.5), (4.6, 10.4), (2.4, 12)], 0.4, LINE*0.7)
         _SC.pop(); C.restoreState()
+
+
+def wall_art(b, room):
+    """the girls' real drawings, taped to the wall (personal style only)"""
+    from PIL import Image
+    for path, fx, fy, w in osobni.wall_art(room):
+        iw, ih = Image.open(path).size
+        pad = w*0.08
+        h = (w - 2*pad)*ih/iw + 2*pad
+        r = random.Random(path + room)
+        with T(b.X(fx), b.Y(fy), 1.0, rot=r.uniform(-7, 7)):
+            sheet = [(-w/2, -h/2), (w/2, -h/2), (w/2, h/2), (-w/2, h/2)]
+            fill([(x+1.5, y-1.5) for x, y in sheet], 0.0, 0.12)  # its shadow on the wall
+            fill(sheet, P.PAPER_SHEET if hasattr(P, "PAPER_SHEET") else 1.0)
+            C.drawImage(path, -w/2+pad, -h/2+pad, w-2*pad, h-2*pad, mask="auto")
+            stroke(sheet, LINE*0.7, closed=True)
+            for tx in ((-w*0.3,) if r.random() < 0.5 else (-w*0.3, w*0.3)):  # a strip of tape or two
+                tape = [(tx-7, h/2-4), (tx+7, h/2-3), (tx+7, h/2+5), (tx-7, h/2+4)]
+                fill(tape, lib.Col(0.85, "#efe3b8"), 0.75)

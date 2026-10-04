@@ -14,11 +14,15 @@
     },
     {
      "number": 2,
-     "title": "Tajemství starého klíče"
+     "title": "Tajemství starého klíče",
+     "start_room": "Loznice",
+     "cover": "res://assets/menu/ep_vamd_02.png"
     },
     {
      "number": 3,
-     "title": "Mapa ke starému rybníku"
+     "title": "Mapa ke starému rybníku",
+     "start_room": "Kuchyne3",
+     "cover": "res://assets/menu/ep_vamd_03.png"
     },
     {
      "number": 4,

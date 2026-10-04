@@ -13,6 +13,7 @@ var _stones_done := 0
 
 #region Virtual ####################################################################################
 func _on_room_entered() -> void:
+	Globals.exit_arrow(self, "CestaZpet", true)
 	C.player.position = get_marker_position("PrechodP" if Globals.stream_crossed else "ZeZahrady")
 	Globals.bring_sister(self)
 	if Globals.stream_crossed:

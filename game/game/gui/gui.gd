@@ -18,6 +18,15 @@ func _cover_screen() -> void:
 
 
 #region Virtual ####################################################################################
+# Autosave is silent, and loading needs no "Game loaded" text either.
+func _on_game_saved() -> void:
+	pass
+
+
+func _on_game_loaded(_loaded_game: Dictionary) -> void:
+	G.load_feedback_finished.emit()
+
+
 # Called when the GUI is blocked and should not handle input events.
 func _on_blocked(props := { blocking = true }) -> void:
 	super(props)

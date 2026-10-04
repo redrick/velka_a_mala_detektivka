@@ -28,6 +28,7 @@ func _on_room_entered() -> void:
 	get_prop("Ponozka").visible = not Globals.joey_cleared
 	get_prop("Silueta").hide()
 	_show_trap_props()
+	Globals.exit_arrow(self, "Cesta", true, Globals.thread_found)
 	if Globals.phase == "night":
 		_setup_night()
 
@@ -171,6 +172,8 @@ func _show_trap_props() -> void:
 
 
 func _setup_night() -> void:
+	set_meta("mood", "night")
+	Music.play("night")
 	C.Alica.hide()
 	C.Hanka.hide()
 	C.Tonda.hide()
@@ -220,6 +223,7 @@ func _play_night() -> void:
 
 
 func _setup_morning() -> void:
+	Music.play("day")
 	for n in _night_nodes:
 		n.queue_free()
 	_night_nodes.clear()

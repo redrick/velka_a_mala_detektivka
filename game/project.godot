@@ -29,6 +29,7 @@ T="*uid://30lm6k5s368s"
 Lang="*res://game/i18n/lang.gd"
 Prefs="*res://game/prefs.gd"
 InGameMenu="*res://game/menu/ingame_menu.gd"
+Music="*res://game/music.gd"
 
 [display]
 

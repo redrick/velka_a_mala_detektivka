@@ -17,6 +17,8 @@ func _on_room_set() -> void:
 
 # Called when the character is clicked
 func _on_click() -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "click"):
+		return
 	await say("Čmuch čmuch!")
 	await walk(_next_goal())
 
@@ -31,6 +33,8 @@ func _on_double_click() -> void:
 
 # Called when the character is right-clicked
 func _on_right_click() -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "look"):
+		return
 	await C.player.face_clicked()
 	await C.player.say("Joey! Hodný pejsek.")
 
@@ -45,6 +49,8 @@ func _on_middle_click() -> void:
 
 # Called when the character is clicked while an inventory item is selected
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
+	if R.current.has_method("on_character") and await R.current.on_character(self, "item", _item):
+		return
 	# Replace the call to E.command_fallback() with your own logic.
 	E.command_fallback()
 	# Example: if the player uses a Key on this character, make the player say something.
@@ -122,6 +128,9 @@ func _on_movement_ended() -> void:
 
 
 func _next_goal() -> Vector2:
+	if R.current.has_method("joey_goal"):
+		var goal: Vector2 = R.current.joey_goal()
+		return goal if goal != Vector2.ZERO else position
 	if R.current.script_name == "Zahumenek":
 		if not Globals.bush_found:
 			return R.current.get_hotspot("Diera").walk_to_point + Vector2(120, 60)
