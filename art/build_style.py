@@ -9,7 +9,7 @@ Writes art/style_data/:
 and the fonts art/fonts/TataHand.ttf (comic lettering) and art/fonts/AlicaHand.ttf (Alica's capitals).
 Nothing changes until the style is switched on: VMD_STYLE=osobni (see osobni.py).
 """
-import os, sys, json, math
+import os, sys, json, math, unicodedata
 import numpy as np
 import cv2
 
@@ -311,7 +311,31 @@ def collect_tata(S):
             unit = (g["h"] * 0.48) * ppm / CAP * UPM  # cap line sits 0.48 h above the baseline
             gl = glyph_from_cell(a, ppm, base, unit)
             if gl: glyphs.setdefault(b["glyph"], []).append(gl)
-    return normalise(tidy_variants(glyphs))
+    return centre_accents(normalise(tidy_variants(glyphs)))
+
+
+def centre_accents(glyphs):
+    """a capital's accent that landed beside the letter (táta's Í: I, then a čárka off to the right) is moved
+    over it, or "PŘÍPAD" reads as "PŘI´PAD" now that the comic letters in capitals"""
+    for ch, vs in glyphs.items():
+        if not (ch.isupper() and len(unicodedata.normalize("NFD", ch)) > 1): continue
+        for v in vs:
+            solid = [p for p in v["polys"] if not p["hole"]]
+            low = lambda p: min(y for _, y in p["pts"])
+            standing = [max(y for _, y in p["pts"]) for p in solid if low(p) < 200]  # the letter stands on the baseline
+            if not standing: continue
+            top = max(standing)
+            marks = [p for p in solid if low(p) > top * 0.8]
+            body = [p for p in v["polys"] if p not in marks]
+            if not marks or not body: continue
+            bx = [x for p in body for x, _ in p["pts"]]; mx = [x for p in marks for x, _ in p["pts"]]
+            b0, b1, m0, m1 = min(bx), max(bx), min(mx), max(mx)
+            if b0 <= (m0 + m1) / 2 <= b1: continue
+            dx = (b0 + b1) / 2 - (m0 + m1) / 2 + (m1 - m0) * 0.2  # centred, leaning right a little as he writes them
+            for p in marks: p["pts"] = [(x + dx, y) for x, y in p["pts"]]
+            xs = [x for p in v["polys"] for x, _ in p["pts"]]
+            v["x0"], v["x1"] = min(xs), max(xs)
+    return glyphs
 
 
 def collect_alica(S):

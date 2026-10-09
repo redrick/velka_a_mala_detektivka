@@ -696,6 +696,7 @@ def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True):
         C.saveState(); C.clipPath(poly(o), stroke=0, fill=0)
         fill([(-26, -1), (-6, -1), (-6, 9.5), (-26, 9.5)], 1.0); C.restoreState(); stroke(o, LINE, closed=True)
         nf = [(9.5, 24), (10.5 + (2.5 if sniff else 0), 12), (11 + (4.5 if sniff else 0), 2.2)]
+        if pose == "paw": nf = [(10, 23), (24, 18), (40, 21)]
         tube(nf, 6.5, 4.3, 1.0, sh=0.08)
         for lg in (nb, nf):
             px, py = lg[-1]
@@ -744,7 +745,10 @@ def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True):
         else:
             shape(ell(ex_, ey_, 1.35, 1.45, 16), 0.95, LINE*0.5)
             dot(ex_+0.25, ey_, 0.85, 0.0); dot(ex_+0.6, ey_+0.45, 0.33, 1.0)
-        stroke(bez((ex_-1.1, ey_+2.1), (ex_-0.3, ey_+2.7), (ex_+0.6, ey_+2.7), (ex_+1.3, ey_+2.2)), LINE*0.6, g=0.6)
+        if mood == "sad":
+            stroke(bez((ex_-1.3, ey_+1.6), (ex_-0.3, ey_+2.4), (ex_+0.6, ey_+2.9), (ex_+1.5, ey_+3.0)), LINE*0.7, g=0.6)
+        else:
+            stroke(bez((ex_-1.1, ey_+2.1), (ex_-0.3, ey_+2.7), (ex_+0.6, ey_+2.7), (ex_+1.3, ey_+2.2)), LINE*0.6, g=0.6)
         e1 = bez((-1.5, 6.6), (-2.5, 10), (-1, 14), (1.5, 14.5)) + bez((1.5, 14.5), (3.5, 14.6), (4.5, 12.8), (4, 11.2)) + [(3, 6.2)]
         shape(e1, BLK)
         shape([(0.8, 14.3), (4.2, 12.5), (4.6, 10.4), (2.4, 12)], 0.4, LINE*0.7)

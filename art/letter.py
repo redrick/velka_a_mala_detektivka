@@ -22,7 +22,29 @@ pdfmetrics.registerFont(TTFont("BG", D+"f_Bangers-Regular.ttf"))
 
 def _rng(txt): return random.Random(zlib.crc32(txt.encode("utf-8")))
 
+CAPS_K = 0.88  # capitals run larger than mixed case at one size, so they're lettered a size smaller
+
+def _caps_on(font): return osobni.on("font") and font in ("SH", "SHB", "SH2")
+
+def caps(txt, font):
+    """táta's lowercase reads as cursive, so his lettering is all capitals (block letters kids learn first)"""
+    return txt.upper() if _caps_on(font) else txt
+
+MISSING = set()  # characters lettered in a font that has no glyph for them (they'd print as nothing); comics report it
+_CMAPS = {}
+
+def _check_glyphs(txt, font):
+    path = _font_file(font) if font in ("SH", "SHB", "SH2") else None
+    if not path: return
+    if path not in _CMAPS:
+        from fontTools.ttLib import TTFont as _TT
+        _CMAPS[path] = set(_TT(path).getBestCmap())
+    MISSING.update(ch for ch in txt if ch.strip() and ord(ch) not in _CMAPS[path])
+
 def lines_of(txt, font, size, w):
+    txt = caps(txt, font)
+    _check_glyphs(txt, font)
+    if _caps_on(font): size *= CAPS_K
     out = []
     for para in txt.split("\n"): out += simpleSplit(para, font, size, w)
     return out
@@ -46,6 +68,7 @@ def hand_text(x, y, w, txt, font="SH", size=14, align="center", lead=None, g=0.0
     lead = lead or size*1.18
     r = _rng(txt)
     L = lines_of(txt, font, size, w)
+    if _caps_on(font): size *= CAPS_K
     for i, ln in enumerate(L):
         lw = pdfmetrics.stringWidth(ln, font, size)
         xx = x + (w - lw)/2 if align == "center" else x

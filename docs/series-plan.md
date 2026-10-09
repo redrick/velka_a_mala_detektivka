@@ -18,9 +18,16 @@ Before writing each issue, ask the family for real details (names, places, recen
    letters from shy Bětka, Franta's granddaughter staying for the winter (parsnip noses, star-soled boots, red pompom).
    False leads Tonda and babička (baking gingerbread → issue 6). Alica reads the snowmen, Hanka answers with snowmen.
    Bětka joins Klub Hvězdička "na zkoušku". Hidden-object game: 10 triangles with a dot
-6. Kam mizí perníčky? – Advent; hungry tits (sýkorky); the girls build a bird feeder
+6. Kam mizí perníčky? – DONE (comic, 24 pages): two thieves on two trails. Tits peck the broken pieces on the sill (solved
+   on p. 8, feeder built), but whole iced stars keep vanishing from the tin in the locked house: děda revives the club's
+   Advent stars on the spruce by the mill (7 stars = 7 members, then 2 more because the tits ate the girls' first ones).
+   Wrong leads: mice (děda's unbaited trap), Joey (floury paws), Hanka (dark chocolate crumbs vs white-iced stars).
+   Hidden-object game: 12 gingerbread men (checked with art/check_hidden.py)
 7. Joeyho velký den – told by Joey; he finds babička's ring in the snow
-8. Stopy ve sněhu – the forester; a guide to animal tracks
+8. Stopy ve sněhu – DONE (comic, 24 pages): parsnip noses vanish from the snowmen; the hajný teaches tracks (full-page
+   guide: deer, boar, hare, fox, dog, cat, squirrel, bird). False leads Joey, hare, fox, boar. Culprit a roe doe: noses too high
+   for a hare, frayed bite (no upper front teeth), split print without dewclaw dots on snow děda smoothed. Ending: veg for the
+   krmelec, pinecone noses. Hidden-object game: 10 carrots
 9. Tajná zpráva v knihovně – Masopust; a cipher to crack
 10. Záhada ve škole – Alica's class hamster; Mum and Dad appear
 11. Kam mizí vajíčka? – Easter; a hen hides her eggs

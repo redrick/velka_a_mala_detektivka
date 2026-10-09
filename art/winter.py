@@ -142,6 +142,14 @@ def snowman_b(x, y, s=1.0, right="down", left="down", nose="parsnip", item=None,
         if nose == "parsnip":
             shape([(0, 56.6), (12.5, 54.6), (0, 53.8)], P.PARSNIP, LINE*0.6)
             for k_ in (3, 6, 9): stroke([(k_, 55.9 - k_*0.12), (k_ + 0.6, 54.5 - k_*0.06)], LINE*0.3, g=0.5)
+        elif nose == "none":                       # issue 8: eaten, only a hole in the snow
+            shape(ell(0.6, 55.2, 1.6, 1.3, 10), P.SNOW_SHADE, LINE*0.4)
+        elif nose == "stub":                       # issue 8: bitten off, a torn stub left
+            shape([(0, 56.6), (3.4, 56.4), (2.6, 55.6), (3.8, 55), (2.8, 54.2), (3.2, 53.8), (0, 53.8)], P.PARSNIP, LINE*0.5)
+        elif nose == "cone":                       # issue 8: a spruce cone, which the deer doesn't eat
+            with T(5, 55.2, 1, rot=-90):
+                shape(ell(0, 0, 2.4, 5.4, 14), P.PINECONE, LINE*0.5)
+                for k_ in range(-3, 4, 2): stroke([(-2, k_), (2, k_ + 1)], LINE*0.3, g=0.75)
         else:
             shape([(0, 56.6), (11, 55), (0, 53.8)], P.CARROT, LINE*0.6)
         for k_ in range(5): dot(-3.2 + k_*1.6, 50.8 - abs(k_ - 2)*0.6, 0.6, 0.1)
