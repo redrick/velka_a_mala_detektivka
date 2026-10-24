@@ -241,7 +241,7 @@ position = Vector2(500, 940)
 
 [node name="ZeKuchyne" type="Marker2D" parent="Markers"]
 visible = false
-position = Vector2(220, 940)
+position = Vector2(320, 940)
 
 [node name="ZPudy" type="Marker2D" parent="Markers"]
 visible = false

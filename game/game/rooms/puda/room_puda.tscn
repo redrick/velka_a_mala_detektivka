@@ -269,6 +269,6 @@ polygon = PackedVector2Array(1539, 870, 1693, 870, 1693, 1075, 1539, 1075)
 
 [node name="Vstup" type="Marker2D" parent="Markers"]
 visible = false
-position = Vector2(560, 1000)
+position = Vector2(420, 1000)
 
 [node name="Characters" type="Node2D" parent="."]

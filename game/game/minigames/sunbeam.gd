@@ -203,3 +203,15 @@ func _ends_on_x(turns: Dictionary) -> bool:
 		if turns.has(c):
 			d = Vector2i(-d.y, -d.x) if turns[c] == "/" else Vector2i(d.y, d.x)
 	return false
+
+
+func solve_for_test() -> void:
+	var lv := level
+	for _i in 20:
+		if level != lv or busy:
+			return
+		var c := _wrong_mirror()
+		if c == Vector2i(-1, -1):
+			return
+		_turn(c)
+		await get_tree().process_frame

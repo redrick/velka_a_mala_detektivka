@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://game/rooms/kumbal10/room_kumbal10_state.gd" id="1_s"]
+
+[resource]
+resource_name = "Kumbal10"
+script = ExtResource("1_s")
+script_name = "Kumbal10"
+scene = "res://game/rooms/kumbal10/room_kumbal10.tscn"

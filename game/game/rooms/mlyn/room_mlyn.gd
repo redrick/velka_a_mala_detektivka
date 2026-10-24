@@ -29,6 +29,10 @@ func _on_room_transition_finished() -> void:
 		await _bench()
 
 
+func joey_goal() -> Vector2:
+	return C.Verka.position + Vector2(-220, 40) if not Globals.r_end else Vector2.ZERO
+
+
 func on_click(node: Node) -> void:
 	match node.script_name:
 		"Zpet":
@@ -53,7 +57,7 @@ func on_character(chr: PopochiuCharacter, action: String, _item: PopochiuInvento
 			await C.Verka.say("Dobrý den, děti!")
 		return true
 	if chr == C.Tonda:
-		await C.Tonda.say("Já jsem v klubu!" if Globals.r_end else "Joey nás přivedl sem. Proč asi?")
+		await C.Tonda.say("Já jsem v klubu!" if Globals.r_end else "Joey nás sem přivedl. Proč asi?")
 		return true
 	if chr == C.Deda:
 		await C.Deda.say("Tolik let… Věrka je zpátky!")
@@ -131,7 +135,8 @@ func _treasure() -> void:
 	C.Alica.pose("surprised")
 	await C.Alica.say("Pravá stříbrná mince!")
 	C.Alica.pose()
-	await C.Deda.say("Stříbrný tolar. Našli jsme ho v bahně, když vypustili rybník. Je moc vzácný. Ale poklad klubu se neprodává.")
+	await C.Deda.say("Stříbrný tolar. Našli jsme ho v bahně, když vypustili rybník.")
+	await C.Deda.say("Je moc vzácný. Ale poklad klubu se neprodává.")
 	await pop("Dalekohled")
 	await C.Verka.say("Dalekohled po mém tátovi. Koukali jsme s ním na hvězdy.")
 	await pop("Fotka")

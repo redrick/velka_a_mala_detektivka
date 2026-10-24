@@ -72,11 +72,12 @@ func reveal() -> void:
 	await C.Hanka.say("Mají z nich hnízdo! Je jim zima.")
 	C.Alica.pose()
 	await C.Alica.say("Nejsou to zloději. Jen si stavěli teplý pelíšek na zimu.")
-	C.Hanka.pose("surprised")
-	await C.Hanka.say("A v botě je ještě něco… klíč!")
-	C.Hanka.pose()
+	C.Alica.pose("surprised")
+	await C.Alica.say("A na dně boty je ještě něco… starý klíč!")
+	C.Alica.pose()
 	await I.Klic.add()
-	await C.Alica.say("Klíč s hvězdičkou? Musíme ho ukázat dědovi!")
+	await C.Alica.say("Klíč s hvězdičkou. Ale od čeho asi je?")
+	await C.Hanka.say("Ukážeme ho dědovi!")
 	Globals.shed_done = true
 	Globals.phase = "ending"
 	R.goto_room("Zahrada")

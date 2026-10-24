@@ -75,3 +75,10 @@ func _accuse() -> void:
 
 func _show() -> void:
 	_frame.position = cell_pos(Vector2i(_cursor * 2, 1))
+
+
+func solve_for_test() -> void:
+	_cursor = SUSPECTS.find("lady")
+	_show()
+	_accuse()
+	await get_tree().process_frame

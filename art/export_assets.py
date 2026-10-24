@@ -169,3 +169,16 @@ if __name__ == "__main__":
         for name, w, h, fn in story3.CHARACTERS: render(name, w, h, fn, "characters")
         for name, w, h, fn in story3.PROPS + story3.ITEMS: render(name, w, h, fn, "props")
         for name, fn in story3.MG: render(name, 64, 64, fn, "minigames")
+    # stories 4+: art/story<n>.py, each with ROOMS, SLIDES, CHARACTERS, PROPS, ITEMS, MG (any may be missing)
+    import importlib
+    for n in range(4, 17):
+        if only not in (None, f"story{n}") or not os.path.exists(os.path.join(HERE, f"story{n}.py")):
+            continue
+        mod = importlib.import_module(f"story{n}")
+        for name, fn in getattr(mod, "ROOMS", []): render(name, 960, 540, fn, "rooms")
+        for name, fn in getattr(mod, "SLIDES", []): render(name, 960, 540, fn, "slides")
+        for name, w, h, fn in getattr(mod, "CHARACTERS", []): render(name, w, h, fn, "characters")
+        for name, w, h, fn in getattr(mod, "PROPS", []) + getattr(mod, "ITEMS", []): render(name, w, h, fn, "props")
+        for name, fn in getattr(mod, "MG", []): render(name, 64, 64, fn, "minigames")
+        if hasattr(mod, "COVER"):
+            render(f"ep_vamd_{n:02d}", 180, 240, lambda b, m=mod, k=n: menu.cover_frame(b, m.COVER, k), "menu")

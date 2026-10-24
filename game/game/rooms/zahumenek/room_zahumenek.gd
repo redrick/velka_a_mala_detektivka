@@ -13,6 +13,9 @@ var _stones_done := 0
 
 #region Virtual ####################################################################################
 func _on_room_entered() -> void:
+	# a save made while Hanka was behind the fence starts with her back in front of it
+	Globals.hanka_behind_fence = false
+	C.Hanka.can_move = true
 	Globals.exit_arrow(self, "CestaZpet", true)
 	C.player.position = get_marker_position("PrechodP" if Globals.stream_crossed else "ZeZahrady")
 	Globals.bring_sister(self)

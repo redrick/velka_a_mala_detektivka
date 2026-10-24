@@ -12,7 +12,7 @@ func _on_click() -> void:
 		await C.player.say("V botě je teď plšíkův pelíšek. Pst, spinkají.")
 		return
 	if C.player != C.Hanka:
-		await C.Alica.say("Nic nevidím. Hanka má baterku!")
+		await C.Alica.say("Nic nevidím. Hanka má baterku! Klikni na Hanku!")
 		return
 	await C.player.walk_to_clicked(Vector2(-260, 120))
 	await C.player.face_clicked()

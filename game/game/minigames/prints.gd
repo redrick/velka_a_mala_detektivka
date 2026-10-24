@@ -129,3 +129,14 @@ func _forget(nodes: Array) -> void:
 	for n in nodes:
 		if is_instance_valid(n):
 			n.queue_free()
+
+
+func solve_for_test() -> void:
+	for r in _prints.size():
+		if busy:
+			return
+		if _done.has(r):
+			continue
+		_pick(Vector2i(0, r))
+		_pick(Vector2i(4, _cards.find(_prints[r])))
+		await get_tree().process_frame

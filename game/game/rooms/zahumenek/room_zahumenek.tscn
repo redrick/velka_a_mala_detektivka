@@ -90,7 +90,7 @@ walk_to_point = Vector2(90, 900)
 [node name="Markers" type="Node2D" parent="." unique_id=172317304]
 
 [node name="ZeZahrady" parent="Markers" unique_id=1080616795 instance=ExtResource("17_5pmyl")]
-position = Vector2(200, 900)
+position = Vector2(320, 900)
 
 [node name="ZaPlotem" parent="Markers" unique_id=128834072 instance=ExtResource("18_65mip")]
 position = Vector2(470, 684)

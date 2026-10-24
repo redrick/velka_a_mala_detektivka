@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/domov10/room_domov10.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/home10.png" id="5_r"]
+[ext_resource type="Texture2D" path="res://assets/props/box10.png" id="6_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(40, 800, 1880, 800, 1900, 1060, 20, 1060)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 800, 1880, 800, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="RoomDomov10" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Domov10"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 800, 1880, 800, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Krabice" type="Area2D" parent="Props"]
+position = Vector2(1500, 880)
+script = ExtResource("2_r")
+script_name = "Krabice"
+texture = ExtResource("6_r")
+description = "Krabice s dírkami"
+baseline = -100
+cursor = 1
+interaction_polygon = PackedVector2Array(-120, -100, 120, -100, 120, 100, -120, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Krabice"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Krabice"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Krabice"]
+visible = false
+polygon = PackedVector2Array(-120, -100, 120, -100, 120, 100, -120, 100)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Okno" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Okno"
+description = "Okno"
+cursor = 1
+walk_to_point = Vector2(1400, 880)
+interaction_polygon = PackedVector2Array(1150, 100, 1770, 100, 1770, 640, 1150, 640)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Okno"]
+visible = false
+polygon = PackedVector2Array(1150, 100, 1770, 100, 1770, 640, 1150, 640)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(500, 950)
+
+[node name="Mama" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(900, 920)
+
+[node name="Tata" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1250, 920)
+
+[node name="Characters" type="Node2D" parent="."]

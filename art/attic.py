@@ -154,6 +154,31 @@ def young(x, y, s=1.0, who="deda", flip=False, left="down", right="down", mood="
             shape(cap, P.VERKA_HAIR)
             stroke(bez((0, cy + r*1.12), (0.3, cy + r*0.95), (0.2, cy + r*0.8), (0, cy + r*0.64)), LINE*0.5, g=0.7)
             return
+        if who == "jana":
+            # babička as a girl (issue 9): her bun already on top, round glasses, a plain blue dress
+            draw_legs(k, legs, P.TIGHTS, boots=P.KID_SHOES, boot_top=k.ankle + 2.5)
+            draw_arm(k, -1, left, P.JANA_DRESS)
+            dress = bez((-4.5, k.sh_y + 2.6), (-8, k.sh_y + 2.4), (-k.sh_w - 1.1, k.sh_y + 0.5), (-k.sh_w - 1.5, k.sh_y - 3.5)) + \
+                    bez((-k.sh_w - 1.5, k.sh_y - 3.5), (-12, 60), (-14, 45), (-16, 30)) + \
+                    bez((-16, 30), (-6, 28), (6, 28), (16, 30)) + \
+                    bez((16, 30), (14, 45), (12, 60), (k.sh_w + 1.5, k.sh_y - 3.5)) + \
+                    bez((k.sh_w + 1.5, k.sh_y - 3.5), (k.sh_w + 1.1, k.sh_y + 0.5), (8, k.sh_y + 2.4), (4.5, k.sh_y + 2.6))
+            form(dress, P.JANA_DRESS, sdx=-2, sdy=1)
+            stroke([(-14.5, 33), (14.5, 33)], LINE*0.5, g=0.95)
+            shape(bez((-5, k.sh_y + 2.2), (-2, k.sh_y - 1.5), (2, k.sh_y - 1.5), (5, k.sh_y + 2.2)) + [(0, k.sh_y + 1)], 1.0, LINE*0.7)
+            h, fa = draw_arm(k, 1, right, P.JANA_DRESS)
+            if item: item(*h)
+            _neck(k, 2.4)
+            shape(ell(0, cy + r*1.25, r*0.5, r*0.4, 24), P.JANA_HAIR, LINE)
+            _kid_head(k, mood, look, ears=False)
+            cap = bez((-r*1.02, cy + r*0.05), (-r*1.1, cy + r*1.15), (r*1.1, cy + r*1.15), (r*1.02, cy + r*0.05)) + \
+                  bez((r*1.02, cy + r*0.05), (r*0.7, cy + r*0.62), (r*0.3, cy + r*0.72), (0, cy + r*0.7)) + \
+                  bez((0, cy + r*0.7), (-r*0.3, cy + r*0.72), (-r*0.7, cy + r*0.62), (-r*1.02, cy + r*0.05))
+            shape(cap, P.JANA_HAIR)
+            for sx in (-1, 1):
+                stroke(ell(sx*r*0.4, cy - r*0.02, r*0.25, r*0.22, 24), LINE*0.8, closed=True)
+            stroke([(-r*0.15, cy), (r*0.15, cy)], LINE*0.7)
+            return
         # boys: bare knees, knee socks, short trousers with braces
         draw_legs(k, legs, P.SKIN, boots=P.KNEE_SOCKS, boot_top=k.knee - 2)
         _shoes(k, legs)

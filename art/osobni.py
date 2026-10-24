@@ -131,8 +131,14 @@ def balloon_outline(kind, cx, cy, rx, ry, n=None):
     for j in range(n):  # parametric angle from 0, counter-clockwise, like letter.wobbly_ellipse
         t = 2 * math.pi * j / n
         k = prof[int(((t + math.pi) / (2 * math.pi)) * len(prof)) % len(prof)]
-        pts.append((cx + math.cos(t) * rx * k, cy + math.sin(t) * ry * k))
-    return pts
+        pts.append((math.cos(t) * k, math.sin(t) * k))
+    if kind == "shout": return [(cx + px * rx, cy + py * ry) for px, py in pts]  # spikes are meant to stick out
+    # his profile is lopsided (the speech balloon's top bulges, its bottom is flat): fit it to the box rx, ry round
+    # cx, cy, otherwise text centred on cy sits low in it and the balloon grows to make room
+    x0, x1 = min(p[0] for p in pts), max(p[0] for p in pts)
+    y0, y1 = min(p[1] for p in pts), max(p[1] for p in pts)
+    return [(cx + (px - (x0 + x1) / 2) * 2 * rx / (x1 - x0), cy + (py - (y0 + y1) / 2) * 2 * ry / (y1 - y0))
+            for px, py in pts]
 
 
 def whisper_dashes():

@@ -13,6 +13,33 @@ const MINIGAMES := [
 	["Dvacet dětských kroků", "příběh 3 · plánování kroků", preload("res://game/minigames/steps.gd")],
 	["Čí je to stopa?", "příběh 3 · stopy v bahně", preload("res://game/minigames/prints.gd")],
 	["Kdo to byl?", "příběh 3 · kdo vykopal poklad", preload("res://game/minigames/culprit.gd")],
+	["Rozběhni hodiny", "příběh 4 · ozubená kolečka", preload("res://game/minigames/gears.gd")],
+	["Kdo šel po stopě před Hankou?", "příběh 4 · podezřelí", preload("res://game/minigames/who_4.gd")],
+	["Navigace vysílačkou", "příběh 4 · Hanka jde rovně", preload("res://game/minigames/radio.gd")],
+	["Postav sněhuláka", "příběh 5 · koulení koulí", preload("res://game/minigames/snowman.gd")],
+	["Kdo staví sněhuláky?", "příběh 5 · podezřelí", preload("res://game/minigames/who_5.gd")],
+	["Čí je rukavice?", "příběh 5 · podle pravidel", preload("res://game/minigames/mittens.gd")],
+	["Hvězdy na smrčku", "příběh 6 · každá ozdoba jednou", preload("res://game/minigames/stars.gd")],
+	["Kdo bere hvězdičky?", "příběh 6 · podezřelí", preload("res://game/minigames/who_6.gd")],
+	["Kdo co zobe?", "příběh 6 · ptáčci u krmítka", preload("res://game/minigames/birds.gd")],
+	["Čmuchej!", "příběh 7 · Joeyho nos", preload("res://game/minigames/sniff.gd")],
+	["Kde je prstýnek?", "příběh 7 · kam se mohl dostat", preload("res://game/minigames/who_7.gd")],
+	["Co se ráno dělo?", "příběh 7 · co bylo dřív", preload("res://game/minigames/joey_morning.gd")],
+	["Po stopě", "příběh 8 · jen srnčí stopy", preload("res://game/minigames/trail.gd")],
+	["Kdo okusuje nosy?", "příběh 8 · podezřelí", preload("res://game/minigames/who_8.gd")],
+	["Seno do krmelce", "příběh 8 · váhy", preload("res://game/minigames/scale.gd")],
+	["Hvězdičkové písmo", "příběh 9 · tajná šifra", preload("res://game/minigames/cipher.gd")],
+	["Kdo napsal zprávu?", "příběh 9 · masopustní masky", preload("res://game/minigames/who_9.gd")],
+	["Masopustní průvod", "příběh 9 · pořadí masek", preload("res://game/minigames/parade.gd")],
+	["Nový kotec", "příběh 10 · skládání prkýnek", preload("res://game/minigames/hutch.gd")],
+	["Kdo vzal Míšu a Šišu?", "příběh 10 · podezřelí", preload("res://game/minigames/who_10.gd")],
+	["Ohrádky pro morčata", "příběh 10 · ohrádky", preload("res://game/minigames/pens.gd")],
+	["Balíky slámy", "příběh 11 · posouvání balíků", preload("res://game/minigames/bales.gd")],
+	["Kam mizí vajíčka?", "příběh 11 · podezřelí", preload("res://game/minigames/who_11.gd")],
+	["Kraslice podle vzoru", "příběh 11 · vzorek", preload("res://game/minigames/pattern.gd")],
+	["Otoč šipky", "příběh 12 · šipky z křídy", preload("res://game/minigames/arrows.gd")],
+	["Kdo nakreslil tuhle šipku?", "příběh 12 · podezřelí", preload("res://game/minigames/who_12.gd")],
+	["Kdo kde sedí?", "příběh 12 · zasedací pořádek", preload("res://game/minigames/seating.gd")],
 ]
 
 var _catalog: Array = []
@@ -117,16 +144,25 @@ func show_quit() -> void:
 ## Test list of the logic minigames, one per story, so they can be tried outside the stories.
 func show_minigames() -> void:
 	_current = show_minigames
-	var col := _dialog(1100.0, 180.0)
+	var col := _dialog(1500.0, 60.0)
 	col.add_child(_header(tr("Minihry")))
+	# one story's games per row; the list scrolls once there are many stories
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size = Vector2(1460, 800)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	col.add_child(scroll)
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 18)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
 	for game in MINIGAMES:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 24)
-		row.add_child(_wide(Kit.button(tr(game[0]), _play_minigame.bind(game[2]), 32), 520))
+		row.add_child(_wide(Kit.button(tr(game[0]), _play_minigame.bind(game[2]), 30), 720))
 		var note := Kit.label(tr(game[1]), 26)
 		note.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		row.add_child(note)
-		col.add_child(row)
+		list.add_child(row)
 
 
 func _play_minigame(script: Script) -> void:

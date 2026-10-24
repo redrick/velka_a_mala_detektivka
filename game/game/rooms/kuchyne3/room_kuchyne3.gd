@@ -18,10 +18,10 @@ func _on_room_entered() -> void:
 		glow(Vector2(960, 300), Color(1.0, 0.85, 0.55), 1.1, 4.0)
 	elif not Globals.r_intro:
 		place("Deda", Vector2(1250, 900))
-		place("Babicka", Vector2(1500, 900))
+		place("Babicka", Vector2(1050, 900))
 	else:
 		remove("Deda")
-		place("Babicka", Vector2(1500, 900))
+		place("Babicka", Vector2(1050, 900))
 
 
 func _on_room_transition_finished() -> void:

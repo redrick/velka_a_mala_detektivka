@@ -37,7 +37,7 @@ func _on_double_click() -> void:
 # When the hotspot is right clicked
 func _on_right_click() -> void:
 	await C.player.face_clicked()
-	await C.player.say("Tráva. Něco se v ní třpytí?")
+	await C.player.say("Tráva. Je ještě mokrá od rosy.")
 
 
 # Called when the hotspot is middle clicked

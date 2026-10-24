@@ -17,6 +17,8 @@ func _on_room_set() -> void:
 
 # Called when the character is clicked
 func _on_click() -> void:
+	if Globals.story >= 4 and R.current.has_method("on_character") and await R.current.on_character(self, "click"):
+		return
 	Globals.switch_to(self)
 	await say("Teď jdu já!")
 

@@ -171,10 +171,62 @@ def slot(b):
     shape(rrect(4, 4, b.w - 8, b.h - 8, 10), 0.95, LINE)
 
 
+# picture rules for rules.gd: is, is not, side by side, not side by side, before, at an end; an empty place
+def _bars(b, g, slash=False):
+    for y in (24, 40):
+        shape(rrect(12, y - 4, 40, 8, 3), g, LINE)
+    if slash:
+        stroke([(18, 10), (46, 54)], LINE*3.2, g=P.CRAYON_RED)
+
+
+def rule_is(b): _bars(b, P.CRAYON_GREEN)
+
+
+def rule_not(b): _bars(b, 0.85, slash=True)
+
+
+def _cross(x, y, r):
+    stroke([(x - r, y - r), (x + r, y + r)], LINE*3, g=P.CRAYON_RED)
+    stroke([(x - r, y + r), (x + r, y - r)], LINE*3, g=P.CRAYON_RED)
+
+
+def rule_next(b):
+    shape(rrect(8, 22, 22, 22, 4), 0.95, LINE)
+    shape(rrect(34, 22, 22, 22, 4), 0.95, LINE)
+    shape(ell(32, 33, 6, 6, 16), P.CRAYON_GREEN, LINE)
+
+
+def rule_apart(b):
+    shape(rrect(2, 22, 20, 22, 4), 0.95, LINE)
+    shape(rrect(42, 22, 20, 22, 4), 0.95, LINE)
+    _cross(32, 33, 7)
+
+
+def rule_before(b):
+    with T(b.w/2, b.h/2, 1):
+        shape([(-24, -5), (6, -5), (6, -15), (24, 0), (6, 15), (6, 5), (-24, 5)], P.CRAYON_GREEN, LINE*1.4)
+
+
+def rule_end(b):
+    for k in range(4):
+        shape(rrect(4 + k*14.5, 26, 12, 12, 2), P.CRAYON_GREEN if k in (0, 3) else 0.95, LINE*0.8)
+
+
+def rule_slot(b):
+    shape(rrect(6, 6, b.w - 12, b.h - 12, 10), 0.97, LINE*0.8)
+
+
+def number(b, n):
+    shape(ell(b.w/2, b.h/2, 24, 24, 32), P.PAPER, LINE)
+    hand_text(0, b.h/2 - 13, b.w, str(n), "SHB", 38, g=0.15)
+
+
 TILES = [("grass", grass), ("grass_b", grass_b), ("flowerpot", flowerpot), ("pumpkin", pumpkin_tile), ("bush", bush),
          ("sack", sack), ("sack_done", sack_done), ("target", target_prints),
          ("planks", planks_tile), ("plank_star", plank_star), ("mirror", mirror), ("sun", sun_window),
          ("crate", crate_tile), ("owlet", owlet_tile), ("owlet_awake", owlet_awake),
          ("pond_grass", pond_grass), ("water", pond_water_tile), ("reeds", reeds_tile), ("stump", stump_tile),
          ("goal", goal_tile), ("arrow", arrow), ("slot", slot),
-         ("arrow_up", lambda b: arrow(b, 90)), ("arrow_left", lambda b: arrow(b, 180)), ("arrow_down", lambda b: arrow(b, 270))]
+         ("arrow_up", lambda b: arrow(b, 90)), ("arrow_left", lambda b: arrow(b, 180)), ("arrow_down", lambda b: arrow(b, 270)),
+         ("rule_is", rule_is), ("rule_not", rule_not), ("rule_next", rule_next), ("rule_apart", rule_apart),
+         ("rule_before", rule_before), ("rule_end", rule_end), ("rule_slot", rule_slot)] + [(f"num{n}", lambda b, n=n: number(b, n)) for n in range(1, 6)]

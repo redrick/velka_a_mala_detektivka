@@ -308,3 +308,15 @@ func _key(me: Vector2i, boxes: Array) -> String:
 	var s := boxes.duplicate()
 	s.sort()
 	return str(me) + str(s)
+
+
+func solve_for_test() -> void:
+	var lv := level
+	for _i in 400:
+		if level != lv or busy:
+			return
+		var d := _solve_first_move()
+		if d == Vector2i.ZERO:
+			return
+		_step(d)
+		await get_tree().process_frame

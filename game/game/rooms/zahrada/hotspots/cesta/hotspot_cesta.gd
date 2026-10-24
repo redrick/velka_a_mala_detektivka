@@ -12,7 +12,10 @@ func _on_click() -> void:
 	if Globals.thread_found:
 		R.goto_room("Zahumenek")
 	else:
-		await C.player.say("Tudy se jde do zahumenku. Teď tam nic nehledáme.")
+		if Globals.night_done:
+			await C.player.say("Nejdřív prohledáme zahradu. Něco tu zloděj nechal.")
+		else:
+			await C.player.say("Tudy se jde do zahumenku. Teď tam nic nehledáme.")
 
 
 # Called when the hotspot is double-clicked

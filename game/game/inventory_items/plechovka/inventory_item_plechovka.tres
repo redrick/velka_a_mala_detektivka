@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://game/inventory_items/plechovka/inventory_item_plechovka_state.gd" id="1_s"]
+
+[resource]
+resource_name = "Plechovka"
+script = ExtResource("1_s")
+script_name = "Plechovka"
+scene = "res://game/inventory_items/plechovka/inventory_item_plechovka.tscn"

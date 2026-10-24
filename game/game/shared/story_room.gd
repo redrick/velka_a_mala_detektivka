@@ -56,6 +56,27 @@ func place(chr_name: String, pos: Vector2) -> PopochiuCharacter:
 	return chr
 
 
+## Where Joey waits on entering: next to the player, on the side away from the sister and the exits.
+func joey_spot() -> Vector2:
+	var p := C.player.position
+	var other := Globals.sister()
+	var dir := -1.0 if has_character(other.script_name) and other.position.x >= p.x else 1.0
+	var x := p.x + dir * 200.0
+	if x < 240.0 or x > 1680.0:
+		x = p.x - dir * 380.0
+	return Vector2(clampf(x, 240.0, 1680.0), p.y + 50.0)
+
+
+## A step only one sister can do: the other one says why, and `chr` takes over (and walks up).
+func hand_over(chr: PopochiuCharacter, line: String) -> void:
+	if C.player == chr:
+		return
+	var old := C.player
+	await old.say(line)
+	Globals.switch_to(chr)
+	await chr.walk(old.position + Vector2(140, 10))
+
+
 func remove(chr_name: String) -> void:
 	if has_character(chr_name):
 		remove_character(C.get_character(chr_name))
@@ -205,6 +226,72 @@ func paper(lines: Array, title := "") -> void:
 	col.add_child(Kit.label(tr("(klikni)"), 24, Color("8a7f6a")))
 	await _next_click(shade)
 	layer.queue_free()
+
+
+## A line from someone who isn't in the room, over the walkie-talkie (story 4: Alica in bed). It shows
+## in a strip at the top with the speaker's picture, goes into the history, and waits like say().
+func radio(text: String, who := "Alica", icon := "res://assets/characters/alica_bed_radio.png") -> void:
+	InGameMenu.remember(C.get_character(who), text)
+	var layer := CanvasLayer.new()
+	layer.layer = 40
+	add_child(layer)
+	var shade := ColorRect.new()
+	shade.color = Color(0, 0, 0, 0.001)
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(shade)
+	var sheet := Kit.panel()
+	sheet.theme = Kit.theme()
+	sheet.position = Vector2(260, 30)
+	sheet.custom_minimum_size = Vector2(1400, 0)
+	layer.add_child(sheet)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 24)
+	sheet.add_child(row)
+	var pic := TextureRect.new()
+	pic.texture = load(icon)
+	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	pic.custom_minimum_size = Vector2(220, 150)
+	row.add_child(pic)
+	var l := Kit.label(tr(text), 44)
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l.custom_minimum_size = Vector2(1080, 0)
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	row.add_child(l)
+	await _next_click(shade)
+	layer.queue_free()
+
+
+## Big buttons on a paper card ("Kam půjdeme?"); returns the index of the chosen one.
+func choose(title: String, options: Array) -> int:
+	var layer := CanvasLayer.new()
+	layer.layer = 40
+	add_child(layer)
+	var shade := ColorRect.new()
+	shade.color = Color(0, 0, 0, 0.4)
+	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(shade)
+	var sheet := Kit.panel()
+	sheet.theme = Kit.theme()
+	sheet.custom_minimum_size = Vector2(800, 0)
+	sheet.position = Vector2(560, 260)
+	layer.add_child(sheet)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 20)
+	sheet.add_child(col)
+	col.add_child(Kit.title(tr(title), 54))
+	var picked := [-1]
+	for i in options.size():
+		col.add_child(Kit.button(tr(options[i]), func(): picked[0] = i, 40))
+	var waited := 0.0
+	while picked[0] < 0:
+		await get_tree().process_frame
+		waited += get_process_delta_time()
+		if Prefs.auto_continue and waited > 30.0:
+			picked[0] = 0
+	layer.queue_free()
+	return picked[0]
 
 
 ## A big picture (the map…) on paper until clicked.

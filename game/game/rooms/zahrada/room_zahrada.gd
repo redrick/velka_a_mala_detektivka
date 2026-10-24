@@ -19,8 +19,10 @@ func _on_room_entered() -> void:
 	if Globals.phase == "ending":
 		C.player.position = get_marker_position("Konec")
 	Globals.bring_sister(self)
-	if Globals.trap_planned and not Globals.shed_done and has_character("Babicka"):
-		remove_character(C.Babicka)
+	if Globals.trap_planned and not Globals.shed_done:
+		for chr in get_characters():
+			if chr.script_name == "Babicka":
+				remove_character(chr)
 	if Globals.shed_done:
 		_bring_grandparents()
 	_show_birdhouse()
@@ -121,8 +123,7 @@ func _play_ending() -> void:
 func _finish_story() -> void:
 	await C.Deda.say("Hotovo! Domeček pro plšíky.")
 	await C.Hanka.say("Dědo, a tohle bylo v botě!")
-	await C.Deda.say("Ukaž… To je přece klíč od Klubu Hvězdička!")
-	await C.Deda.say("Ztratil jsem ho, když jsem byl malý kluk. Co asi odemyká?")
+	await C.Deda.say("Ukaž… Starý klíč s hvězdičkou. Kdoví, co odemyká.")
 	C.Alica.pose("grin")
 	await C.Alica.say("To je další případ pro detektivky Alicu a Hanku!")
 	C.Alica.pose()

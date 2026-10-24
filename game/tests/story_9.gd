@@ -1,0 +1,37 @@
+extends "res://tests/story_test.gd"
+## Story 9 "Tajná zpráva v knihovně" from the slip to the end card.
+
+
+func run() -> void:
+	await start("Kuchyne9", 9)
+	check(Globals.z_slip, "the slip falls out")
+	await click("Listek")
+	check(Globals.z_zig and Globals.z_lav, "zigzag edge, lavender")
+	await talk("Deda")
+	check(Globals.z_msg1 and Globals.z_db, "decoded, babička gives herself away")
+	R.current.go_place("Do knihovny")
+	await in_room("Knihovna9")
+	await talk("Knihovnice")
+	await talk("Tonda")
+	check(Globals.z_card and Globals.z_tonda, "card, Tonda")
+	await save_and_continue(9, "Knihovna9")
+	check(Globals.z_tonda, "state survives continue")
+	await go("Ven", "Kuchyne9")
+	R.current.go_place("Ke mlýnu")
+	await in_room("Mlyn9")
+	await talk("Verka")
+	check(Globals.z_verka, "Věrka's star hat")
+	await go("Zpet", "Kuchyne9")
+	await click("Bota")
+	check(Globals.z_msg2, "second message")
+	await talk("Deda")
+	await click("Seznam")
+	if C.player != C.Hanka:
+		await talk("Hanka")
+	await click("Sici")
+	await in_room("Masopust9")
+	check(Globals.z_star and Globals.z_shears and Globals.z_parade and C.Alica.sprite_prefix == "alicao", "stars, shears, costumes, the parade lined up")
+	await click("Pruvod")
+	check(Globals.z_who and Globals.z_end, "the bába is babička")
+	await in_room("Menu")
+	check(Globals.is_finished(9), "story 9 finished")

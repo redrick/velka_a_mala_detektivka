@@ -20,7 +20,9 @@ DESC = re.compile(r'^description = "((?:[^"\\]|\\.)*)"$', re.M)
 # strings handed to say() through a constant
 EXTRA = ["Velký!", "Malý!", "Nastraž past", "Kam svítí hvězdička", "Dvacet dětských kroků",
          "příběh 1 · posouvání pytlíků", "příběh 2 · zrcátka a paprsek", "příběh 3 · plánování kroků",
-         "Čí je to stopa?", "Kdo to byl?", "příběh 3 · stopy v bahně", "příběh 3 · kdo vykopal poklad"]
+         "Čí je to stopa?", "Kdo to byl?", "příběh 3 · stopy v bahně", "příběh 3 · kdo vykopal poklad", "doprava", "doleva", "nahoru", "hvězdička", "srdíčko", "měsíček", "zrníčková hvězda", "kost", "rukavici", "srnka", "divočák", "zajíc", "liška", "pes", "kolečko",
+         "Doleva!", "Doprava!", "Nahoru!", "Dolů!", "Alica", "Joey", "kobyla", "Kos", "Vrabec",
+         "Pan Franta", "Bětka", "Rybář", "Paní Věrka", "Medvědář", "Kobyla", "Medvěd", "Bába s nůší", "Tonda", "Babička", "Děda"]
 
 
 def unescape(s):
@@ -46,7 +48,7 @@ def collect():
                 add(t, f"{rel}:{n}")
             # texts inside lists: slideshow lines, the riddle card, sound words, title cards
             st = line.strip()
-            if st.startswith(("[", '"')) or re.search(r"\b(COUNT|NOISES) :=|_card\(|paper\(|fade\(|the_end\(|picture\(|sfx\(\"", line):
+            if st.startswith(("[", '"')) or re.search(r"\b(COUNT|NOISES) :=|_card\(|paper\(|fade\(|the_end\(|picture\(|radio\(|hand_over\(|level_done\(|extra_button\(|sfx\(\"", line):
                 for t in STR.findall(line):
                     if not t.startswith("res://") and (" " in t or not t.isascii() or t.endswith("!")):
                         add(t, f"{rel}:{n}")

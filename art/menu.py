@@ -115,6 +115,21 @@ def episode_cover_3(b):
     _number_badge(x+w-26, y+h-26, "3")
 
 
+def cover_frame(b, scene_fn, number):
+    """a story cover: paper card, the scene clipped inside (scene_fn(s) gets a panel-like box), number badge"""
+    x, y, w, h = 5, 5, b.w-10, b.h-10
+    inked_box(x, y, w, h, P.PAPER, r=6, shadow=False)
+    scene = [(x+8, y+8), (x+w-8, y+8), (x+w-8, y+h-8), (x+8, y+h-8)]
+    C.saveState(); C.clipPath(poly(scene), stroke=0, fill=0)
+    class _S: pass
+    s = _S(); s.x, s.y, s.w, s.h = x+8, y+8, w-16, h-16
+    s.X = lambda f: s.x + s.w*f; s.Y = lambda f: s.y + s.h*f
+    scene_fn(s)
+    C.restoreState()
+    stroke(scene, 1.8, closed=True)
+    _number_badge(x+w-26, y+h-26, str(number))
+
+
 def episode_locked(b):
     x, y, w, h = 5, 5, b.w-10, b.h-10
     inked_box(x, y, w, h, P.PAPER, r=6, shadow=False)

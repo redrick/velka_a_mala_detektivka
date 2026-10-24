@@ -20,8 +20,8 @@ func _on_room_entered() -> void:
 		_: C.player.position = get_marker_position("Start")
 	Globals.bring_sister(self, Vector2(170, 10))
 	place("Deda", Vector2(620, 900))
-	place("Joey", Vector2(470, 990))
-	place("Rybar", Vector2(1720, 790))
+	place("Joey", Vector2(780, 1000))
+	place("Rybar", Vector2(1560, 790))
 	get_prop("Kamen").visible = Globals.r_steps
 	get_prop("Dira").visible = Globals.r_hole
 	get_prop("Stopy").visible = Globals.r_hole
@@ -47,7 +47,7 @@ func _on_room_transition_finished() -> void:
 		await get_tree().create_timer(2.0).timeout
 		await C.Hanka.say("Mám baterku.")
 		await C.Alica.say("Psst! Tamhle u vrby… Někdo kope!")
-		await C.Alica.say("Hanko, posviť na něj!")
+		await C.Alica.say("Hanko, posviť na něj! Klikni na Hanku!")
 	elif not Globals.r_stump and C.player.last_room != "Mlyn":
 		await C.Deda.say("Jé… Rybník je mnohem menší, než byl. A lávka tu už dávno není.")
 		await C.Alica.say("Na mapě je jedna velká vrba. Ale tady jsou tři!")
@@ -58,6 +58,14 @@ func joey_goal() -> Vector2:
 		return C.Deda.position + Vector2(160, 60)
 	if not Globals.r_steps:
 		return get_marker_position("Parez") + Vector2(-150, 40)
+	if not Globals.r_hole:
+		return C.Deda.position + Vector2(160, 60)
+	if Globals.r_evening and not Globals.r_tonda_ok and has_character("Tonda"):
+		return C.Tonda.position + Vector2(-200, 60)
+	if Globals.r_tonda_ok and not Globals.r_prints:
+		return get_prop("Stopy").position + Vector2(-190, 20)
+	if Globals.r_trail:
+		return get_hotspot("KMlynu").walk_to_point
 	if not Globals.r_boots or not Globals.r_dots:
 		return get_prop("Stopy").position + Vector2(-190, 20)
 	if not Globals.r_tonda_ran:
@@ -216,7 +224,7 @@ func _talk_tonda() -> void:
 		return
 	if is_dark():
 		if C.player != C.Hanka:
-			await C.Alica.say("Hanko, posviť na něj!")
+			await C.Alica.say("Hanko, posviť na něj! Klikni na Hanku!")
 			return
 		sfx("CVAK!", C.Tonda.position + Vector2(-80, -620), 70)
 		await C.Alica.say("Máme tě!")
@@ -246,13 +254,13 @@ func _tonda_secret() -> void:
 	await C.Alica.say("Promiň, Tondo. Myslela jsem, žes vzal náš poklad.")
 	await C.Tonda.say("Váš poklad? Ten jsem nevzal.")
 	await C.Tonda.say("Ale minulou neděli ráno jsem šel s tátou pro rohlíky. A u vrby svítilo světýlko!")
-	await C.Alica.say("Stopa číslo čtyři!")
+	await C.Alica.say("Další stopa!")
 	await C.Hanka.say("Pomůžeš nám hledat?")
 	C.Tonda.pose()
 	await C.Tonda.say("Jasně!")
 	Globals.r_tonda_ok = true
 	await light_up()
-	place("Rybar", Vector2(1720, 790))
+	place("Rybar", Vector2(1560, 790))
 	await C.Alica.say("Porovnáme stopy u díry! Kdo tu kopal?")
 
 

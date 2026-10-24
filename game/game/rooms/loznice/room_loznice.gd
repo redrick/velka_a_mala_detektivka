@@ -26,7 +26,7 @@ func _on_room_transition_finished() -> void:
 	C.Hanka.pose("worried")
 	await C.Hanka.say("Alico… slyšíš to? Co to je?")
 	C.Hanka.pose()
-	await C.Alica.say("Něco je nad námi na půdě. Poslechneme si to!")
+	await C.Alica.say("Něco je nad námi na půdě. Poslechneme si to! Klikni na strop.")
 
 
 func on_click(node: Node) -> void:
@@ -35,7 +35,7 @@ func on_click(node: Node) -> void:
 			await _noise()
 		"Dvere":
 			if Globals.k_noises < 3:
-				await C.player.say("Je noc. Nejdřív zjistíme, co dělá ty zvuky.")
+				await C.player.say("Je noc. Nejdřív zjistíme, kdo dělá ty zvuky.")
 			else:
 				await _morning()
 		_:

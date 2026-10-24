@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/characters/tata/character_tata.gd" id="1_s"]
+[ext_resource type="Texture2D" path="res://assets/characters/tata_happy.png" id="2_t"]
+
+[node name="CharacterTata" type="Area2D"]
+script = ExtResource("1_s")
+text_color = Color(0.2, 0.3, 0.55, 1)
+walk_speed = 400.0
+dialog_pos = Vector2(0, -670)
+sprite_prefix = "tata"
+default_mood = "happy"
+script_name = "Tata"
+description = "Táta"
+cursor = 8
+interaction_polygon = PackedVector2Array(-130, -640, 130, -640, 130, 0, -130, 0)
+
+[node name="ScalingPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t")
+offset = Vector2(0, -320)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-130, -640, 130, -640, 130, 0, -130, 0)

@@ -538,7 +538,7 @@ def hanka_hair_front(k):
 
 # ------------------------------------------------------------------ figures
 def alica(x, y, s=1.0, flip=False, left="down", right="down", mood="happy", look=(0, 0),
-          lens=False, book=False, item=None, legs="stand", shadow=True):
+          lens=False, book=False, item=None, legs="stand", shadow=True, satchel=True):
     k = Kid(False)
     if shadow: cast_shadow(x, y, 15*s, 2.6*s)
     COAT = P.ALICA_COAT
@@ -568,7 +568,7 @@ def alica(x, y, s=1.0, flip=False, left="down", right="down", mood="happy", look
             cl = [(sx*0.6, k.sh_y+0.2), (sx*4.5, k.sh_y+3.2), (sx*8.2, k.sh_y+0.8), (sx*3.5, k.sh_y-3.5)]
             shape(cl, P.ALICA_COLLAR, LINE*0.8)
         # satchel
-        if not book:
+        if not book and satchel:
             stroke(bez((7.8, k.sh_y+1.5), (2, 66), (-4, 55), (-10, 46)), LINE*2.2, g=0.0)
             stroke(bez((7.8, k.sh_y+1.5), (2, 66), (-4, 55), (-10, 46)), LINE*1.0, g=P.SATCHEL_STRAP)
             bag = rrect(-15, 39, 9.5, 8, 1.8)
@@ -669,7 +669,7 @@ def notch(pts, amp=0.9, every=5):
         out.append((P[i][0]-dy/L*kk, P[i][1]+dx/L*kk))
     return out
 
-def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True):
+def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True, collar=True):
     sniff = pose == "sniff"
     if shadow: cast_shadow(x + (2*s if not flip else -2*s), y, 26*s, 2.8*s)
     with T(x, y, s, flip):
@@ -711,9 +711,10 @@ def joey(x, y, s=1.0, flip=False, mood="happy", pose="stand", shadow=True):
         form(ruff, 1.0, sdx=1.5, sdy=1.2, sh=0.1)
         for (a, b_) in (((17, 30), (18.5, 27.5)), ((20, 25), (21, 22.5)), ((16, 34), (17.5, 31.5))):
             stroke([a, b_], LINE*0.5, g=0.45)
-        col = ell(HX-4.3, HY-4, 5.4, 1.4, 20, rot=-50 if not sniff else 25)
-        shape(col, P.JOEY_COLLAR, LINE*0.8)
-        shape(ell(HX-2.2, HY-7.6 if not sniff else HY-2, 1.0, 1.0, 12), P.JOEY_TAG, LINE*0.6)
+        if collar:   # issue 10 on: collar=False, it's buried in his fur (you only hear the tags)
+            col = ell(HX-4.3, HY-4, 5.4, 1.4, 20, rot=-50 if not sniff else 25)
+            shape(col, P.JOEY_COLLAR, LINE*0.8)
+            shape(ell(HX-2.2, HY-7.6 if not sniff else HY-2, 1.0, 1.0, 12), P.JOEY_TAG, LINE*0.6)
         # head (local frame)
         C.saveState(); C.translate(HX, HY); C.scale(1.1, 1.18); _SC.append(_SC[-1]*1.14)
         ear2 = bez((-4, 4), (-6.5, 8), (-5.5, 11.5), (-3.8, 11)) + [(-1, 6)]

@@ -190,3 +190,9 @@ func _shortest() -> Array[Vector2i]:
 				prev[n] = c
 				queue.append(n)
 	return []
+
+
+func solve_for_test() -> void:
+	_plan.assign(_shortest())
+	_redraw_plan()
+	await _action()

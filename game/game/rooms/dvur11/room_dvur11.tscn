@@ -1,0 +1,229 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/dvur11/room_dvur11.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/yard11.png" id="5_r"]
+[ext_resource type="Texture2D" path="res://assets/props/hens11.png" id="6_r"]
+[ext_resource type="Texture2D" path="res://assets/props/kropenatka_puff.png" id="7_r"]
+[ext_resource type="Texture2D" path="res://assets/props/dog_prints11.png" id="8_r"]
+[ext_resource type="Texture2D" path="res://assets/props/feather_prints.png" id="9_r"]
+[ext_resource type="Texture2D" path="res://assets/characters/magpie.png" id="10_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(40, 790, 1880, 790, 1900, 1060, 20, 1060)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 790, 1880, 790, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="RoomDvur11" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Dvur11"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 790, 1880, 790, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Slepice" type="Area2D" parent="Props"]
+position = Vector2(860, 820)
+script = ExtResource("2_r")
+script_name = "Slepice"
+texture = ExtResource("6_r")
+description = "Slepičky"
+baseline = -60
+cursor = 1
+interaction_polygon = PackedVector2Array(-380, -120, 380, -120, 380, 120, -380, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Slepice"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Slepice"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Slepice"]
+visible = false
+polygon = PackedVector2Array(-380, -120, 380, -120, 380, 120, -380, 120)
+
+[node name="Kropenatka" type="Area2D" parent="Props"]
+position = Vector2(1240, 880)
+script = ExtResource("2_r")
+script_name = "Kropenatka"
+texture = ExtResource("7_r")
+description = "Kropenatka"
+baseline = -60
+cursor = 1
+interaction_polygon = PackedVector2Array(-120, -100, 120, -100, 120, 100, -120, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Kropenatka"]
+texture_filter = 1
+texture = ExtResource("7_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Kropenatka"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Kropenatka"]
+visible = false
+polygon = PackedVector2Array(-120, -100, 120, -100, 120, 100, -120, 100)
+
+[node name="PsiStopy" type="Area2D" parent="Props"]
+position = Vector2(880, 1010)
+script = ExtResource("2_r")
+script_name = "PsiStopy"
+texture = ExtResource("8_r")
+description = "Stopy u plotu"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-220, -60, 220, -60, 220, 60, -220, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/PsiStopy"]
+texture_filter = 1
+texture = ExtResource("8_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/PsiStopy"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/PsiStopy"]
+visible = false
+polygon = PackedVector2Array(-220, -60, 220, -60, 220, 60, -220, 60)
+
+[node name="Pirko" type="Area2D" parent="Props"]
+position = Vector2(1180, 760)
+visible = false
+script = ExtResource("2_r")
+script_name = "Pirko"
+texture = ExtResource("9_r")
+description = "Pírko a stopičky"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-240, -70, 240, -70, 240, 70, -240, 70)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Pirko"]
+texture_filter = 1
+texture = ExtResource("9_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Pirko"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Pirko"]
+visible = false
+polygon = PackedVector2Array(-240, -70, 240, -70, 240, 70, -240, 70)
+
+[node name="Straka" type="Area2D" parent="Props"]
+position = Vector2(1200, 300)
+script = ExtResource("2_r")
+script_name = "Straka"
+texture = ExtResource("10_r")
+description = "Straka na stromě"
+baseline = 600
+cursor = 1
+interaction_polygon = PackedVector2Array(-110, -80, 110, -80, 110, 80, -110, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Straka"]
+texture_filter = 1
+texture = ExtResource("10_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Straka"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Straka"]
+visible = false
+polygon = PackedVector2Array(-110, -80, 110, -80, 110, 80, -110, 80)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Kurnik" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Kurnik"
+description = "Kurník"
+cursor = 1
+walk_to_point = Vector2(800, 860)
+interaction_polygon = PackedVector2Array(620, 430, 1000, 430, 1000, 690, 620, 690)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Kurnik"]
+visible = false
+polygon = PackedVector2Array(620, 430, 1000, 430, 1000, 690, 620, 690)
+
+[node name="Stodola" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Stodola"
+description = "Stodola"
+cursor = 1
+walk_to_point = Vector2(1500, 860)
+interaction_polygon = PackedVector2Array(1320, 300, 1900, 300, 1900, 690, 1320, 690)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Stodola"]
+visible = false
+polygon = PackedVector2Array(1320, 300, 1900, 300, 1900, 690, 1320, 690)
+
+[node name="Mezera" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Mezera"
+description = "Dírka pod pletivem"
+cursor = 1
+walk_to_point = Vector2(1080, 840)
+interaction_polygon = PackedVector2Array(1030, 640, 1130, 640, 1130, 750, 1030, 750)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Mezera"]
+visible = false
+polygon = PackedVector2Array(1030, 640, 1130, 640, 1130, 750, 1030, 750)
+
+[node name="Dum" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Dum"
+description = "Domů"
+cursor = 1
+walk_to_point = Vector2(240, 840)
+interaction_polygon = PackedVector2Array(120, 470, 330, 470, 330, 690, 120, 690)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Dum"]
+visible = false
+polygon = PackedVector2Array(120, 470, 330, 470, 330, 690, 120, 690)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(330, 940)
+
+[node name="Babicka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1580, 1000)
+
+[node name="Tonda" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1800, 990)
+
+[node name="Characters" type="Node2D" parent="."]

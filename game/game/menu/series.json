@@ -26,39 +26,57 @@
     },
     {
      "number": 4,
-     "title": "Hanka to vyřeší!"
+     "title": "Hanka to vyřeší!",
+     "start_room": "Pokoj4",
+     "cover": "res://assets/menu/ep_vamd_04.png"
     },
     {
      "number": 5,
-     "title": "Kdo staví sněhuláky?"
+     "title": "Kdo staví sněhuláky?",
+     "start_room": "Kuchyne5",
+     "cover": "res://assets/menu/ep_vamd_05.png"
     },
     {
      "number": 6,
-     "title": "Kam mizí perníčky?"
+     "title": "Kam mizí perníčky?",
+     "start_room": "Kuchyne6",
+     "cover": "res://assets/menu/ep_vamd_06.png"
     },
     {
      "number": 7,
-     "title": "Joeyho velký den"
+     "title": "Joeyho velký den",
+     "start_room": "Zahrada7",
+     "cover": "res://assets/menu/ep_vamd_07.png"
     },
     {
      "number": 8,
-     "title": "Stopy ve sněhu"
+     "title": "Stopy ve sněhu",
+     "start_room": "Kuchyne8",
+     "cover": "res://assets/menu/ep_vamd_08.png"
     },
     {
      "number": 9,
-     "title": "Tajná zpráva v knihovně"
+     "title": "Tajná zpráva v knihovně",
+     "start_room": "Kuchyne9",
+     "cover": "res://assets/menu/ep_vamd_09.png"
     },
     {
      "number": 10,
-     "title": "Záhada ve škole"
+     "title": "Záhada ve škole",
+     "start_room": "Skola10",
+     "cover": "res://assets/menu/ep_vamd_10.png"
     },
     {
      "number": 11,
-     "title": "Kam mizí vajíčka?"
+     "title": "Kam mizí vajíčka?",
+     "start_room": "Dvur11",
+     "cover": "res://assets/menu/ep_vamd_11.png"
     },
     {
      "number": 12,
-     "title": "Tajemné šipky"
+     "title": "Tajemné šipky",
+     "start_room": "Chalupa12",
+     "cover": "res://assets/menu/ep_vamd_12.png"
     },
     {
      "number": 13,

@@ -26,6 +26,7 @@ func _on_click() -> void:
 	await C.Alica.say("Přes potok vedou kameny. Velký, malý, velký!")
 	Globals.bush_found = true
 	await C.Hanka.say("Mňam, maliny! Jdu zpátky.")
+	await R.current.squeeze_through_gap()
 
 
 # Called when the hotspot is double-clicked

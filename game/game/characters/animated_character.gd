@@ -65,6 +65,15 @@ func pose(mood := "") -> void:
 	_show(_mood)
 
 
+## Another set of frames (winter clothes: "alicaw" instead of "alica"); the poses keep their names.
+func set_outfit(prefix: String) -> void:
+	if prefix == sprite_prefix:
+		return
+	sprite_prefix = prefix
+	_frames.clear()
+	_show(_mood)
+
+
 func _play_idle() -> void:
 	_state = "idle"
 	_show(_mood)

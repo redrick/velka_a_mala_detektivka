@@ -1,0 +1,210 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/zahrada12/room_zahrada12.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/party12.png" id="5_r"]
+[ext_resource type="Texture2D" path="res://assets/props/cake12.png" id="6_r"]
+[ext_resource type="Texture2D" path="res://assets/props/presents12.png" id="7_r"]
+[ext_resource type="Texture2D" path="res://assets/props/gifts12.png" id="8_r"]
+[ext_resource type="Texture2D" path="res://assets/props/bike12.png" id="9_r"]
+[ext_resource type="Texture2D" path="res://assets/props/party_hat12.png" id="10_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(40, 810, 1880, 810, 1900, 1060, 20, 1060)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 810, 1880, 810, 1900, 1060, 20, 1060)])
+agent_radius = 0.0
+
+[node name="RoomZahrada12" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Zahrada12"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 810, 1880, 810, 1900, 1060, 20, 1060)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Dort" type="Area2D" parent="Props"]
+position = Vector2(960, 630)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("2_r")
+script_name = "Dort"
+texture = ExtResource("6_r")
+description = "Dort s osmi svíčkami"
+baseline = 200
+cursor = 1
+interaction_polygon = PackedVector2Array(-140, -110, 140, -110, 140, 110, -140, 110)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Dort"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Dort"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Dort"]
+visible = false
+polygon = PackedVector2Array(-140, -110, 140, -110, 140, 110, -140, 110)
+
+[node name="Darky" type="Area2D" parent="Props"]
+position = Vector2(1480, 790)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2_r")
+script_name = "Darky"
+texture = ExtResource("7_r")
+description = "Dárky"
+baseline = -100
+cursor = 1
+interaction_polygon = PackedVector2Array(-200, -80, 200, -80, 200, 80, -200, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Darky"]
+texture_filter = 1
+texture = ExtResource("7_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Darky"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Darky"]
+visible = false
+polygon = PackedVector2Array(-200, -80, 200, -80, 200, 80, -200, 80)
+
+[node name="Kresba" type="Area2D" parent="Props"]
+position = Vector2(560, 1030)
+scale = Vector2(0.6, 0.6)
+visible = false
+script = ExtResource("2_r")
+script_name = "Kresba"
+texture = ExtResource("8_r")
+description = "Hančiny dárky"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-260, -120, 260, -120, 260, 120, -260, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Kresba"]
+texture_filter = 1
+texture = ExtResource("8_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Kresba"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Kresba"]
+visible = false
+polygon = PackedVector2Array(-260, -120, 260, -120, 260, 120, -260, 120)
+
+[node name="Kolo" type="Area2D" parent="Props"]
+position = Vector2(1450, 1030)
+visible = false
+script = ExtResource("2_r")
+script_name = "Kolo"
+texture = ExtResource("9_r")
+description = "Růžové kolo"
+baseline = -40
+cursor = 1
+interaction_polygon = PackedVector2Array(-220, -120, 220, -120, 220, 120, -220, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Kolo"]
+texture_filter = 1
+texture = ExtResource("9_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Kolo"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Kolo"]
+visible = false
+polygon = PackedVector2Array(-220, -120, 220, -120, 220, 120, -220, 120)
+
+[node name="Klobouk" type="Area2D" parent="Props"]
+position = Vector2(300, 1010)
+visible = false
+script = ExtResource("2_r")
+script_name = "Klobouk"
+texture = ExtResource("10_r")
+description = "Čepička"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-50, -60, 50, -60, 50, 60, -50, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Klobouk"]
+texture_filter = 1
+texture = ExtResource("10_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Klobouk"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Klobouk"]
+visible = false
+polygon = PackedVector2Array(-50, -60, 50, -60, 50, 60, -50, 60)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(960, 1000)
+
+[node name="Mama" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1350, 900)
+
+[node name="Tata" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1530, 920)
+
+[node name="Babicka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(560, 900)
+
+[node name="Deda" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(360, 920)
+
+[node name="Tonda" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1720, 900)
+
+[node name="Betka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1870, 930)
+
+[node name="Verka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(170, 900)
+
+[node name="Joey" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(240, 1030)
+
+[node name="Characters" type="Node2D" parent="."]

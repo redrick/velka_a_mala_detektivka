@@ -174,7 +174,7 @@ position = Vector2(760, 900)
 position = Vector2(1530, 800)
 
 [node name="ZeZahumenku" parent="Markers" unique_id=143628279 instance=ExtResource("27_iigo7")]
-position = Vector2(200, 900)
+position = Vector2(320, 900)
 
 [node name="Konec" parent="Markers" unique_id=826176938 instance=ExtResource("34_uecdf")]
 position = Vector2(880, 930)

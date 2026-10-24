@@ -102,7 +102,7 @@ func _chest_click() -> void:
 		await C.player.say("Truhla je prázdná. Všechno máme.")
 		return
 	if is_dark() and C.player != C.Hanka:
-		await C.Alica.say("Nic nevidím. Hanka má baterku!")
+		await C.Alica.say("Nic nevidím. Hanka má baterku! Klikni na Hanku!")
 		return
 	await C.player.walk_to_clicked(Vector2(160, 40))
 	await C.player.face_clicked()
@@ -110,13 +110,14 @@ func _chest_click() -> void:
 	await C.Hanka.say("Tam! Truhla se hvězdičkou!")
 	C.Hanka.pose("torch")
 	await C.Alica.say("Je zamčená. Ale my máme klíč!")
+	if I.Klic.in_inventory:
+		await _open_chest()
 
 
 func _open_chest() -> void:
 	await C.player.walk_to_clicked(Vector2(160, 40))
 	sfx("CVAK!", get_prop("Truhla").position + Vector2(-60, -200))
 	get_prop("Truhla").texture = load("res://assets/props/chest_open.png")
-	I.Klic.remove()
 	await C.Deda.say("Tohle je zápisník našeho klubu. Klub Hvězdička!")
 	await C.Deda.say("Založili jsme ho tady na půdě, když jsem byl malý kluk…")
 	await slideshow([
@@ -127,6 +128,7 @@ func _open_chest() -> void:
 		["fb_map", "Deda", "Nakreslil jsem mapu a roztrhli jsme ji napůl. Poklad smí hledat jen celý klub!"],
 		["fb_goodbye", "Deda", "Pak se Věrka odstěhovala daleko do města. Svou půlku schovala a nechala mi hádanku."],
 		["fb_key", "Deda", "Nikdy jsem ji nenašel. Tak jsem truhlu zamkl a klíč schoval do staré boty."],
+		["", "Deda", "A pak jsem na ten klíč úplně zapomněl."],
 	])
 	await I.Pulmapa.add()
 	await C.Alica.say("V truhle je půlka mapy!")
@@ -137,6 +139,7 @@ func _open_chest() -> void:
 	await C.Deda.say("Tu hádanku jsem nikdy nerozluštil.")
 	await C.Alica.say("Kam svítí hvězdička? Hvězdy přece svítí v noci…")
 	Globals.k_chest = true
+	I.Klic.remove()
 	sfx("ŠŠŠŠ!", Vector2(1150, 60))
 	await get_tree().create_timer(0.6).timeout
 	sfx("CHRRR!", Vector2(900, 90), 70)
@@ -148,7 +151,7 @@ func _beam_click() -> void:
 		await C.player.say("Starý trám pod střechou." if not Globals.k_owls else "Pst, sovičky spinkají.")
 		return
 	if C.player != C.Hanka:
-		await C.Alica.say("Hanko, posviť tam!")
+		await C.Alica.say("Hanko, posviť tam! Klikni na Hanku!")
 		return
 	C.Hanka.pose("torch")
 	await pop("Sovy")

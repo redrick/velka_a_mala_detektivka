@@ -16,7 +16,7 @@ func _on_room_entered() -> void:
 	if Globals.phase == "k_ending":
 		C.player.position = get_marker_position("Konec")
 	Globals.bring_sister(self, Vector2(-170, 10))
-	place("Joey", Vector2(380, 990))
+	place("Joey", Vector2(640, 1000))
 	if Globals.k_breakfast:
 		place("Deda", Vector2(760, 880))
 	Globals.exit_arrow(self, "Domu", true)
@@ -41,6 +41,8 @@ func joey_goal() -> Vector2:
 		return get_hotspot("Okynko").walk_to_point + Vector2(-120, 60)
 	if not Globals.k_ladder:
 		return C.Deda.position + Vector2(160, 60)
+	if Globals.phase == "k_nails":
+		return get_prop("Budka").position + Vector2(-200, 300)
 	return get_marker_position("ZPudy") + Vector2(-160, 40)
 
 
@@ -101,6 +103,9 @@ func on_character(chr: PopochiuCharacter, action: String, item: PopochiuInventor
 		await C.Deda.say("Zatlučte tři hřebíky. Ťuk, ťuk, ťuk!")
 	elif Globals.k_ladder:
 		await C.Deda.say("Žebřík stojí. Tak nahoru, ale potichu!")
+	elif Globals.k_window and I.Klic.in_inventory:
+		await C.Deda.say("Copak to máte, detektivky?")
+		await _show_key()
 	elif Globals.k_window:
 		await C.Deda.say("Copak to máte, detektivky?")
 		await C.Alica.say("Ukážeme dědovi klíč s hvězdičkou!")
@@ -125,7 +130,7 @@ func _feather() -> void:
 
 func _pellets() -> void:
 	if Globals.k_pellets:
-		await C.player.say("Vývržky. Vyplivují je sovy.")
+		await C.player.say("Vývržky. Vyvrhují je sovy.")
 		return
 	await C.player.walk_to_clicked(Vector2(-150, 20))
 	await C.player.face_clicked()
@@ -135,7 +140,7 @@ func _pellets() -> void:
 	C.Alica.pose("lens")
 	await C.Alica.say("Jsou chlupaté… a jsou v nich malinké kostičky!")
 	C.Alica.pose()
-	await C.Alica.say("To jsou vývržky! Vyplivují je sovy. Učili jsme se to ve škole.")
+	await C.Alica.say("To jsou vývržky! Vyvrhují je sovy. Učili jsme se to ve škole.")
 	C.Hanka.pose("surprised")
 	await C.Hanka.say("Sova? Na naší půdě?")
 	C.Hanka.pose()
@@ -181,7 +186,7 @@ func _show_box() -> void:
 func _ending() -> void:
 	place("Babicka", Vector2(1480, 900))
 	C.Deda.position = Vector2(1320, 880)
-	await C.Deda.say("Odpoledne vyrobíme budku pro sovy, ať tu můžou bydlet napořád.")
+	await C.Deda.say("Hned vyrobíme budku pro sovy, ať tu můžou bydlet napořád.")
 	await pop("Budka")
 	Globals.phase = "k_nails"
 	Globals.k_nails = 0

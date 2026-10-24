@@ -52,6 +52,42 @@ treasure). New characters Věrka and Rybář (`art/story3.py`). Minigames: Dvace
 10. **STOP, detektive!** In the game: pick the culprit from portraits and pin the evidence to them. A wrong pick is never "wrong": Alica explains which clue doesn't fit.
 11. Hanka invites the lady → the riddle line → Věrka → the treasure opened together → Tonda gets the badge → "Pokračování příště".
 
+## Stories 4–12 (built 2026-10-18)
+Each story: three rooms that follow its comic, one **story minigame** whose rules come from the plot (like the flour
+trap in story 1: you build the thing the detectives build), and one **Kdo to byl?** round (`whodunit.gd`, the comic's
+STOP page: pick a suspect, a clue that doesn't fit rules them out, never "wrong"). Joey always hints.
+
+| story | rooms | story minigame | why it fits |
+|---|---|---|---|
+| 4 Hanka to vyřeší! | Pokoj4 (Alica sick, vysílačka) · Ves4 · Pole4 · Molo4 | **Rozběhni hodiny** (`gears.gd`): put gears on pegs so the winding key turns the hands *clockwise*; neighbouring gears turn opposite ways, a gear squeezed between two that disagree jams | Franta brings back the winding key; the girls get the clock going after 60 years |
+| 5 Kdo staví sněhuláky? | Zahrada5 (a new snowman each morning) · Ves5 (Bětka) · Franta5 · Kuchyne5 | **Postav sněhuláka** (`snowman.gd`): roll snowballs; they grow on fresh snow and leave a path; stack big, middle, small | Hanka answers Bětka's snowman letters with a snowman |
+| 6 Kam mizí perníčky? | Kuchyne6 (the tin) · Zahrada6 (feeder) · Mlyn6 (the spruce) | **Hvězdy na smrčku** (`stars.gd`): a picture Latin square, every branch row and every column gets each ornament once | děda's club rule for the Advent stars |
+| 7 Joeyho velký den | Zahrada7 (snow fort) · Kuchyne7 (babička lost her ring) · Les7 (hajný) | **Čmuchej!** (`sniff.gd`): Joey sniffs snow squares; paws show how close the smell is; find the ring in few sniffs | the whole issue is Joey's nose |
+| 8 Stopy ve sněhu | Kuchyne8 · Zahrada8 (snowmen without noses) · Louka8 (tracks) · Les8 (krmelec) | **Po stopě** (`trail.gd`): follow one animal's prints across a field where trails cross; only the right kind of print may follow | the hajný's track lesson |
+| 9 Tajná zpráva v knihovně | Kuchyne9 (hub) · Knihovna9 · Mlyn9 · Masopust9 | **Hvězdičkové písmo** (`cipher.gd`): decode the slip with the key (shape = letter group, dots = which letter), then write the answer | the club's star code |
+| 10 Záhada ve škole | Skola10 (jurty, empty hutch) · Kumbal10 · Domov10 | **Nový kotec** (`hutch.gd`): fit plank pieces into the hutch frame (turn and place) | the field day builds a new hutch |
+| 11 Kam mizí vajíčka? | Dvur11 · Kurnik11 · Stodola11 · Kuchyne11 | **Balíky slámy** (`bales.gd`): slide bales (each only along its length) to open the way to the hidden nest | Kropenatka's nest behind the bales |
+| 12 Tajemné šipky | Chalupa12 (kůlna, mouka) · Ves12 (our street) · Chodba12 (stairs) · Zahrada12 (the party) | **Otoč šipky** (`arrows.gd`): the rain smudged the chalk arrows; turn them so one trail leads from the door past every star to the garden gate. Kdo to byl? runs three times, once per arrow style (`who_12.gd`, `kind`) | máma, táta and Hanka lay the arrow trail |
+
+### Second puzzles (2026-10-18)
+Each story 4–12 also has a second logic puzzle that comes out of its plot. Five of them share `rules.gd`: put
+things in places by picture rule cards (is / is not / side by side / not side by side / before / at an end),
+data in each puzzle's `LEVELS`, exactly one answer per level (checked by `tools/rules_solver.py`).
+
+| story | puzzle | where it happens |
+|---|---|---|
+| 4 | **Navigace vysílačkou** (`radio.gd`): Hanka walks straight until a rock, bush or the brook stops her; radio her to the Bota rock | Pole4, day 2, on the way to the Bota |
+| 5 | **Čí je rukavice?** (`mittens.gd`, rules): the wet mittens by the stove got mixed up | Kuchyne5, right after babička is cleared |
+| 6 | **Kdo co zobe?** (`birds.gd`, rules): each bird at the new feeder gets its food | Zahrada6, when the feeder goes up |
+| 7 | **Co se ráno dělo?** (`joey_morning.gd`, rules): put the true morning in order from what everyone says | Kuchyne7, the evening the ring is gone |
+| 8 | **Seno do krmelce** (`scale.gd`): split hay bundles (dots on the tag = weight) evenly between the two racks | Les8, before the food for the deer |
+| 9 | **Masopustní průvod** (`parade.gd`, rules): line up the masks | Masopust9, before "Kdo napsal zprávu?" |
+| 10 | **Ohrádky pro morčata** (`pens.gd`): split the meadow into rectangles, one guinea pig each, the number = squares | Skola10, after the new hutch |
+| 11 | **Kraslice podle vzoru** (`pattern.gd`): fill the gaps so each egg row repeats | Kuchyne11, after the dyeing |
+| 12 | **Kdo kde sedí?** (`seating.gd`, rules): seat the guests by their wishes | Zahrada12, after PŘEKVAPENÍ |
+
+`game/tests/story_mg2.gd` plays all of them headless (`tools/test_story.sh mg2`).
+
 ## Shared work before stories 2 and 3
 - Per-story state: story 1's flags now sit in `Globals`. Give each story its own flag set.
 - Saving: autosave on room change plus "Pokračovat" in the main menu (still open from the story 1 status).
