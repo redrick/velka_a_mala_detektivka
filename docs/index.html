@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velká a malá detektivka</title>
+<meta name="description" content="Hand-drawn comics and a point-and-click game, made at home for two small detectives.">
+<link rel="icon" href="img/logo.png">
+<style>
+@font-face { font-family: "TataHand"; src: url("fonts/TataHand.ttf") format("truetype"); }
+:root {
+  --paper: #fbf6ec; --ink: #2b2620; --soft: #6b6152; --card: #fffdf8; --line: #e3d9c6;
+  --yellow: #f6c744; --red: #d63a3a; --green: #6fa85a; --blue: #4f8fc4;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1, h2, h3, .hand { font-family: "TataHand", "Comic Sans MS", cursive; font-weight: normal; }
+a { color: var(--blue); }
+header { text-align: center; padding: 28px 16px 8px; }
+header img.logo { width: min(260px, 60vw); }
+header p.tag { font-size: 1.25rem; color: var(--soft); margin: 6px auto 0; max-width: 640px; }
+.banner { display: block; width: 100%; max-height: 320px; object-fit: cover; margin: 18px 0 0; }
+main { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+section { margin-top: 40px; }
+h2 { font-size: 2.1rem; margin: 0 0 8px; }
+.intro { max-width: 860px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px; margin-top: 18px; }
+.fact { background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.fact b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.35rem; display: block; }
+.stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; margin-top: 18px; }
+.story { background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 10px; cursor: pointer;
+  text-align: left; font: inherit; color: inherit; transition: transform .12s, box-shadow .12s; }
+.story:hover, .story:focus-visible { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 6px 16px rgba(60, 45, 20, .15);
+  outline: none; border-color: var(--yellow); }
+.story img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 9px; display: block; }
+.story .num { font-family: "TataHand", cursive; color: var(--red); font-size: 1.2rem; margin-top: 8px; display: block; }
+.story .title { font-family: "TataHand", cursive; font-size: 1.3rem; line-height: 1.2; display: block; }
+.story .en { color: var(--soft); font-size: .9rem; }
+.story.soon { cursor: default; opacity: .6; }
+.story.soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
+.story.soon .ph { aspect-ratio: 16 / 9; border-radius: 9px; background: repeating-linear-gradient(45deg, #efe6d4, #efe6d4 10px, #f6efe1 10px, #f6efe1 20px);
+  display: flex; align-items: center; justify-content: center; font-family: "TataHand", cursive; font-size: 1.4rem; color: var(--soft); }
+dialog { border: none; border-radius: 18px; padding: 0; width: min(980px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+  background: var(--card); color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+dialog::backdrop { background: rgba(40, 32, 20, .55); }
+.d-head { display: flex; align-items: baseline; gap: 12px; padding: 18px 20px 6px; }
+.d-head h3 { margin: 0; font-size: 2rem; line-height: 1.1; }
+.d-head .en { color: var(--soft); }
+.d-head button { margin-left: auto; font: inherit; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--soft); }
+.d-pics { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 14px; padding: 8px 20px; }
+.d-pics img { width: 100%; border-radius: 10px; border: 2px solid var(--line); display: block; }
+.d-text { padding: 4px 20px 22px; }
+.d-text p { margin: 8px 0; }
+.puzzles { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.puzzles li { background: #fff4cf; border: 2px solid #f0dc94; border-radius: 999px; padding: 4px 12px; font-size: .95rem; }
+.d-nav { display: flex; justify-content: space-between; padding: 0 20px 18px; }
+.d-nav button { font: inherit; background: var(--paper); border: 2px solid var(--line); border-radius: 10px; padding: 6px 14px; cursor: pointer; }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 24px; padding: 0; list-style: none; }
+.rules li::before { content: "★ "; color: var(--yellow); }
+footer { text-align: center; color: var(--soft); padding: 24px 16px 40px; font-size: .95rem; }
+@media (max-width: 640px) {
+  .d-pics { grid-template-columns: 1fr; }
+  .d-pics img.cover { max-width: 240px; margin: 0 auto; }
+  h2 { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="img/logo.png" alt="Velká a malá detektivka">
+  <p class="tag">Comics and a point-and-click game, made at home for two small detectives</p>
+</header>
+<img class="banner" src="img/banner.png" alt="The big sister with a magnifier, the little sister with her orangutan, and the dog sniffing footprints">
+
+<main>
+  <section class="intro">
+    <h2>What is this?</h2>
+    <p>A family project for two sisters, a big one (7) and a little one (4). They solve gentle mysteries at their
+    grandparents' cottage, with a magnifier, a torch, a plush orangutan and a very clever border collie called Joey.</p>
+    <p>Every story is first a printed comic, read at bedtime. The next day the girls play the same story on the
+    computer, where it gets new puzzles the comic doesn't have. The goal is to get small kids comfortable on a
+    computer through play, and to practise logic and reading on the way.</p>
+    <div class="facts">
+      <div class="fact"><b>16 stories</b>One series, from autumn to the next summer, held together by grandpa's childhood club, Klub Hvězdička.</div>
+      <div class="fact"><b>14 ready</b>Issues 1–14 exist as printable comics and as playable game stories.</div>
+      <div class="fact"><b>Drawn in code</b>Every picture is drawn in Python, the same library for the comic and the game.</div>
+      <div class="fact"><b>Czech + English</b>Big hand-lettered subtitles, so a grown-up can read along.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The stories</h2>
+    <p>Click a story to see the comic and the game.</p>
+    <div class="stories" id="stories"></div>
+  </section>
+
+  <section>
+    <h2>Made for small hands</h2>
+    <ul class="rules">
+      <li>One click does the obvious thing. No verb menus, big targets.</li>
+      <li>Nothing scary, no way to lose, no timers. Every "culprit" is an animal or a kind person.</li>
+      <li>Stuck? Click the dog. Joey sniffs and walks towards the next goal.</li>
+      <li>Both sisters are playable. Some puzzles need the small one.</li>
+      <li>Every puzzle has undo, try again and a hint.</li>
+      <li>Saves itself in every room.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  Made with ❤️, a magnifier and a lot of missing socks ·
+  <a href="https://github.com/redrick/velka_a_mala_detektivka">source on GitHub</a> · all rights reserved
+</footer>
+
+<dialog id="story">
+  <div class="d-head"><h3 id="d-title"></h3><span class="en" id="d-en"></span><button id="d-close" aria-label="Close">✕</button></div>
+  <div class="d-pics">
+    <img class="cover" id="d-comic" alt="">
+    <img id="d-game" alt="">
+  </div>
+  <div class="d-text">
+    <p id="d-blurb"></p>
+    <ul class="puzzles" id="d-puzzles"></ul>
+  </div>
+  <div class="d-nav"><button id="d-prev">← Previous</button><button id="d-next">Next →</button></div>
+</dialog>
+
+<script>
+const STORIES = [
+  [1, "Záhada zmizelých ponožek", "The Mystery of the Missing Socks",
+   "Socks keep vanishing from grandma's washing line at the cottage. Tiny footprints, a flour trap set for the night, and a gap in the fence that only the little sister fits through.",
+   ["Nastraž past: push the flour sacks onto the tiny footprints"]],
+  [2, "Tajemství starého klíče", "The Secret of the Old Key",
+   "Strange noises from the attic at night, and grandpa doesn't want anyone up there. An old key with a star, a chest from grandpa's childhood club, and owls under the roof.",
+   ["Kam svítí hvězdička: turn the mirrors", "Counting the planks"]],
+  [3, "Mapa ke starému rybníku", "The Map to the Old Pond",
+   "Half of an old treasure map leads to the pond, but someone has dug there first. Footprints in the mud, a quarrel and making up, and a dawn stakeout with the torch.",
+   ["Dvacet dětských kroků: plan the steps (first programming)", "Čí je to stopa?", "Kdo to byl?"]],
+  [4, "Hanka to vyřeší!", "Hanka Will Sort It Out!",
+   "The big sister is ill in bed, so the little one investigates alone, with a walkie-talkie to headquarters. A mysterious letter, a magpie, and the village clock that stopped sixty years ago.",
+   ["Rozběhni hodiny: gears", "Navigace vysílačkou: radio the way", "Kdo šel po stopě?"]],
+  [5, "Kdo staví sněhuláky?", "Who Builds the Snowmen?",
+   "Every morning a new snowman stands in the garden, with a parsnip for a nose. Small boots with stars on the soles lead to someone new in the village.",
+   ["Postav sněhuláka: roll the balls", "Čí je rukavice?", "Kdo staví sněhuláky?"]],
+  [6, "Kam mizí perníčky?", "Where Do the Gingerbread Stars Go?",
+   "Grandma counts the gingerbread in the tin, and every morning stars are missing. Pecked crumbs on the windowsill, a mousetrap with no bait, and spruce needles on grandpa's boots.",
+   ["Hvězdy na smrčku: a picture sudoku", "Kdo co zobe?", "Kdo bere hvězdy?"]],
+  [7, "Joeyho velký den", "Joey's Big Day",
+   "Told by Joey the dog: grandma's ring is gone, and everyone suspects him. Only his nose can put things right.",
+   ["Čmuchej!: warmer or colder", "Co se ráno dělo? (put the morning in order)"]],
+  [8, "Stopy ve sněhu", "Tracks in the Snow",
+   "The snowmen keep losing their carrot noses. The gamekeeper teaches the girls to read tracks: hare, fox, boar… and someone else.",
+   ["Po stopě: follow one animal's prints", "Seno do krmelce: split the hay evenly"]],
+  [9, "Tajná zpráva v knihovně", "The Secret Message in the Library",
+   "A slip of paper in star code falls out of a library book. Decode it, then find the writer behind a mask at the carnival parade.",
+   ["Hvězdičkové písmo: decode and write (reading)", "Masopustní průvod: line up the masks"]],
+  [10, "Záhada ve škole", "The Mystery at School",
+   "The forest school's guinea pigs are gone from their hutch. A hay trail, a torn note signed K., and two people called Karel.",
+   ["Nový kotec: fit the planks", "Ohrádky pro morčata: split the meadow"]],
+  [11, "Kam mizí vajíčka?", "Where Do the Eggs Go?",
+   "Easter at the cottage: every day one egg is missing from the henhouse. No shells anywhere, a gap under the wire, and straw in one hen's feathers.",
+   ["Balíky slámy: slide the bales", "Kraslice podle vzoru: repeating patterns"]],
+  [12, "Tajemné šipky", "The Mysterious Arrows",
+   "The week before the big sister's birthday, chalk arrows appear everywhere and everyone acts strangely. She investigates her own surprise, and the little sister is in on it.",
+   ["Otoč šipky: one trail past every star", "Kdo kde sedí? (seating by the wishes)", "Who drew which arrow?"]],
+  [13, "Stopy u potoka", "Tracks by the Creek",
+   "The club camps by the creek. Every night a willow falls, grandpa's walking stick disappears and the stepping stones sink a little deeper.",
+   ["Čím to bylo? (marks on the wood)", "Kámen v potoce: order, days of the week, tomorrow", "Hráz pro bobra: where does the water go?", "Pravda, nebo ne? (reading)"]],
+  [14, "Poklad na hradě", "Treasure at the Castle",
+   "A sleepover at the real castle Točník. The old drawing says XIV, and at night things vanish from the open window of the great hall.",
+   ["Klíče od hradu: Roman numerals", "Čtrnáctá díra: count the way you read", "Jméno pro kavku: spelling, Á is not A", "Pravda, nebo ne? (reading)"]],
+];
+const SOON = [[15, "Noc padajících hvězd", "The Night of Falling Stars"], [16, "Klub Hvězdička", "The Star Club"]];
+
+const pad = n => String(n).padStart(2, "0");
+const grid = document.getElementById("stories");
+STORIES.forEach((s, i) => {
+  const b = document.createElement("button");
+  b.className = "story";
+  b.innerHTML = `<img src="img/stories/${pad(s[0])}_game.jpg" alt="" loading="lazy">
+    <span class="num">${s[0]}.</span><span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
+  b.addEventListener("click", () => openStory(i));
+  grid.appendChild(b);
+});
+SOON.forEach(s => {
+  const d = document.createElement("div");
+  d.className = "story soon";
+  d.innerHTML = `<div class="ph">coming soon</div><span class="num">${s[0]}.</span><span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
+  grid.appendChild(d);
+});
+
+const dlg = document.getElementById("story");
+let current = 0;
+function openStory(i) {
+  current = (i + STORIES.length) % STORIES.length;
+  const s = STORIES[current];
+  document.getElementById("d-title").textContent = `${s[0]}. ${s[1]}`;
+  document.getElementById("d-en").textContent = s[2];
+  const comic = document.getElementById("d-comic");
+  comic.src = `img/stories/${pad(s[0])}_comic.jpg`; comic.alt = `Comic cover, issue ${s[0]}`;
+  const game = document.getElementById("d-game");
+  game.src = `img/stories/${pad(s[0])}_game.jpg`; game.alt = `A scene from game story ${s[0]}`;
+  document.getElementById("d-blurb").textContent = s[3];
+  const ul = document.getElementById("d-puzzles");
+  ul.innerHTML = "";
+  s[4].forEach(p => { const li = document.createElement("li"); li.textContent = "🧩 " + p; ul.appendChild(li); });
+  history.replaceState(null, "", `#story-${s[0]}`);
+  if (!dlg.open) dlg.showModal();
+}
+dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname));
+const m = location.hash.match(/^#story-(\d+)$/);
+if (m) { const i = STORIES.findIndex(s => s[0] === +m[1]); if (i >= 0) openStory(i); }
+document.getElementById("d-close").onclick = () => dlg.close();
+document.getElementById("d-prev").onclick = () => openStory(current - 1);
+document.getElementById("d-next").onclick = () => openStory(current + 1);
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+document.addEventListener("keydown", e => {
+  if (!dlg.open) return;
+  if (e.key === "ArrowRight") openStory(current + 1);
+  if (e.key === "ArrowLeft") openStory(current - 1);
+});
+</script>
+</body>
+</html>
