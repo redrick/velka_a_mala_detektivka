@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="cs">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Velká a malá detektivka</title>
-<meta name="description" content="Hand-drawn comics and a point-and-click game, made at home for two small detectives.">
+<meta name="description" content="Ručně kreslené komiksy a klikací hra, vyrobené doma pro dvě malé detektivky.">
 <link rel="icon" href="img/logo.png">
 <style>
 @font-face { font-family: "TataHand"; src: url("fonts/TataHand.ttf") format("truetype"); }
@@ -53,7 +53,7 @@ h2 .mark { background: linear-gradient(transparent 58%, rgba(246, 199, 68, .7) 5
 .who.small .fig img { height: 132px; }
 .who.dog .fig img { height: 100px; }
 .who:hover .fig img { transform: rotate(-4deg) translateY(-6px); }
-.who b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.25rem; display: block; margin-top: 6px; line-height: 1.1; }
+.who b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.15rem; padding: 0 3px; display: block; margin-top: 6px; line-height: 1.1; }
 .who span { font-size: .78rem; color: var(--soft); display: block; line-height: 1.3; padding: 0 4px; }
 
 /* how it works */
@@ -142,18 +142,26 @@ dialog::backdrop { background: rgba(40, 32, 20, .6); }
   .panel { box-shadow: 5px 5px 0 rgba(43, 38, 32, .85); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+.lang { position: absolute; top: 34px; right: 30px; z-index: 5; display: flex; border: 3px solid var(--ink); border-radius: 12px;
+  overflow: hidden; box-shadow: 3px 3px 0 var(--ink); background: #fff; }
+.lang button { font-family: "TataHand", cursive; font-size: 1.2rem; border: none; background: #fff; padding: 2px 12px; cursor: pointer; color: var(--ink); }
+.lang button + button { border-left: 2px solid var(--ink); }
+.lang button[aria-pressed="true"] { background: var(--yellow); }
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="panel"><img src="img/banner.png" alt="The big sister with a magnifier, the little sister with her orangutan, and Joey the dog sniffing footprints"></div>
+  <div class="lang" role="group" aria-label="Jazyk / Language">
+    <button data-lang="cs" aria-pressed="true">CZ</button><button data-lang="en" aria-pressed="false">EN</button>
+  </div>
+  <div class="panel"><img src="img/banner.png" alt="Velká sestra s lupou, malá sestra s opičkou a pes Joey čmuchá po stopách" data-en-alt="The big sister with a magnifier, the little sister with her orangutan, and Joey the dog sniffing footprints"></div>
   <div class="hero-text">
     <div>
       <h1>Velká a malá detektivka</h1>
-      <p>Comics and a point-and-click game, made at home for two small detectives</p>
+      <p data-en="Comics and a point-and-click game, made at home for two small detectives">Komiksy a klikací hra, vyrobené doma pro dvě malé detektivky</p>
     </div>
     <div class="btns">
-      <a class="btn" href="#stories">The stories</a>
+      <a class="btn" href="#stories" data-en="The stories">Příběhy</a>
       <a class="btn alt" href="https://github.com/redrick/velka_a_mala_detektivka">GitHub</a>
     </div>
   </div>
@@ -161,58 +169,55 @@ dialog::backdrop { background: rgba(40, 32, 20, .6); }
 
 <main>
   <section id="cast">
-    <h2><span class="mark">Who's who</span></h2>
-    <p class="lead">Two sisters solve gentle mysteries at their grandparents' cottage and in their village. Every
-    picture is drawn in Python code, the same drawings for the comic and the game.</p>
+    <h2><span class="mark" data-en="Who's who">Kdo je kdo</span></h2>
+    <p class="lead" data-en="Two sisters solve gentle mysteries at their grandparents' cottage and in their village. Every picture is drawn in Python code, the same drawings for the comic and the game.">Dvě sestry řeší laskavé záhady na chalupě u babičky a dědy i doma ve vsi. Každý obrázek je nakreslený v kódu v Pythonu, stejné kresby pro komiks i pro hru.</p>
     <div class="cast">
-      <div class="who"><div class="fig"><img src="img/chars/alica_lens.png" alt=""></div><b>Alica</b><span>7, the big detective, with a magnifier</span></div>
-      <div class="who small"><div class="fig"><img src="img/chars/hanka_torch.png" alt=""></div><b>Hanka</b><span>4, the little detective, with a torch and opička</span></div>
-      <div class="who dog"><div class="fig"><img src="img/chars/joey_sniff.png" alt=""></div><b>Joey</b><span>border collie, the best nose</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/deda_happy.png" alt=""></div><b>Děda</b><span>grandpa, once in Klub Hvězdička</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/babicka_happy.png" alt=""></div><b>Babička</b><span>grandma, counts the gingerbread</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/tonda_happy.png" alt=""></div><b>Tonda</b><span>the neighbour boy, full of theories</span></div>
-      <div class="who small"><div class="fig"><img src="img/chars/betkal_happy.png" alt=""></div><b>Bětka</b><span>likes to draw everything</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/verka_happy.png" alt=""></div><b>Věrka</b><span>another old Klub member</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/rybar_happy.png" alt=""></div><b>Franta</b><span>the fisherman, Bětka's grandpa</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/hajny_happy.png" alt=""></div><b>Hajný</b><span>the gamekeeper, knows every track</span></div>
-      <div class="who"><div class="fig"><img src="img/chars/kastelanka_keys.png" alt=""></div><b>Kastelánka</b><span>keeps the castle keys</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/alica_lens.png" alt=""></div><b>Alica</b><span data-en="7, the big detective, with a magnifier">7 let, velká detektivka s lupou</span></div>
+      <div class="who small"><div class="fig"><img src="img/chars/hanka_torch.png" alt=""></div><b>Hanka</b><span data-en="4, the little detective, with a torch and opička">4 roky, malá detektivka s baterkou a opičkou</span></div>
+      <div class="who dog"><div class="fig"><img src="img/chars/joey_sniff.png" alt=""></div><b>Joey</b><span data-en="border collie, the best nose">border kolie, nejlepší čumák</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/deda_happy.png" alt=""></div><b data-en="Grandpa">Děda</b><span data-en="was in Klub Hvězdička as a boy">jako kluk byl v Klubu Hvězdička</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/babicka_happy.png" alt=""></div><b data-en="Grandma">Babička</b><span data-en="bakes and counts the gingerbread">peče a počítá perníčky</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/tonda_happy.png" alt=""></div><b>Tonda</b><span data-en="the neighbour boy, full of theories">kluk od sousedů, plný teorií</span></div>
+      <div class="who small"><div class="fig"><img src="img/chars/betkal_happy.png" alt=""></div><b>Bětka</b><span data-en="likes to draw everything">všechno si kreslí</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/verka_happy.png" alt=""></div><b data-en="Věrka">paní Věrka</b><span data-en="another old Klub member">další členka starého Klubu</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/rybar_happy.png" alt=""></div><b data-en="Franta">pan Franta</b><span data-en="the fisherman, Bětka's grandpa">rybář, Bětčin děda</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/hajny_happy.png" alt=""></div><b data-en="Ranger">Hajný</b><span data-en="the gamekeeper, knows every track">zná každou stopu</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/kastelanka_keys.png" alt=""></div><b data-en="Keeper">Kastelánka</b><span data-en="has the castle keys">má klíče od hradu</span></div>
     </div>
   </section>
 
   <section id="how">
-    <h2><span class="mark">From the comic to the game</span></h2>
-    <p class="lead">Every story is first a printed comic, read at bedtime. The next day the girls play the same story
-    on the computer, where it gets new puzzles the comic doesn't have.</p>
+    <h2><span class="mark" data-en="From the comic to the game">Z komiksu do hry</span></h2>
+    <p class="lead" data-en="Every story is first a printed comic, read at bedtime. The next day the girls play the same story on the computer, where it gets new puzzles the comic doesn't have.">Každý příběh je nejdřív vytištěný komiks na čtení před spaním. Druhý den si holky stejný příběh zahrají na počítači, kde přibudou hádanky, které v komiksu nejsou.</p>
     <div class="steps">
-      <div class="step c1"><img src="img/stories/03_comic.jpg" alt="Comic cover" height="190"><b>1. Read</b><p>A hand-inked comic, printed as a little booklet.</p></div>
+      <div class="step c1"><img src="img/stories/03_comic.jpg" alt="" height="190"><b data-en="1. Read">1. Přečti</b><p data-en="A hand-inked comic, printed as a little booklet.">Ručně kreslený komiks, vytištěný jako sešitek.</p></div>
       <div class="arrow">→</div>
-      <div class="step c2"><img src="img/stories/03_game.jpg" alt="Game scene" height="190"><b>2. Play</b><p>Click to walk, look and talk. The dog helps when you're stuck.</p></div>
+      <div class="step c2"><img src="img/stories/03_game.jpg" alt="" height="190"><b data-en="2. Play">2. Zahraj</b><p data-en="Click to walk, look and talk. The dog helps when you're stuck.">Klikáním chodíš, prohlížíš a povídáš si. Když nevíš kudy kam, poradí pes.</p></div>
       <div class="arrow">→</div>
-      <div class="step c3"><img src="img/stories/14_game.jpg" alt="Castle scene" height="190"><b>3. Solve</b><p>Logic puzzles you can't lose: undo, try again, ask Joey.</p>
-        <div class="skills"><span>logic</span><span>planning</span><span>reading</span><span>counting</span><span>patterns</span><span>Roman numerals</span><span>tracks</span></div></div>
+      <div class="step c3"><img src="img/stories/14_game.jpg" alt="" height="190"><b data-en="3. Solve">3. Vyřeš</b><p data-en="Logic puzzles you can't lose: undo, try again, ask Joey.">Logické hádanky, ve kterých se nedá prohrát: krok zpět, znovu, zeptej se Joeyho.</p>
+        <div class="skills"><span data-en="logic">logika</span><span data-en="planning">plánování</span><span data-en="reading">čtení</span><span data-en="counting">počítání</span><span data-en="patterns">vzorce</span><span data-en="Roman numerals">římská čísla</span><span data-en="tracks">stopy</span></div></div>
     </div>
   </section>
 
   <section id="stories">
-    <h2><span class="mark">The stories</span></h2>
-    <p class="lead">Series 1 has 16 stories, from autumn to the next summer, held together by grandpa's childhood
-    club, Klub Hvězdička. Stories 1–14 are ready as comics and as games. Click one to look inside.</p>
+    <h2><span class="mark" data-en="The stories">Příběhy</span></h2>
+    <p class="lead" data-en="Series 1 has 16 stories, from autumn to the next summer, held together by grandpa's childhood club, Klub Hvězdička. Stories 1–14 are ready as comics and as games. Click one to look inside.">První série má 16 příběhů, od podzimu do dalšího léta, a spojuje je dědův klub z dětství, Klub Hvězdička. Příběhy 1–14 jsou hotové jako komiks i jako hra. Klikni na příběh a podívej se dovnitř.</p>
     <div class="stories" id="story-grid"></div>
     <img class="deco" src="img/deco/sock_red.png" alt="" style="right: -6px; top: -20px; height: 70px; transform: rotate(18deg);">
   </section>
 
   <section id="rules">
-    <h2><span class="mark">Made for small hands</span></h2>
+    <h2><span class="mark" data-en="Made for small hands">Pro malé ručičky</span></h2>
     <div class="rules">
       <ul>
-        <li><b>One click does it</b>No verb menus. Big things to click, with a hand cursor.</li>
-        <li><b>Nothing scary</b>No way to lose, no timers. Every "culprit" is an animal or a kind person.</li>
-        <li><b>Stuck? Click the dog</b>Joey sniffs and walks towards the next thing to do.</li>
-        <li><b>Two detectives</b>Switch between the sisters. Some puzzles need the small one.</li>
-        <li><b>Czech and English</b>Big hand-lettered subtitles, so a grown-up can read along.</li>
-        <li><b>Saves by itself</b>Every room is saved; "Pokračovat" goes on where you stopped.</li>
+        <li><b data-en="One click does it">Stačí jedno kliknutí</b><span data-en="No verb menus. Big things to click, with a hand cursor.">Žádné nabídky sloves. Velké věci na klikání a ručička místo šipky.</span></li>
+        <li><b data-en="Nothing scary">Nic strašidelného</b><span data-en="No way to lose, no timers. Every &quot;culprit&quot; is an animal or a kind person.">Nedá se prohrát, nic nespěchá. Každý „pachatel“ je zvíře nebo hodný člověk.</span></li>
+        <li><b data-en="Stuck? Click the dog">Nevíš kudy kam? Klikni na psa</b><span data-en="Joey sniffs and walks towards the next thing to do.">Joey začmuchá a dojde k tomu, co je potřeba udělat.</span></li>
+        <li><b data-en="Two detectives">Dvě detektivky</b><span data-en="Switch between the sisters. Some puzzles need the small one.">Hraje se za obě sestry. Některé hádanky zvládne jen ta malá.</span></li>
+        <li><b data-en="Czech and English">Česky i anglicky</b><span data-en="Big hand-lettered subtitles, so a grown-up can read along.">Velké ručně psané titulky, aby mohl číst i dospělý.</span></li>
+        <li><b data-en="Saves by itself">Ukládá se samo</b><span data-en="Every room is saved; &quot;Pokračovat&quot; goes on where you stopped.">Hra se uloží v každé místnosti a „Pokračovat“ naváže tam, kde jsi skončila.</span></li>
       </ul>
-      <div class="joey"><img src="img/chars/joey_sniff.png" alt=""><span>Čmuch čmuch!</span></div>
+      <div class="joey"><img src="img/chars/joey_sniff.png" alt=""><span data-en="Sniff sniff!">Čmuch čmuch!</span></div>
     </div>
   </section>
 
@@ -224,12 +229,12 @@ dialog::backdrop { background: rgba(40, 32, 20, .6); }
 </main>
 
 <footer>
-  <span class="hand">Made with a magnifier and a lot of missing socks</span>
-  <a href="https://github.com/redrick/velka_a_mala_detektivka">Source on GitHub</a> · a family project, all rights reserved
+  <span class="hand" data-en="Made with a magnifier and a lot of missing socks">Vyrobeno s lupou a spoustou ztracených ponožek</span>
+  <a href="https://github.com/redrick/velka_a_mala_detektivka" data-en="Source on GitHub">Zdrojáky na GitHubu</a> · <span data-en="a family project, all rights reserved">rodinný projekt, všechna práva vyhrazena</span>
 </footer>
 
 <dialog id="story">
-  <div class="d-head"><h3 id="d-title"></h3><span class="en" id="d-en"></span><button id="d-close" aria-label="Close">✕</button></div>
+  <div class="d-head"><h3 id="d-title"></h3><span class="en" id="d-sub"></span><button id="d-close" aria-label="Zavřít">✕</button></div>
   <div class="d-pics">
     <img class="cover" id="d-comic" alt="">
     <img id="d-game" alt="">
@@ -238,102 +243,152 @@ dialog::backdrop { background: rgba(40, 32, 20, .6); }
     <p id="d-blurb"></p>
     <ul class="puzzles" id="d-puzzles"></ul>
   </div>
-  <div class="d-nav"><button id="d-prev">← Previous</button><button id="d-next">Next →</button></div>
+  <div class="d-nav"><button id="d-prev" data-en="← Previous">← Předchozí</button><button id="d-next" data-en="Next →">Další →</button></div>
 </dialog>
 
 <script>
+// [number, Czech title, English title, Czech text, English text, [[Czech puzzle, English puzzle], …]]
 const STORIES = [
   [1, "Záhada zmizelých ponožek", "The Mystery of the Missing Socks",
+   "Z babiččiny šňůry na chalupě mizí ponožky. Malinké stopičky, past z mouky nastražená na noc a díra v plotě, kterou se protáhne jen malá sestra.",
    "Socks keep vanishing from grandma's washing line at the cottage. Tiny footprints, a flour trap set for the night, and a gap in the fence that only the little sister fits through.",
-   ["Nastraž past: push the flour sacks onto the tiny footprints"]],
+   [["Nastraž past: dotlač pytlíky s moukou na stopičky", "Nastraž past: push the flour sacks onto the tiny footprints"]]],
   [2, "Tajemství starého klíče", "The Secret of the Old Key",
+   "V noci se z půdy ozývají divné zvuky a děda tam nikoho nepustí. Starý klíč s hvězdičkou, truhla z dědova klubu z dětství a sovy pod střechou.",
    "Strange noises from the attic at night, and grandpa doesn't want anyone up there. An old key with a star, a chest from grandpa's childhood club, and owls under the roof.",
-   ["Kam svítí hvězdička: turn the mirrors", "Counting the planks"]],
+   [["Kam svítí hvězdička: natoč zrcátka", "Kam svítí hvězdička: turn the mirrors"], ["Počítání prken", "Counting the planks"]]],
   [3, "Mapa ke starému rybníku", "The Map to the Old Pond",
+   "Půlka staré mapy vede k rybníku, jenže tam už někdo kopal. Stopy v bahně, hádka a usmíření a hlídka za svítání s baterkou.",
    "Half of an old treasure map leads to the pond, but someone has dug there first. Footprints in the mud, a quarrel and making up, and a dawn stakeout with the torch.",
-   ["Dvacet dětských kroků: plan the steps (first programming)", "Čí je to stopa?", "Kdo to byl?"]],
+   [["Dvacet dětských kroků: naplánuj kroky (první programování)", "Dvacet dětských kroků: plan the steps (first programming)"], ["Čí je to stopa?", "Whose print is it?"], ["Kdo to byl?", "Who was it?"]]],
   [4, "Hanka to vyřeší!", "Hanka Will Sort It Out!",
+   "Velká sestra leží nemocná v posteli, a tak pátrá malá sama, s vysílačkou do štábu. Tajemný dopis, straka a hodiny na kostele, které se zastavily před šedesáti lety.",
    "The big sister is ill in bed, so the little one investigates alone, with a walkie-talkie to headquarters. A mysterious letter, a magpie, and the village clock that stopped sixty years ago.",
-   ["Rozběhni hodiny: gears", "Navigace vysílačkou: radio the way", "Kdo šel po stopě?"]],
+   [["Rozběhni hodiny: ozubená kolečka", "Rozběhni hodiny: gears"], ["Navigace vysílačkou", "Navigace vysílačkou: radio the way"], ["Kdo šel po stopě?", "Who walked the trail?"]]],
   [5, "Kdo staví sněhuláky?", "Who Builds the Snowmen?",
+   "Každé ráno stojí na zahradě nový sněhulák a místo mrkve má pastinák. Malé botky s hvězdičkami na podrážce vedou k někomu novému ve vsi.",
    "Every morning a new snowman stands in the garden, with a parsnip for a nose. Small boots with stars on the soles lead to someone new in the village.",
-   ["Postav sněhuláka: roll the balls", "Čí je rukavice?", "Kdo staví sněhuláky?"]],
+   [["Postav sněhuláka: koulej koule", "Postav sněhuláka: roll the balls"], ["Čí je rukavice?", "Whose mitten is it?"], ["Kdo staví sněhuláky?", "Who builds the snowmen?"]]],
   [6, "Kam mizí perníčky?", "Where Do the Gingerbread Stars Go?",
+   "Babička počítá perníčky v plechovce a každé ráno hvězdičky chybí. Ozobané drobky na parapetu, past na myši bez návnady a jehličí na dědových botách.",
    "Grandma counts the gingerbread in the tin, and every morning stars are missing. Pecked crumbs on the windowsill, a mousetrap with no bait, and spruce needles on grandpa's boots.",
-   ["Hvězdy na smrčku: a picture sudoku", "Kdo co zobe?", "Kdo bere hvězdy?"]],
+   [["Hvězdy na smrčku: obrázkové sudoku", "Hvězdy na smrčku: a picture sudoku"], ["Kdo co zobe?", "Who eats what?"], ["Kdo bere hvězdy?", "Who takes the stars?"]]],
   [7, "Joeyho velký den", "Joey's Big Day",
+   "Vypráví pes Joey: babičce zmizel prstýnek a všichni podezírají jeho. Napravit to může jen jeho čumák.",
    "Told by Joey the dog: grandma's ring is gone, and everyone suspects him. Only his nose can put things right.",
-   ["Čmuchej!: warmer or colder", "Co se ráno dělo? (put the morning in order)"]],
+   [["Čmuchej! Přihořívá, nebo ne?", "Čmuchej!: warmer or colder"], ["Co se ráno dělo? (seřaď ráno)", "What happened this morning? (put it in order)"]]],
   [8, "Stopy ve sněhu", "Tracks in the Snow",
+   "Sněhulákům mizí mrkvové nosy. Hajný učí holky číst stopy: zajíc, liška, divočák… a ještě někdo.",
    "The snowmen keep losing their carrot noses. The gamekeeper teaches the girls to read tracks: hare, fox, boar… and someone else.",
-   ["Po stopě: follow one animal's prints", "Seno do krmelce: split the hay evenly"]],
+   [["Po stopě: drž se stop jednoho zvířete", "Po stopě: follow one animal's prints"], ["Seno do krmelce: rozděl seno spravedlivě", "Seno do krmelce: split the hay evenly"]]],
   [9, "Tajná zpráva v knihovně", "The Secret Message in the Library",
+   "Z knížky z knihovny vypadne lísteček psaný hvězdičkovým písmem. Rozlušti ho a najdi pisatele pod maskou v masopustním průvodu.",
    "A slip of paper in star code falls out of a library book. Decode it, then find the writer behind a mask at the carnival parade.",
-   ["Hvězdičkové písmo: decode and write (reading)", "Masopustní průvod: line up the masks"]],
+   [["Hvězdičkové písmo: luštění a psaní (čtení)", "Hvězdičkové písmo: decode and write (reading)"], ["Masopustní průvod: seřaď masky", "Masopustní průvod: line up the masks"]]],
   [10, "Záhada ve škole", "The Mystery at School",
+   "Z kotce v lesní školce zmizela morčata. Stopa ze sena, utržený lísteček podepsaný K. a dva lidé, kterým se říká Karel.",
    "The forest school's guinea pigs are gone from their hutch. A hay trail, a torn note signed K., and two people called Karel.",
-   ["Nový kotec: fit the planks", "Ohrádky pro morčata: split the meadow"]],
+   [["Nový kotec: poskládej prkna", "Nový kotec: fit the planks"], ["Ohrádky pro morčata: rozděl louku", "Ohrádky pro morčata: split the meadow"]]],
   [11, "Kam mizí vajíčka?", "Where Do the Eggs Go?",
+   "Velikonoce na chalupě: z kurníku každý den zmizí jedno vajíčko. Nikde žádné skořápky, mezera pod pletivem a jedna slepice má v peří slámu.",
    "Easter at the cottage: every day one egg is missing from the henhouse. No shells anywhere, a gap under the wire, and straw in one hen's feathers.",
-   ["Balíky slámy: slide the bales", "Kraslice podle vzoru: repeating patterns"]],
+   [["Balíky slámy: posouvej balíky", "Balíky slámy: slide the bales"], ["Kraslice podle vzoru: opakující se vzor", "Kraslice podle vzoru: repeating patterns"]]],
   [12, "Tajemné šipky", "The Mysterious Arrows",
+   "Týden před narozeninami velké sestry se všude objevují šipky z křídy a všichni se chovají divně. Alica vyšetřuje vlastní překvapení a malá sestra je v tom s ostatními.",
    "The week before the big sister's birthday, chalk arrows appear everywhere and everyone acts strangely. She investigates her own surprise, and the little sister is in on it.",
-   ["Otoč šipky: one trail past every star", "Kdo kde sedí? (seating by the wishes)", "Who drew which arrow?"]],
+   [["Otoč šipky: jedna cesta přes všechny hvězdy", "Otoč šipky: one trail past every star"], ["Kdo kde sedí? (podle přání)", "Who sits where? (by the wishes)"], ["Kdo nakreslil kterou šipku?", "Who drew which arrow?"]]],
   [13, "Stopy u potoka", "Tracks by the Creek",
+   "Klub stanuje u potoka. Každou noc spadne vrba, dědovi zmizí hůl a kameny přes potok jsou zase o kus víc pod vodou.",
    "The club camps by the creek. Every night a willow falls, grandpa's walking stick disappears and the stepping stones sink a little deeper.",
-   ["Čím to bylo? (marks on the wood)", "Kámen v potoce: order, days of the week, tomorrow", "Hráz pro bobra: where does the water go?", "Pravda, nebo ne? (reading)"]],
+   [["Čím to bylo? (stopy na dřevě)", "Čím to bylo? (marks on the wood)"], ["Kámen v potoce: pořadí, dny v týdnu, zítra", "Kámen v potoce: order, days of the week, tomorrow"], ["Hráz pro bobra: kam teče voda?", "Hráz pro bobra: where does the water go?"], ["Pravda, nebo ne? (čtení)", "True or not? (reading)"]]],
   [14, "Poklad na hradě", "Treasure at the Castle",
+   "Přespávání na opravdovém hradě Točníku. Na staré kresbě stojí XIV a v noci z otevřeného okna velkého sálu mizí věci.",
    "A sleepover at the real castle Točník. The old drawing says XIV, and at night things vanish from the open window of the great hall.",
-   ["Klíče od hradu: Roman numerals", "Čtrnáctá díra: count the way you read", "Jméno pro kavku: spelling, Á is not A", "Pravda, nebo ne? (reading)"]],
+   [["Klíče od hradu: římská čísla", "Klíče od hradu: Roman numerals"], ["Čtrnáctá díra: počítej, jako když čteš", "Čtrnáctá díra: count the way you read"], ["Jméno pro kavku: Á není A", "Jméno pro kavku: spelling, Á is not A"], ["Pravda, nebo ne? (čtení)", "True or not? (reading)"]]],
 ];
 const SOON = [[15, "Noc padajících hvězd", "The Night of Falling Stars"], [16, "Klub Hvězdička", "The Star Club"]];
+const UI = {
+  cs: {soon: "brzy", close: "Zavřít", comic: "Obálka komiksu, díl", game: "Obrázek ze hry, příběh"},
+  en: {soon: "coming soon", close: "Close", comic: "Comic cover, issue", game: "A scene from game story"},
+};
+
+let lang = "cs";
+try { lang = localStorage.getItem("vamd-lang") || lang; } catch (e) {}
+const q = new URLSearchParams(location.search).get("lang");
+if (q === "cs" || q === "en") lang = q;
 
 const pad = n => String(n).padStart(2, "0");
 const grid = document.getElementById("story-grid");
-STORIES.forEach((s, i) => {
-  const b = document.createElement("button");
-  b.className = "story";
-  b.innerHTML = `<img src="img/stories/${pad(s[0])}_game.jpg" alt="" loading="lazy"><span class="num">${s[0]}</span>
-    <span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
-  b.addEventListener("click", () => openStory(i));
-  grid.appendChild(b);
-});
-SOON.forEach(s => {
-  const d = document.createElement("div");
-  d.className = "story soon";
-  d.innerHTML = `<div class="ph">coming soon</div><span class="num">${s[0]}</span>
-    <span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
-  grid.appendChild(d);
-});
-
 const dlg = document.getElementById("story");
 let current = 0;
+
+function renderGrid() {
+  grid.innerHTML = "";
+  STORIES.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.className = "story";
+    b.innerHTML = `<img src="img/stories/${pad(s[0])}_game.jpg" alt="" loading="lazy"><span class="num">${s[0]}</span>
+      <span class="title">${s[1]}</span><span class="en">${lang === "en" ? s[2] : ""}</span>`;
+    b.addEventListener("click", () => openStory(i));
+    grid.appendChild(b);
+  });
+  SOON.forEach(s => {
+    const d = document.createElement("div");
+    d.className = "story soon";
+    d.innerHTML = `<div class="ph">${UI[lang].soon}</div><span class="num">${s[0]}</span>
+      <span class="title">${s[1]}</span><span class="en">${lang === "en" ? s[2] : ""}</span>`;
+    grid.appendChild(d);
+  });
+}
+
 function openStory(i) {
   current = (i + STORIES.length) % STORIES.length;
   const s = STORIES[current];
+  const en = lang === "en";
   document.getElementById("d-title").textContent = `${s[0]}. ${s[1]}`;
-  document.getElementById("d-en").textContent = s[2];
+  document.getElementById("d-sub").textContent = en ? s[2] : "";
   const comic = document.getElementById("d-comic");
-  comic.src = `img/stories/${pad(s[0])}_comic.jpg`; comic.alt = `Comic cover, issue ${s[0]}`;
+  comic.src = `img/stories/${pad(s[0])}_comic.jpg`; comic.alt = `${UI[lang].comic} ${s[0]}`;
   const game = document.getElementById("d-game");
-  game.src = `img/stories/${pad(s[0])}_game.jpg`; game.alt = `A scene from game story ${s[0]}`;
-  document.getElementById("d-blurb").textContent = s[3];
+  game.src = `img/stories/${pad(s[0])}_game.jpg`; game.alt = `${UI[lang].game} ${s[0]}`;
+  document.getElementById("d-blurb").textContent = en ? s[4] : s[3];
   const ul = document.getElementById("d-puzzles");
   ul.innerHTML = "";
-  s[4].forEach(p => { const li = document.createElement("li"); li.textContent = "🧩 " + p; ul.appendChild(li); });
-  history.replaceState(null, "", `#story-${s[0]}`);
+  s[5].forEach(p => { const li = document.createElement("li"); li.textContent = "🧩 " + p[en ? 1 : 0]; ul.appendChild(li); });
+  history.replaceState(null, "", `${location.search}#story-${s[0]}`);
   if (!dlg.open) dlg.showModal();
 }
+
+function setLang(l) {
+  lang = l;
+  try { localStorage.setItem("vamd-lang", l); } catch (e) {}
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-en]").forEach(el => {
+    if (!el.hasAttribute("data-cs")) el.setAttribute("data-cs", el.innerHTML);
+    el.innerHTML = l === "en" ? el.getAttribute("data-en") : el.getAttribute("data-cs");
+  });
+  document.querySelectorAll("[data-en-alt]").forEach(el => {
+    if (!el.hasAttribute("data-cs-alt")) el.setAttribute("data-cs-alt", el.alt);
+    el.alt = l === "en" ? el.getAttribute("data-en-alt") : el.getAttribute("data-cs-alt");
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+  document.getElementById("d-close").setAttribute("aria-label", UI[l].close);
+  renderGrid();
+  if (dlg.open) openStory(current);
+}
+
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 document.getElementById("d-close").onclick = () => dlg.close();
 document.getElementById("d-prev").onclick = () => openStory(current - 1);
 document.getElementById("d-next").onclick = () => openStory(current + 1);
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname));
+dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname + location.search));
 document.addEventListener("keydown", e => {
   if (!dlg.open) return;
   if (e.key === "ArrowRight") openStory(current + 1);
   if (e.key === "ArrowLeft") openStory(current - 1);
 });
+setLang(lang);
 const m = location.hash.match(/^#story-(\d+)$/);
 if (m) { const i = STORIES.findIndex(s => s[0] === +m[1]); if (i >= 0) openStory(i); }
 </script>
