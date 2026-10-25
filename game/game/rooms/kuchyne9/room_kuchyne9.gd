@@ -33,6 +33,10 @@ func _on_room_entered() -> void:
 func _on_room_transition_finished() -> void:
 	if not Globals.z_slip:
 		await _start()
+	elif Globals.z_msg1 and not Globals.z_db:
+		await _d_not_b()
+	elif Globals.z_star and Globals.z_shears and Globals.z_msg2 and not Globals.z_parade:
+		await _ready_for_masopust()
 	elif _boot_time() and not Globals.z_msg2:
 		await C.Hanka.say("Alico! V tvé botě je papírek!")
 
@@ -86,6 +90,8 @@ func on_character(chr: PopochiuCharacter, action: String, _item: PopochiuInvento
 			await C.player.walk(chr.position + Vector2(-240, 20))
 			if Globals.z_slip and not Globals.z_msg1:
 				await _decode1()
+			elif Globals.z_msg1 and not Globals.z_db:
+				await _d_not_b()
 			elif Globals.z_msg2 and not Globals.z_star:
 				await _deda_star()
 			else:
@@ -138,6 +144,10 @@ func _decode1() -> void:
 	Globals.z_msg1 = true
 	get_prop("Listek").hide()
 	await C.Alica.say("Hledej hvězdu na masopustu! Ale kdo to napsal?")
+	await _d_not_b()
+
+
+func _d_not_b() -> void:
 	await C.Alica.say("Napřed mi to vyšlo H… L… E… B? Nebo D?")
 	await C.Babicka.say("To je D, ne B.")
 	await C.Alica.say("Babi? Ty umíš hvězdičkové písmo? Vždyť ses ani nepodívala do klíče!")

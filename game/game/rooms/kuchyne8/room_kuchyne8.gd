@@ -25,6 +25,7 @@ func _on_room_entered() -> void:
 
 func _on_room_transition_finished() -> void:
 	if Globals.phase == "n_start":
+		G.block()
 		Globals.phase = ""
 		await C.Babicka.say("Sněhuláci jsou hotoví. A mají nosy z Frantova pastináku.")
 		await C.Deda.say("A ten můj je největší! Vyšší než Alica.")
@@ -41,6 +42,8 @@ func joey_goal() -> Vector2:
 
 
 func _night() -> void:
+	# no clicks while it runs: the door clicked in a pause cut the night short (the next room unblocks)
+	G.block()
 	C.Alica.pose("lens")
 	await C.Alica.say("Plán: čistá stránka. Uhladíme sníh kolem sněhuláků. Ráno si stopy přečteme.")
 	C.Alica.pose()

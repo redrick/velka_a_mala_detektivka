@@ -51,6 +51,7 @@ func _levels() -> int: return LEVELS.size()
 func _build(i: int) -> void:
 	var rows: Array = LEVELS[i]
 	_grid.clear(); _plan.clear(); _ghosts.clear(); _hint_len = 0
+	tile = minf(TILE, 640.0 / rows.size())
 	set_board_size(rows[0].length(), rows.size())
 	for y in rows.size():
 		for x in rows[y].length():

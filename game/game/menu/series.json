@@ -80,11 +80,15 @@
     },
     {
      "number": 13,
-     "title": "Stopy u potoka"
+     "title": "Stopy u potoka",
+     "start_room": "Louka13",
+     "cover": "res://assets/menu/ep_vamd_13.png"
     },
     {
      "number": 14,
-     "title": "Poklad na hradě"
+     "title": "Poklad na hradě",
+     "start_room": "Brana14",
+     "cover": "res://assets/menu/ep_vamd_14.png"
     },
     {
      "number": 15,

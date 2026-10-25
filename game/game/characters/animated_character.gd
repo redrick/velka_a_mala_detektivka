@@ -108,3 +108,18 @@ func _texture(mood: String) -> Texture2D:
 		var path := CHAR_DIR + "%s_%s.png" % [sprite_prefix, mood]
 		_frames[mood] = load(path) if ResourceLoader.exists(path) else null
 	return _frames[mood]
+
+
+## Ignored while a scene runs (Globals.click_busy).
+func handle_command(button_idx: int) -> void:
+	var room: Node = Globals.click_begin()
+	if room:
+		await super(button_idx)
+		Globals.click_end(room)
+
+
+func on_item_used(item: PopochiuInventoryItem) -> void:
+	var room: Node = Globals.click_begin()
+	if room:
+		await super(item)
+		Globals.click_end(room)

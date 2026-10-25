@@ -40,6 +40,16 @@ const MINIGAMES := [
 	["Otoč šipky", "příběh 12 · šipky z křídy", preload("res://game/minigames/arrows.gd")],
 	["Kdo nakreslil tuhle šipku?", "příběh 12 · podezřelí", preload("res://game/minigames/who_12.gd")],
 	["Kdo kde sedí?", "příběh 12 · zasedací pořádek", preload("res://game/minigames/seating.gd")],
+	["Čím to bylo?", "příběh 13 · stopy na dřevě", preload("res://game/minigames/cuts.gd")],
+	["Kámen v potoce", "příběh 13 · pořadí a dny", preload("res://game/minigames/rock.gd")],
+	["Kdo kácí vrby?", "příběh 13 · podezřelí", preload("res://game/minigames/who_13.gd")],
+	["Pravda, nebo ne? (bobr)", "příběh 13 · čtení", preload("res://game/minigames/quiz_13.gd")],
+	["Hráz pro bobra", "příběh 13 · voda a hráz", preload("res://game/minigames/dam.gd")],
+	["Klíče od hradu", "příběh 14 · římská čísla", preload("res://game/minigames/keys.gd")],
+	["Kdo krade na hradě?", "příběh 14 · podezřelí", preload("res://game/minigames/who_14.gd")],
+	["Pravda, nebo ne? (kavka)", "příběh 14 · čtení", preload("res://game/minigames/quiz_14.gd")],
+	["Čtrnáctá díra", "příběh 14 · počítání jako čtení", preload("res://game/minigames/holes.gd")],
+	["Jméno pro kavku", "příběh 14 · psaní", preload("res://game/minigames/spell_14.gd")],
 ]
 
 var _catalog: Array = []

@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://game/rooms/brana14/room_brana14.gd" id="1_r"]
+[ext_resource type="Script" path="res://game/shared/story_prop.gd" id="2_r"]
+[ext_resource type="Script" path="res://game/shared/story_hotspot.gd" id="3_r"]
+[ext_resource type="Script" path="res://game/shared/story_walkable.gd" id="4_r"]
+[ext_resource type="Texture2D" path="res://assets/rooms/gate14.png" id="5_r"]
+[ext_resource type="Texture2D" path="res://assets/props/hidkey14.png" id="6_r"]
+
+[sub_resource type="NavigationPolygon" id="nav"]
+vertices = PackedVector2Array(40, 772, 1480, 772, 1480, 840, 40, 840)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 772, 1480, 772, 1480, 840, 40, 840)])
+agent_radius = 0.0
+
+[node name="RoomBrana14" type="Node2D"]
+script = ExtResource("1_r")
+script_name = "Brana14"
+width = 1920
+height = 1080
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Podlaha" type="Node2D" parent="WalkableAreas"]
+script = ExtResource("4_r")
+script_name = "Podlaha"
+description = "Podlaha"
+interaction_polygon = Array[PackedVector2Array]([PackedVector2Array(40, 772, 1480, 772, 1480, 840, 40, 840)])
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Podlaha"]
+navigation_polygon = SubResource("nav")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" type="Area2D" parent="Props"]
+z_index = -1
+position = Vector2(960, 540)
+input_pickable = false
+script = ExtResource("2_r")
+script_name = "Bg"
+texture = ExtResource("5_r")
+description = "Bg"
+clickable = false
+baseline = -540
+cursor = 1
+interaction_polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Bg"]
+texture_filter = 1
+texture = ExtResource("5_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Bg"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Bg"]
+visible = false
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="Klicek1" type="Area2D" parent="Props"]
+position = Vector2(210, 905)
+script = ExtResource("2_r")
+script_name = "Klicek1"
+texture = ExtResource("6_r")
+description = "Klíček"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Klicek1"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Klicek1"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Klicek1"]
+visible = false
+polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Klicek2" type="Area2D" parent="Props"]
+position = Vector2(1650, 990)
+script = ExtResource("2_r")
+script_name = "Klicek2"
+texture = ExtResource("6_r")
+description = "Klíček"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Klicek2"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Klicek2"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Klicek2"]
+visible = false
+polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Klicek3" type="Area2D" parent="Props"]
+position = Vector2(880, 560)
+script = ExtResource("2_r")
+script_name = "Klicek3"
+texture = ExtResource("6_r")
+description = "Klíček"
+baseline = -300
+cursor = 1
+interaction_polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/Klicek3"]
+texture_filter = 1
+texture = ExtResource("6_r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Props/Klicek3"]
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Klicek3"]
+visible = false
+polygon = PackedVector2Array(-40, -60, 40, -60, 40, 60, -40, 60)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Brana" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Brana"
+description = "Brána do hradu"
+cursor = 1
+walk_to_point = Vector2(1300, 810)
+interaction_polygon = PackedVector2Array(1215, 560, 1475, 560, 1475, 842, 1215, 842)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Brana"]
+visible = false
+polygon = PackedVector2Array(1215, 560, 1475, 560, 1475, 842, 1215, 842)
+
+[node name="Prikop" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Prikop"
+description = "Příkop s medvědy"
+cursor = 1
+walk_to_point = Vector2(700, 820)
+interaction_polygon = PackedVector2Array(0, 860, 1920, 860, 1920, 1080, 0, 1080)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Prikop"]
+visible = false
+polygon = PackedVector2Array(0, 860, 1920, 860, 1920, 1080, 0, 1080)
+
+[node name="Kopec" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_r")
+script_name = "Kopec"
+description = "Kopec pod hradem"
+cursor = 1
+walk_to_point = Vector2(400, 810)
+interaction_polygon = PackedVector2Array(60, 480, 780, 380, 780, 740, 60, 740)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Hotspots/Kopec"]
+visible = false
+polygon = PackedVector2Array(60, 480, 780, 380, 780, 740, 60, 740)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(300, 815)
+
+[node name="Kastelanka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(1100, 815)
+
+[node name="Deda" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(560, 815)
+
+[node name="Verka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(700, 815)
+
+[node name="Tonda" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(850, 815)
+
+[node name="Betka" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(980, 815)
+
+[node name="Joey" type="Marker2D" parent="Markers"]
+visible = false
+position = Vector2(430, 830)
+
+[node name="Characters" type="Node2D" parent="."]

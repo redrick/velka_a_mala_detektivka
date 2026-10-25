@@ -93,3 +93,29 @@ data in each puzzle's `LEVELS`, exactly one answer per level (checked by `tools/
 - Saving: autosave on room change plus "Pokračovat" in the main menu (still open from the story 1 status).
 - A notebook screen (clues and suspects filling in): stories 2 and 3 lean on it heavily.
 - Reuse: the torch light (shed → attic, dawn), the plank counting, the nails minigame, and the art in `attic.py` and `pond.py`.
+
+## Blind play test
+`tools/blind_play.sh 1 2 … 14` plays each story with `game/tests/blind.gd`, an explorer that doesn't know the
+solution: it clicks everything a child could click (props, hotspots, people, the sister, every item on everything,
+every button of a `choose()` card), prefers what it hasn't tried yet, and fails with ROADBLOCK when nothing untried is
+reachable before the end card. It saves and continues at two random points, and notes clickables that are off screen,
+covered by others (NEEDED = the story needs that click), deaf (started with `clickable = false`, so the mouse never
+reaches them) or far from the walkable area. Every job runs headless in its own copy of `game/` with its own user
+data, so jobs run in parallel and the real saves are never touched. `SEEDS="1 2 3" JOBS=12` for more runs,
+`tools/blind_play.sh test:4` for a scripted test; logs in `$BLIND_DIR/logs`.
+
+## Stories 13–14 (built 2026-10-25)
+Both stories put more weight on reading and logic: every story has a "Pravda, nebo ne?" round (`quiz.gd`: Alica
+reads a short sentence about what the story just taught and says whether it is true; a wrong answer shows why and
+the question stays) and puzzles that train one skill each. New shared engines: `match.gd` (pairs, data-driven),
+`seriate.gd` (put cards in order), `quiz.gd`, `spell.gd` (write a word from letter tiles; the word goes through
+`tr()`). Hidden objects (10 frogs / 10 keys) use `story_room.hidden_thing()`; they are optional.
+
+| story | rooms | puzzles | what they train |
+|---|---|---|---|
+| 13 Stopy u potoka | Louka13 (the camp) · Potok13 (stepping stones, Bětka's measuring rock, Franta) · Hraz13 (the dam, the lodge, the footbridge) | **Čím to bylo?** (`cuts.gd`: saw = flat cut, knife = long curls, Joey = little holes, beaver = wide grooves) · **Kámen v potoce** (`rock.gd`: order Bětka's drawings by the water, read PÁTEK/SOBOTA/NEDĚLE, pick tomorrow's picture) · **Kdo kácí vrby?** (`who_13.gd`) · **Pravda, nebo ne?** (`quiz_13.gd`, beaver facts) · **Hráz pro bobra** (`dam.gd`: put 1–3 branches so the pond covers the lodge entrance but not the tents; `tools/dam_solver.py`) | comparing features, ordering (seriation), days of the week, predicting, reading, spatial logic (the narrow place) |
+| 14 Poklad na hradě | Brana14 (the bridge over the bear moat) · Nadvori14 (the tower with 18 putlog holes) · Sal14 (the hall, the window sill) | **Klíče od hradu** (`keys.gd`: Roman numbers I–XIV to doors with dots in rows of five) · **Kdo krade na hradě?** (`who_14.gd`) · **Pravda, nebo ne?** (`quiz_14.gd`, jackdaws) · **Čtrnáctá díra** (`holes.gd`: count holes the way you read, find IV, IX, XIV) · **Jméno pro kavku** (`spell_14.gd`: KÁJA with Á, KAVKA) | Roman numerals, counting, reading order, reading, spelling and diacritics |
+
+Tests: `game/tests/story_13.gd`, `story_14.gd`, `story_mg13.gd` (all new puzzles: random clicks, hint, undo, solve) and
+`story_layout.gd` (every minigame level must fit the 1780 × 1032 sheet; it caught four old levels that pushed the
+buttons off the screen).

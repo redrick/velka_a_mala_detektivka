@@ -35,6 +35,8 @@ func _on_room_transition_finished() -> void:
 		await C.Alica.say("Stopy vedou k tomu nízkému smrčku. Pomalu a potichu!")
 	elif not Globals.n_guide:
 		await _guide()
+	elif Globals.n_bed and not Globals.n_scale:
+		await _feed()
 
 
 func joey_goal() -> Vector2:
@@ -89,7 +91,10 @@ func _spruce() -> void:
 		await C.player.say("Nízký smrček. Větve až do sněhu.")
 		return
 	if Globals.n_bed:
-		await C.player.say("Srnčí lože pod smrčkem.")
+		if Globals.n_scale:
+			await C.player.say("Srnčí lože pod smrčkem.")
+		else:
+			await _feed()
 		return
 	await hand_over(C.Hanka, "Pod větvemi je jako jeskyně. Hani, ty se tam vejdeš!")
 	await C.Hanka.say("Lezu pod větve… Tady je ve sněhu vyhřátý ovál! Tady srnka spí!")
@@ -106,6 +111,10 @@ func _spruce() -> void:
 	await tw.finished
 	s.hide()
 	await C.Alica.say("…Ukázala. Promiň, srnko.")
+	await _feed()
+
+
+func _feed() -> void:
 	await C.Hajny.say("V hlubokém sněhu mají zvířata hlad. Proto přišla na vaše nosy.")
 	await C.Betka.say("Tak jí dáme jídlo do krmelce. A sněhuláci dostanou nosy ze šišek!")
 	await C.Hajny.say("Nejdřív seno. Do obou jeslí stejně, ať se srnky nestrkají.")

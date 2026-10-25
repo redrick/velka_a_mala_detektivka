@@ -215,9 +215,11 @@ func _plank(i: int) -> void:
 	if Globals.k_map:
 		await C.player.say("Tady byla Věrčina půlka mapy.")
 		return
+	if i <= Globals.k_planks:
+		await C.Hanka.say("Tohle prkno už jsme počítaly.")
+		return
 	if i != Globals.k_planks + 1:
-		Globals.k_planks = 0
-		await C.Hanka.say("Hm… Počítá se od hvězdičky. Znovu!")
+		await C.Hanka.say("Hm… To jsme jedno přeskočily. Počítá se pěkně po řadě od hvězdičky!")
 		return
 	var spot := get_hotspot("Prkno%d" % i).walk_to_point
 	sfx(tr(COUNT[i - 1]), Vector2(538 + 154 * i - 70, 780), 64)

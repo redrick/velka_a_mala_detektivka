@@ -53,6 +53,7 @@ func _build(i: int) -> void:
 	_grid.clear(); _history.clear()
 	_calls = 0
 	var rows: Array = LEVELS[i]
+	tile = minf(tile, 640.0 / rows.size())
 	set_board_size(rows[0].length(), rows.size())
 	for y in rows.size():
 		for x in rows[y].length():

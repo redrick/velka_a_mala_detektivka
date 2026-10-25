@@ -45,6 +45,10 @@ func _on_room_transition_finished() -> void:
 		await _intro()
 	elif Globals.q_new and not Globals.game_finished:
 		await _finish()
+	elif Globals.q_wheek and not Globals.q_found:
+		await _karel_comes()
+	elif Globals.q_day == 1 and not Globals.q_box:
+		await _monday_done()
 	elif Globals.phase == "q_fieldday":
 		Globals.phase = ""
 		_card(["Úterý. Brigáda!"], 1.6)
@@ -199,6 +203,9 @@ func _door() -> void:
 	if Globals.q_day == 2 and not Globals.q_wheek:
 		await _wheek()
 		return
+	if Globals.q_wheek and not Globals.q_found:
+		await _karel_comes()
+		return
 	if Globals.q_found:
 		R.goto_room("Kumbal10")
 		return
@@ -255,6 +262,10 @@ func _wheek() -> void:
 	C.Hanka.pose()
 	await C.Alica.say("Morčata pískají, když šustí sáček s jídlem!")
 	Globals.q_wheek = true
+	await _karel_comes()
+
+
+func _karel_comes() -> void:
 	place("Skolnik", Vector2(2050, 930))
 	C.Skolnik.ignore_walkable_areas = true
 	await C.Skolnik.walk(Vector2(950, 960))

@@ -54,6 +54,10 @@ func _on_room_transition_finished() -> void:
 		await get_tree().create_timer(2.0).timeout
 		await C.Hanka.say("Na parapetu nikdo nebyl! Ptáčci jsou na krmítku.")
 		await C.Alica.say("Případ vyřešen. Ještě se podívám do plechovky…")
+	else:
+		# resumed from a save made between the last clue of a day and what it starts
+		await _day1()
+		await _day2()
 
 
 func joey_goal() -> Vector2:

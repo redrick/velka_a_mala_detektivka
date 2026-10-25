@@ -69,6 +69,18 @@ Before writing each issue, ask the family for real details (names, places, recen
    page. The tail slap soaks Joey. Mesh goes round the camp willows. Below the dam an old Klub tin turns up: the badge,
    a photo, and a castle drawing marked XIV ("Další poklad je na…", torn off). Activity: animals ↔ homes and spot the
    differences. Hidden-object game: 10 frogs
-14. Poklad na hradě – a castle trip
+14. Poklad na hradě – DONE (comic, 28 pages, bedtime). The whole Klub sleeps over at the real castle Točník (paní
+   kastelánka invites them). Thread A: the issue-13 drawing is Točník's tower; Věrka drew it and forgot what XIV means
+   (děda teaches Roman numerals; 14 steps and 14 windows lead nowhere). Thread B: Tonda's rohlík, then Bětka's red
+   ribbon and Alica's bow clip vanish from the open hall window. Culprit: a pair of jackdaws in a putlog hole (díra po
+   lešení) of the tower, lining their nest (wool, cloth, Joey's fur pulled while he naps) and sharing the rohlík.
+   False leads: the bears Martin a Agáta in the moat, Tonda's ghost (Rudolf II legend), a pigeon (grey feather vs
+   black), Joey, the kastelánka with her ladder at dawn. Hanka's key clue: at dawn her torch finds two pale eyes and
+   the ribbon in a hole; Alica counts Bětka's drawing of the holes: it's the 14th (XIV). Hanka's small hand reaches
+   in: the things + the second Klub tin (star map with the Perseids "12. 8.", a little brass key with the star tag,
+   "Poslední poklad čeká tam, kde jsou hvězdy nejblíž."). Nest left alone; the jackdaw is named Kája. Kavka fact
+   page, Točník fact page (Václav IV, Žebrák, kingfisher, never conquered, cistern, bears, the big hall, the
+   treadwheel crane, the "turn three times" legend). Activity: Roman numerals ↔ stars, 5 differences.
+   Hidden-object game: 10 keys
 15. Noc padajících hvězd – the Perseids at an observatory
 16. Klub Hvězdička – the finale; the girls get star badges

@@ -24,7 +24,9 @@ func _on_game_saved() -> void:
 
 
 func _on_game_loaded(_loaded_game: Dictionary) -> void:
-	G.load_feedback_finished.emit()
+	# deferred: the room starts awaiting this signal only after game_loaded has been emitted, so an
+	# emit right here was missed and the continued room never became current (no walking, no cutscene)
+	G.load_feedback_finished.emit.call_deferred()
 
 
 # Called when the GUI is blocked and should not handle input events.

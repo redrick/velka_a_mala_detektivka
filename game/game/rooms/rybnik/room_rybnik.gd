@@ -48,6 +48,8 @@ func _on_room_transition_finished() -> void:
 		await C.Hanka.say("Mám baterku.")
 		await C.Alica.say("Psst! Tamhle u vrby… Někdo kope!")
 		await C.Alica.say("Hanko, posviť na něj! Klikni na Hanku!")
+	elif Globals.r_prints and not Globals.r_trail:
+		await _joey_trail()
 	elif not Globals.r_stump and C.player.last_room != "Mlyn":
 		await C.Deda.say("Jé… Rybník je mnohem menší, než byl. A lávka tu už dávno není.")
 		await C.Alica.say("Na mapě je jedna velká vrba. Ale tady jsou tři!")
@@ -62,7 +64,7 @@ func joey_goal() -> Vector2:
 		return C.Deda.position + Vector2(160, 60)
 	if Globals.r_evening and not Globals.r_tonda_ok and has_character("Tonda"):
 		return C.Tonda.position + Vector2(-200, 60)
-	if Globals.r_tonda_ok and not Globals.r_prints:
+	if Globals.r_tonda_ok and not Globals.r_trail:
 		return get_prop("Stopy").position + Vector2(-190, 20)
 	if Globals.r_trail:
 		return get_hotspot("KMlynu").walk_to_point
@@ -199,6 +201,9 @@ func _prints_click() -> void:
 	if Globals.r_tonda_ok and not Globals.r_prints:
 		await _compare_prints()
 		return
+	if Globals.r_prints and not Globals.r_trail:
+		await _joey_trail()
+		return
 	if C.player == C.Alica:
 		if not Globals.r_boots:
 			C.Alica.pose("lens")
@@ -308,6 +313,10 @@ func _compare_prints() -> void:
 	Globals.r_prints = true
 	await C.Alica.say("Ptáček to nebyl. Jezevec taky ne. Velká holinka… a hůlka!")
 	await C.Tonda.say("Rybářovy holinky jsou obří. To nebyl on.")
+	await _joey_trail()
+
+
+func _joey_trail() -> void:
 	await C.Hanka.say("Joey něco čmuchá!")
 	await C.Joey.say("Čmuch čmuch!")
 	await C.Joey.walk(Vector2(1800, 960))

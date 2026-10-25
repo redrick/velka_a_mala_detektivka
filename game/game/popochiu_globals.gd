@@ -208,6 +208,58 @@ var a_kitten := false      # děda's present: the kitten Micka (the "magpie" in 
 var a_bike := false        # the parents' present: the pink bike with a front fork (the tyre tracks)
 var a_seating := false     # everyone seated at the party table (minigame)
 
+# story 13 "Stopy u potoka" ---------------------------------------------------------------------------
+var b_day := 1             # 1 = arrival, 2 = after the first night, 3 = after the stake-out
+var b_intro := false       # the Klub camps on Hvězdná louka, děda's old tent
+var b_rock1 := false       # Bětka draws the measuring rock (drawing 1)
+var b_evening := false     # campfire: táta saws dead wood, Hanka peels her stick, Tonda's vlkodlak
+var b_night1 := false      # Hanka's torch at night: two eyes, PLESK; "To byla ryba."
+var b_stump := false       # morning: the willow is down, a pencil stump, wide tooth grooves under the lupa
+var b_stick := false       # děda's walking stick is gone
+var b_saw := false         # táta's saw makes a flat cut
+var b_knife := false       # Hanka's knife makes long thin curls
+var b_joey := false        # Joey's chewed branch: little holes
+var b_cuts := false        # every mark matched to what made it (minigame)
+var b_franta := false      # Franta fishing: "to bude vydra", draws an otter print
+var b_rock2 := false       # Bětka's drawing 2: the water is rising
+var b_tracks := false      # big webbed prints and a tail smear in the mud: not an otter
+var b_night2 := false      # the stake-out: eyes on the water, PLESK
+var b_stump2 := false      # the third morning: another stump
+var b_rock := false        # the three drawings in order, the days, tomorrow (minigame)
+var b_who := false         # who fells the willows? (minigame)
+var b_dam := false         # upstream: the pond, the dam, děda's stick woven in
+var b_hajny := false       # the hajný: a young beaver, the facts
+var b_quiz := false        # true or not? (minigame)
+var b_damgame := false     # where would a beaver build the dam? (minigame)
+var b_beaver := false      # dusk: Hryzálek, Joey gets splashed, Hanka names him
+var b_gift := false        # Hanka gives Hryzálek her peeled stick
+var b_tin := false         # the old Klub tin under the footbridge, Věrka, XIV
+var b_frogs := 0           # hidden frogs found (bit per frog)
+
+# story 14 "Poklad na hradě" --------------------------------------------------------------------------
+var h_intro := false       # the Klub at Točník's gate: Věrka's drawing, XIV forgotten, the legend
+var h_keys := false        # the kastelánka's keys by their Roman numbers (minigame): XIV = 14
+var h_court := false       # in the courtyard: Tonda puts his rohlík on the bench
+var h_windows := false     # hunting 14: only three windows
+var h_steps := false       # hunting 14: fourteen steps from the bench, nothing there
+var h_tower := false       # hunting 14: the tower has lots of holes
+var h_rohlik := false      # Tonda's rohlík is gone from the bench; "To byli medvědi!"
+var h_bears := false       # the bears can't get out of the moat; Joey slept all the time
+var h_evening := false     # the hall: ribbon and clip on the sill, Rudolf's ghost story
+var h_night := false       # rustling outside in the wall; Hanka's torch: nobody there
+var h_sill := false        # morning: things gone; bird prints and a black feather on the sill
+var h_kastel := false      # the kastelánka with her ladder only opens the shutters; pigeon feathers are grey
+var h_twigs := false       # twigs under the tower with Joey's black and white fur in them
+var h_drawing := false     # the kastelánka: putlog holes; Bětka draws the tower wall
+var h_dawn := false        # dawn: Hanka's torch, two pale eyes and the red ribbon in a hole
+var h_who := false         # who takes the things? (minigame)
+var h_quiz := false        # the kastelánka about jackdaws; true or not? (minigame)
+var h_count := false       # which hole is it? the 14th: XIV (minigame)
+var h_hole := false        # on the ladder Hanka's small hand brings out the things and the tin
+var h_name := false        # the jackdaw's name written: KÁJA (minigame)
+var h_tin := false         # Věrka remembers; the star map, the brass key, the note
+var h_found := 0           # hidden keys found (bit per key)
+
 ## Per-story progress next to Popochiu's save files: saved?, finished?, and the last story played.
 const PROGRESS := "user://progress.cfg"
 
@@ -219,11 +271,42 @@ func _ready() -> void:
 
 ## Autosave: whenever a story room has been entered (after its setup, before its cutscene).
 func _process(_delta: float) -> void:
+	if _scene_active():
+		set_meta("last_activity", Time.get_ticks_msec())
+	_smallest_hovered_wins()
 	if story <= 0 or not E.in_room or not is_instance_valid(R.current) or R.current.script_name == "Menu":
 		return
 	if get_meta("saved_room", 0) != R.current.get_instance_id():
 		set_meta("saved_room", R.current.get_instance_id())
 		save_now()
+
+
+## Popochiu lets the clickable entered last (or the one with the higher index among different parents)
+## win where clickables overlap, so a prop in front of a person or inside a big hotspot could never be
+## clicked. The smallest one under the mouse wins instead.
+func _smallest_hovered_wins() -> void:
+	var queue: Array = E._hovered_queue
+	if queue.size() < 2 or not is_instance_valid(queue[-1]):
+		return
+	var best: Node = queue[-1]
+	for n in queue:
+		if is_instance_valid(n) and n.is_visible_in_tree() and n.clickable and click_area(n) < click_area(best):
+			best = n
+	if best != queue[-1]:
+		queue.erase(best)
+		queue.append(best)
+		G.mouse_entered_clickable.emit(best)
+
+
+func click_area(n: Node) -> float:
+	var ip: CollisionPolygon2D = n.get_node_or_null("InteractionPolygon")
+	if ip == null or ip.polygon.size() < 3:
+		return INF
+	var poly := ip.global_transform * ip.polygon
+	var a := 0.0
+	for i in poly.size():
+		a += poly[i].cross(poly[(i + 1) % poly.size()])
+	return absf(a) / 2.0
 
 
 func _notification(what: int) -> void:
@@ -300,6 +383,51 @@ func bring_sister(room: PopochiuRoom, offset := Vector2(-170, 10)) -> void:
 	if x < 240.0 or x > 1680.0:
 		offset.x = -offset.x
 	other.position = C.player.position + offset
+	# a walk cut short by a room change (an exit clicked mid-cutscene) never ends by itself
+	if other.is_moving:
+		other.stop_walking()
+
+
+## A click while a scene is still running (the last click's lines, someone walking up, a card or a minigame on
+## screen) is ignored, so a quick second click can't start the same scene twice. The girls walking (the player and
+## her sister following) don't count, so the next thing can be clicked on the way. A scene Popochiu cancelled never
+## clears its mark, so the mark only counts while something happened in the last two seconds.
+func click_busy() -> bool:
+	var room := R.current
+	if not is_instance_valid(room) or not room.has_meta("click_busy"):
+		return false
+	return Time.get_ticks_msec() - get_meta("last_activity", 0) < 2000
+
+
+func _scene_active() -> bool:
+	var room := R.current
+	if not is_instance_valid(room):
+		return false
+	for chr in room.get_characters():
+		if chr.is_talking or (chr.is_moving and chr != sister()):
+			return true
+	for n in room.get_children():
+		if n is CanvasLayer and n.layer >= 40:
+			return true
+	return false
+
+
+## Marks the start of a click's scene; returns the room, or null when the click is to be ignored (then the
+## running scene keeps its clicked object, or Popochiu would treat it as cancelled).
+func click_begin() -> Node:
+	if click_busy():
+		var keep: Node = R.current.get_meta("clicked", null)
+		(func(): if is_instance_valid(keep): E.clicked = keep).call_deferred()
+		return null
+	R.current.set_meta("click_busy", true)
+	R.current.set_meta("clicked", E.clicked)
+	set_meta("last_activity", Time.get_ticks_msec())
+	return R.current
+
+
+func click_end(room: Node) -> void:
+	if is_instance_valid(room):
+		room.remove_meta("click_busy")
 
 
 func switch_to(chr: PopochiuCharacter) -> void:
@@ -322,7 +450,7 @@ func start_episode(start_room: String, number: int) -> void:
 	elif number == 4:
 		I.Dopis.add(false)
 		C.player = C.get_character("Hanka")
-	elif number in [5, 6, 7, 8, 9, 10, 11, 12]:
+	elif number in [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]:
 		I.Zapisnik.add(false)
 	if number == 8:
 		phase = "n_start"
@@ -344,6 +472,7 @@ func dress() -> void:
 	# girl with the pompom is Bětka once story 5 has introduced her
 	C.get_character("Rybar").description = "Pan Franta" if story >= 5 or (story == 4 and f_franta) else "Rybář"
 	C.get_character("Betka").description = "Holčička s bambulí" if story == 5 and not s_betka else "Bětka"
+	C.get_character("Betka").set_outfit("betkal" if story >= 12 else "betka")
 	C.get_character("Verka").description = "Paní Věrka" if story >= 4 else "Paní s kloboukem"
 	for who in [["Tonda", "Tonda"], ["Babicka", "Babička"], ["Deda", "Děda"]]:
 		C.get_character(who[0]).description = who[1]

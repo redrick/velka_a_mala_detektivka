@@ -4,6 +4,7 @@ extends Node
 
 var runner: Node
 var _shots := ""
+var _snaps := ""
 var _shot_n := 0
 
 
@@ -16,10 +17,15 @@ func _enter_tree() -> void:
 		if a.begins_with("--shots="):
 			_shots = a.substr(8)
 			DirAccess.make_dir_recursive_absolute(_shots)
+		if a.begins_with("--snaps="):
+			_snaps = a.substr(8)
+			DirAccess.make_dir_recursive_absolute(_snaps)
 
 
 ## With --shots=<dir> (and a window): a plain screenshot and one with the debug overlay.
 func shot(tag: String) -> void:
+	if _snaps != "" and is_instance_valid(R.current):
+		_snap(tag)
 	if _shots == "" or not is_instance_valid(R.current):
 		return
 	_shot_n += 1
@@ -186,3 +192,41 @@ func save_and_continue(number: int, room: String) -> void:
 	await in_room("Menu")
 	Globals.continue_episode(number)
 	await in_room(room)
+
+
+## With --snaps=<dir> (headless works): what the screen shows as JSON, every sprite with its texture, place, size,
+## colour and drawing order, plus the night tint. tools/snap_render.py draws it (the README pictures).
+func _snap(tag: String) -> void:
+	_shot_n += 1
+	var items := []
+	_collect(R.current, items, 0, Color.WHITE)
+	var tint := Color.WHITE
+	for n in R.current.get_children():
+		if n is CanvasModulate:
+			tint = n.color
+	var data := {"room": R.current.script_name, "tag": tag, "tint": [tint.r, tint.g, tint.b], "items": items}
+	var f := FileAccess.open("%s/%03d_%s_%s.json" % [_snaps, _shot_n, R.current.script_name, tag.validate_filename()],
+		FileAccess.WRITE)
+	f.store_string(JSON.stringify(data))
+
+
+func _collect(n: Node, items: Array, z: int, mod: Color) -> void:
+	if n is CanvasItem:
+		if not n.visible:
+			return
+		z = n.z_index + (z if n.z_as_relative else 0)
+		mod = mod * n.modulate
+	if n is CanvasLayer:
+		return
+	if n is Sprite2D and n.texture and n.texture.resource_path != "":
+		var owner_node: Node = n.get_parent()
+		while owner_node and not (owner_node is PopochiuClickable) and owner_node != R.current:
+			owner_node = owner_node.get_parent()
+		var key: float = owner_node.global_position.y if owner_node is PopochiuClickable else n.global_position.y
+		var t: Transform2D = n.global_transform
+		var c: Color = mod * n.self_modulate
+		items.append({"tex": n.texture.resource_path, "x": t.origin.x, "y": t.origin.y, "sx": t.get_scale().x,
+			"sy": t.get_scale().y, "rot": t.get_rotation(), "flip": n.flip_h, "ox": n.offset.x, "oy": n.offset.y,
+			"centered": n.centered, "z": z, "key": key, "mod": [c.r, c.g, c.b, c.a]})
+	for ch in n.get_children():
+		_collect(ch, items, z, mod)

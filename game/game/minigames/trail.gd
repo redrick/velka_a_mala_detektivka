@@ -61,6 +61,7 @@ func _build(i: int) -> void:
 	_won = false
 	var rows: Array = LEVELS[i]
 	_size = Vector2i((rows[0] as String).length(), rows.size())
+	tile = minf(tile, 640.0 / _size.y)
 	set_board_size(_size.x, _size.y)
 	for y in _size.y:
 		for x in _size.x:

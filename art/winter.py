@@ -117,6 +117,11 @@ def betka(x, y, s=1.0, flip=False, left="down", right="down", mood="happy", look
         face(0, cy, r, mood, look, young=True)
         shape(bez((-r*0.95, cy + r*0.25), (-r*0.5, cy + r*0.55), (r*0.5, cy + r*0.55), (r*0.95, cy + r*0.25)) +
               [(r*0.95, cy + r*0.55), (-r*0.95, cy + r*0.55)], P.BETKA_HAIR, LINE*0.6)
+        if not hat:
+            top = bez((-r*1.0, cy + r*0.3), (-r*1.05, cy + r*1.25), (r*1.05, cy + r*1.25), (r*1.0, cy + r*0.3)) + \
+                  bez((r*1.0, cy + r*0.3), (r*0.5, cy + r*0.6), (-r*0.5, cy + r*0.6), (-r*1.0, cy + r*0.3))
+            shape(top, P.BETKA_HAIR, LINE*0.8)
+            stroke(bez((r*0.15, cy + r*1.08), (r*0.1, cy + r*0.85), (r*0.05, cy + r*0.7), (0, cy + r*0.58)), LINE*0.5, g=0.35)
     if hat:
         winter_hat(x, y, s, "betka", P.BETKA_HAT, flip, pompom=P.POMPOM)
 

@@ -19,6 +19,7 @@ const PCTata := preload("res://game/characters/tata/character_tata.gd")
 const PCLucie := preload("res://game/characters/lucie/character_lucie.gd")
 const PCSkolnik := preload("res://game/characters/skolnik/character_skolnik.gd")
 const PCMalyKarel := preload("res://game/characters/maly_karel/character_maly_karel.gd")
+const PCKastelanka := preload("res://game/characters/kastelanka/character_kastelanka.gd")
 # ---- classes
 
 # nodes ----
@@ -39,6 +40,7 @@ var Tata: PCTata : get = get_Tata
 var Lucie: PCLucie : get = get_Lucie
 var Skolnik: PCSkolnik : get = get_Skolnik
 var MalyKarel: PCMalyKarel : get = get_MalyKarel
+var Kastelanka: PCKastelanka : get = get_Kastelanka
 # ---- nodes
 
 # functions ----
@@ -59,5 +61,6 @@ func get_Tata() -> PCTata: return get_runtime_character("Tata")
 func get_Lucie() -> PCLucie: return get_runtime_character("Lucie")
 func get_Skolnik() -> PCSkolnik: return get_runtime_character("Skolnik")
 func get_MalyKarel() -> PCMalyKarel: return get_runtime_character("MalyKarel")
+func get_Kastelanka() -> PCKastelanka: return get_runtime_character("Kastelanka")
 # ---- functions
 

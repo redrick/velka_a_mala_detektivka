@@ -22,7 +22,8 @@ EXTRA = ["Velký!", "Malý!", "Nastraž past", "Kam svítí hvězdička", "Dvace
          "příběh 1 · posouvání pytlíků", "příběh 2 · zrcátka a paprsek", "příběh 3 · plánování kroků",
          "Čí je to stopa?", "Kdo to byl?", "příběh 3 · stopy v bahně", "příběh 3 · kdo vykopal poklad", "doprava", "doleva", "nahoru", "hvězdička", "srdíčko", "měsíček", "zrníčková hvězda", "kost", "rukavici", "srnka", "divočák", "zajíc", "liška", "pes", "kolečko",
          "Doleva!", "Doprava!", "Nahoru!", "Dolů!", "Alica", "Joey", "kobyla", "Kos", "Vrabec",
-         "Pan Franta", "Bětka", "Rybář", "Paní Věrka", "Medvědář", "Kobyla", "Medvěd", "Bába s nůší", "Tonda", "Babička", "Děda"]
+         "Pan Franta", "Bětka", "Rybář", "Paní Věrka", "Medvědář", "Kobyla", "Medvěd", "Bába s nůší", "Tonda", "Babička", "Děda",
+         "SOBOTA", "KÁJA", "AŽ", "KAVKA", "ÁH", "Kája je kavka. KAVKA!", "IV (čtyři)", "IX (devět)", "XIV (čtrnáct)"]
 
 
 def unescape(s):

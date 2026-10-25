@@ -45,6 +45,8 @@ func _on_room_transition_finished() -> void:
 		sfx("TRA-TA-TÁ!", Vector2(1200, 260), 90)
 		await C.Alica.say("Masopustní průvod! Tři masky mají hvězdičku: kobyla, kominík a bába s nůší.")
 		await C.Hanka.say("Kdo z nich napsal zprávu?")
+	elif not Globals.z_end:
+		await _reveal()
 
 
 func joey_goal() -> Vector2:
@@ -84,14 +86,21 @@ func on_character(chr: PopochiuCharacter, action: String, _item: PopochiuInvento
 
 func _who() -> void:
 	await C.player.walk(get_marker_position("Baba") + Vector2(0, 130))
-	if Globals.z_who:
+	if Globals.z_end:
 		await C.Babicka.say("Zatancujeme si, medvěde?")
+		return
+	if Globals.z_who:
+		await _reveal()
 		return
 	await C.Alica.say("STOP, detektive! Kdo napsal zprávu?")
 	var mg: CanvasLayer = WhoGame.new()
 	add_child(mg)
 	await mg.finished
 	Globals.z_who = true
+	await _reveal()
+
+
+func _reveal() -> void:
 	C.Hanka.pose("point")
 	await C.Hanka.say("Bába má na šátku zoubky! A voní levandulí!")
 	C.Hanka.pose()

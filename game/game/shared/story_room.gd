@@ -372,6 +372,29 @@ func the_end(part_line: String) -> void:
 	Globals.go_to_menu()
 
 
+## Hidden-object game: props named <prefix><n> (Zaba1, Zaba2…), found ones remembered as bits in Globals[flag].
+## Hides the found ones on entry (call with node = null) or handles a click on one; true when it was one.
+func hidden_thing(node: Node, prefix: String, flag: String, total: int, word: String) -> bool:
+	var mask: int = Globals.get(flag)
+	if node == null:
+		for n in range(1, total + 1):
+			if has_node("Props/%s%d" % [prefix, n]):
+				get_prop("%s%d" % [prefix, n]).visible = mask & (1 << n) == 0
+		return false
+	if not node.script_name.begins_with(prefix) or not node.script_name.substr(prefix.length()).is_valid_int():
+		return false
+	var n := int(node.script_name.substr(prefix.length()))
+	node.hide()
+	mask |= 1 << n
+	Globals.set(flag, mask)
+	var found := 0
+	for k in range(1, total + 1):
+		if mask & (1 << k):
+			found += 1
+	await C.player.say(tr("%s! Už mám %d z %d.") % [tr(word), found, total])
+	return true
+
+
 func glow_texture() -> GradientTexture2D:
 	var g := Gradient.new()
 	g.set_color(0, Color(1, 1, 1, 1))

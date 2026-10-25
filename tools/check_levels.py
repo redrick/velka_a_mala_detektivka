@@ -401,4 +401,14 @@ for i, rows in enumerate(levels("steps.gd"), 1):
     sol = solve_steps(rows)
     print(f"kroky {i}: {'NESPLNITELNÉ' if sol is None else f'nejkratší {len(sol)} kroků'}", "".join(sol or []))
     ok &= sol is not None
+from dam_solver import answers as dam_answers
+for i, (rows, k) in enumerate(zip(levels("dam.gd"), const_list("dam.gd", "BRANCHES")), 1):
+    n, sols = dam_answers(rows, k)
+    print(f"hráz {i}: {'NESPLNITELNÉ' if n is None else f'{n} větve (máš {k}), {len(sols)} řešení'}")
+    ok &= n is not None
+for i, (rows, t) in enumerate(zip(levels("holes.gd"), const_list("holes.gd", "TARGET")), 1):
+    holes = [ch for row in rows for ch in row if ch != "#"]
+    good = len(holes) >= t and (i < len(const_list("holes.gd", "TARGET")) or holes[t - 1] == "r")
+    print(f"díry {i}: {len(holes)} děr, hledá se {t}. {'' if good else 'CHYBA'}")
+    ok &= good
 sys.exit(0 if ok else 1)

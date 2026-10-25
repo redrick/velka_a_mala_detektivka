@@ -28,9 +28,11 @@ func _on_room_entered() -> void:
 
 
 func _on_room_transition_finished() -> void:
-	if Globals.phase == "p_spruce":
+	if Globals.phase == "p_spruce" or (Globals.p_who and not Globals.p_spruce):
 		Globals.phase = ""
 		await _caught()
+	elif Globals.p_stars:
+		await _finale()
 
 
 func joey_goal() -> Vector2:
@@ -96,7 +98,7 @@ func _spruce() -> void:
 	if not Globals.p_spruce:
 		return
 	if Globals.p_stars:
-		await C.player.say("Hvězdičky se jmény. A zrníčkové hvězdy pro ptáčky.")
+		await _finale()
 		return
 	await C.Deda.say("Pravidlo Klubu Hvězdička: na každé větvi visí od každé ozdoby jedna.")
 	await C.Deda.say("A nad sebou nikdy dvě stejné.")
@@ -104,6 +106,10 @@ func _spruce() -> void:
 	add_child(mg)
 	await mg.finished
 	Globals.p_stars = true
+	await _finale()
+
+
+func _finale() -> void:
 	await pop("NoveHvezdy")
 	await C.Hanka.say("ALICA a HANKA! Naše hvězdičky!")
 	place("Babicka", Vector2(-150, 940))

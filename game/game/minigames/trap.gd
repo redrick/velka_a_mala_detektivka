@@ -67,6 +67,7 @@ func _build(i: int) -> void:
 	var rows: Array = _made[i]
 	_walls.clear(); _goals.clear(); _boxes.clear(); _box_nodes.clear(); _history.clear()
 	_size = Vector2i(rows[0].length(), rows.size())
+	tile = minf(TILE, 640.0 / _size.y)
 	set_board_size(_size.x, _size.y)
 	for y in rows.size():
 		for x in rows[y].length():

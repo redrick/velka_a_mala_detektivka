@@ -47,6 +47,12 @@ const PRChalupa12 := preload("res://game/rooms/chalupa12/room_chalupa12.gd")
 const PRVes12 := preload("res://game/rooms/ves12/room_ves12.gd")
 const PRChodba12 := preload("res://game/rooms/chodba12/room_chodba12.gd")
 const PRZahrada12 := preload("res://game/rooms/zahrada12/room_zahrada12.gd")
+const PRLouka13 := preload("res://game/rooms/louka13/room_louka13.gd")
+const PRPotok13 := preload("res://game/rooms/potok13/room_potok13.gd")
+const PRHraz13 := preload("res://game/rooms/hraz13/room_hraz13.gd")
+const PRBrana14 := preload("res://game/rooms/brana14/room_brana14.gd")
+const PRNadvori14 := preload("res://game/rooms/nadvori14/room_nadvori14.gd")
+const PRSal14 := preload("res://game/rooms/sal14/room_sal14.gd")
 # ---- classes
 
 # nodes ----
@@ -95,6 +101,12 @@ var Chalupa12: PRChalupa12 : get = get_Chalupa12
 var Ves12: PRVes12 : get = get_Ves12
 var Chodba12: PRChodba12 : get = get_Chodba12
 var Zahrada12: PRZahrada12 : get = get_Zahrada12
+var Louka13: PRLouka13 : get = get_Louka13
+var Potok13: PRPotok13 : get = get_Potok13
+var Hraz13: PRHraz13 : get = get_Hraz13
+var Brana14: PRBrana14 : get = get_Brana14
+var Nadvori14: PRNadvori14 : get = get_Nadvori14
+var Sal14: PRSal14 : get = get_Sal14
 # ---- nodes
 
 # functions ----
@@ -143,5 +155,11 @@ func get_Chalupa12() -> PRChalupa12: return get_runtime_room("Chalupa12")
 func get_Ves12() -> PRVes12: return get_runtime_room("Ves12")
 func get_Chodba12() -> PRChodba12: return get_runtime_room("Chodba12")
 func get_Zahrada12() -> PRZahrada12: return get_runtime_room("Zahrada12")
+func get_Louka13() -> PRLouka13: return get_runtime_room("Louka13")
+func get_Potok13() -> PRPotok13: return get_runtime_room("Potok13")
+func get_Hraz13() -> PRHraz13: return get_runtime_room("Hraz13")
+func get_Brana14() -> PRBrana14: return get_runtime_room("Brana14")
+func get_Nadvori14() -> PRNadvori14: return get_runtime_room("Nadvori14")
+func get_Sal14() -> PRSal14: return get_runtime_room("Sal14")
 # ---- functions
 

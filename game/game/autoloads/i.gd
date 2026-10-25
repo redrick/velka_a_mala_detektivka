@@ -18,6 +18,7 @@ const PIINovyDopis := preload("res://game/inventory_items/novy_dopis/inventory_i
 const PIIKlicHodin := preload("res://game/inventory_items/klic_hodin/inventory_item_klic_hodin.gd")
 const PIIRukavicka := preload("res://game/inventory_items/rukavicka/inventory_item_rukavicka.gd")
 const PIIPahyl := preload("res://game/inventory_items/pahyl/inventory_item_pahyl.gd")
+const PIIKlacik := preload("res://game/inventory_items/klacik/inventory_item_klacik.gd")
 # ---- classes
 
 # nodes ----
@@ -37,6 +38,7 @@ var NovyDopis: PIINovyDopis : get = get_NovyDopis
 var KlicHodin: PIIKlicHodin : get = get_KlicHodin
 var Rukavicka: PIIRukavicka : get = get_Rukavicka
 var Pahyl: PIIPahyl : get = get_Pahyl
+var Klacik: PIIKlacik : get = get_Klacik
 # ---- nodes
 
 # functions ----
@@ -56,5 +58,6 @@ func get_NovyDopis() -> PIINovyDopis: return get_item_instance("NovyDopis")
 func get_KlicHodin() -> PIIKlicHodin: return get_item_instance("KlicHodin")
 func get_Rukavicka() -> PIIRukavicka: return get_item_instance("Rukavicka")
 func get_Pahyl() -> PIIPahyl: return get_item_instance("Pahyl")
+func get_Klacik() -> PIIKlacik: return get_item_instance("Klacik")
 # ---- functions
 
