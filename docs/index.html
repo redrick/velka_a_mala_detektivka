@@ -9,108 +9,223 @@
 <style>
 @font-face { font-family: "TataHand"; src: url("fonts/TataHand.ttf") format("truetype"); }
 :root {
-  --paper: #fbf6ec; --ink: #2b2620; --soft: #6b6152; --card: #fffdf8; --line: #e3d9c6;
-  --yellow: #f6c744; --red: #d63a3a; --green: #6fa85a; --blue: #4f8fc4;
+  --paper: #fbf5e8; --paper2: #f4ead5; --ink: #2b2620; --soft: #6b6152; --card: #fffdf7; --line: #e2d6bf;
+  --yellow: #f6c744; --red: #d9473f; --green: #6fa85a; --blue: #4f8fc4; --pink: #e98aa4;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink);
-  font: 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(120, 95, 50, .07) 1px, transparent 1.2px),
+                    radial-gradient(rgba(120, 95, 50, .05) 1px, transparent 1.2px);
+  background-size: 22px 22px, 37px 37px; background-position: 0 0, 11px 7px; }
 h1, h2, h3, .hand { font-family: "TataHand", "Comic Sans MS", cursive; font-weight: normal; }
 a { color: var(--blue); }
-header { text-align: center; padding: 28px 16px 8px; }
-header img.logo { width: min(260px, 60vw); }
-header p.tag { font-size: 1.25rem; color: var(--soft); margin: 6px auto 0; max-width: 640px; }
-.banner { display: block; width: 100%; max-height: 320px; object-fit: cover; margin: 18px 0 0; }
-main { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
-section { margin-top: 40px; }
-h2 { font-size: 2.1rem; margin: 0 0 8px; }
-.intro { max-width: 860px; }
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px; margin-top: 18px; }
-.fact { background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 14px 16px; }
-.fact b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.35rem; display: block; }
-.stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; margin-top: 18px; }
-.story { background: var(--card); border: 2px solid var(--line); border-radius: 14px; padding: 10px; cursor: pointer;
-  text-align: left; font: inherit; color: inherit; transition: transform .12s, box-shadow .12s; }
-.story:hover, .story:focus-visible { transform: translateY(-3px) rotate(-.4deg); box-shadow: 0 6px 16px rgba(60, 45, 20, .15);
-  outline: none; border-color: var(--yellow); }
-.story img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 9px; display: block; }
-.story .num { font-family: "TataHand", cursive; color: var(--red); font-size: 1.2rem; margin-top: 8px; display: block; }
-.story .title { font-family: "TataHand", cursive; font-size: 1.3rem; line-height: 1.2; display: block; }
-.story .en { color: var(--soft); font-size: .9rem; }
-.story.soon { cursor: default; opacity: .6; }
-.story.soon:hover { transform: none; box-shadow: none; border-color: var(--line); }
-.story.soon .ph { aspect-ratio: 16 / 9; border-radius: 9px; background: repeating-linear-gradient(45deg, #efe6d4, #efe6d4 10px, #f6efe1 10px, #f6efe1 20px);
-  display: flex; align-items: center; justify-content: center; font-family: "TataHand", cursive; font-size: 1.4rem; color: var(--soft); }
-dialog { border: none; border-radius: 18px; padding: 0; width: min(980px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
-  background: var(--card); color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
-dialog::backdrop { background: rgba(40, 32, 20, .55); }
-.d-head { display: flex; align-items: baseline; gap: 12px; padding: 18px 20px 6px; }
-.d-head h3 { margin: 0; font-size: 2rem; line-height: 1.1; }
+img { max-width: 100%; }
+
+/* hero */
+.hero { position: relative; max-width: 1180px; margin: 0 auto; padding: 22px 16px 10px; }
+.panel { background: #fff; border: 4px solid var(--ink); border-radius: 6px 10px 7px 12px; padding: 8px;
+  box-shadow: 8px 8px 0 rgba(43, 38, 32, .85); transform: rotate(-.6deg); }
+.panel img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.hero-text { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; justify-content: center; margin-top: 26px; text-align: center; }
+.hero-text h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1; }
+.hero-text p { margin: 4px 0 0; color: var(--soft); font-size: 1.15rem; }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn { font-family: "TataHand", cursive; font-size: 1.35rem; text-decoration: none; color: var(--ink); background: var(--yellow);
+  border: 3px solid var(--ink); border-radius: 12px 9px 13px 8px; padding: 6px 18px; box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .1s, box-shadow .1s; display: inline-block; }
+.btn:hover { transform: translate(-2px, -2px) rotate(-1deg); box-shadow: 6px 6px 0 var(--ink); }
+.btn.alt { background: #fff; }
+
+main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
+section { margin-top: 70px; position: relative; }
+h2 { font-size: clamp(2rem, 4.5vw, 2.7rem); margin: 0 0 6px; line-height: 1.1; }
+h2 .mark { background: linear-gradient(transparent 58%, rgba(246, 199, 68, .7) 58%); padding: 0 6px; }
+.lead { color: var(--soft); max-width: 760px; margin: 0 0 18px; }
+
+/* who's who */
+.cast { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 0; padding-top: 6px; }
+.who { flex: 0 0 auto; text-align: center; width: 96px; }
+.fig { height: 206px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px;
+  background: linear-gradient(to top, transparent 0 2px, #8cbf72 2px 14px, var(--ink) 14px 16px, transparent 16px); }
+.fig img { height: 184px; width: auto; display: block; transition: transform .2s; transform-origin: bottom center; }
+.who.small .fig img { height: 132px; }
+.who.dog .fig img { height: 100px; }
+.who:hover .fig img { transform: rotate(-4deg) translateY(-6px); }
+.who b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.25rem; display: block; margin-top: 6px; line-height: 1.1; }
+.who span { font-size: .78rem; color: var(--soft); display: block; line-height: 1.3; padding: 0 4px; }
+
+/* how it works */
+.steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items: center; }
+.step { background: var(--card); border: 3px solid var(--ink); border-radius: 14px 10px 16px 11px; padding: 12px; text-align: center;
+  box-shadow: 5px 5px 0 rgba(43, 38, 32, .8); }
+.step img { border-radius: 8px; border: 2px solid var(--line); display: block; margin: 0 auto 8px; }
+.step.c1 { transform: rotate(-1.2deg); } .step.c2 { transform: rotate(.8deg); } .step.c3 { transform: rotate(-.5deg); }
+.step b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.5rem; display: block; }
+.step p { margin: 2px 0 0; font-size: .95rem; color: var(--soft); }
+.arrow { font-family: "TataHand", cursive; font-size: 2.6rem; color: var(--red); }
+.skills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 8px; }
+.skills span { background: #fff4cf; border: 2px solid #f0dc94; border-radius: 999px; padding: 1px 10px; font-size: .85rem; }
+
+/* stories */
+.stories { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 26px 20px; margin-top: 24px; }
+.story { position: relative; background: #fff; border: 2px solid var(--line); border-radius: 4px; padding: 10px 10px 12px; cursor: pointer;
+  text-align: left; font: inherit; color: inherit; box-shadow: 0 3px 10px rgba(60, 45, 20, .12);
+  transition: transform .15s, box-shadow .15s; }
+.story:nth-child(3n+1) { transform: rotate(-1.4deg); }
+.story:nth-child(3n+2) { transform: rotate(.9deg); }
+.story:nth-child(3n) { transform: rotate(-.4deg); }
+.story::before { content: ""; position: absolute; top: -11px; left: 50%; width: 74px; height: 22px; margin-left: -37px;
+  background: rgba(246, 199, 68, .55); border: 1px solid rgba(180, 140, 30, .35); transform: rotate(-3deg); }
+.story:hover, .story:focus-visible { transform: rotate(0) translateY(-5px) scale(1.03); box-shadow: 0 12px 24px rgba(60, 45, 20, .22); outline: none; z-index: 2; }
+.story img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border: 1px solid var(--line); }
+.story .num { position: absolute; top: 18px; left: 2px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  font-family: "TataHand", cursive; font-size: 1.35rem; color: #fff; background: var(--red); border: 2px solid var(--ink);
+  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); padding-top: 6px; }
+.story .title { font-family: "TataHand", cursive; font-size: 1.4rem; line-height: 1.15; display: block; margin-top: 8px; }
+.story .en { color: var(--soft); font-size: .88rem; display: block; }
+.story.soon { cursor: default; background: var(--paper2); }
+.story.soon:hover { transform: rotate(.9deg); box-shadow: 0 3px 10px rgba(60, 45, 20, .12); }
+.story.soon .ph { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; border: 2px dashed #cbbd9f;
+  font-family: "TataHand", cursive; font-size: 1.5rem; color: var(--soft); }
+
+/* rules */
+.rules { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+.rules ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px 22px; }
+.rules li { background: var(--card); border-left: 6px solid var(--yellow); border-radius: 4px 10px 10px 4px; padding: 8px 12px;
+  box-shadow: 0 2px 6px rgba(60, 45, 20, .08); }
+.rules li b { font-family: "TataHand", cursive; font-weight: normal; font-size: 1.25rem; display: block; }
+.rules .joey img { height: 130px; }
+.rules .joey span { font-family: "TataHand", cursive; font-size: 1.4rem; display: block; text-align: center; transform: rotate(-4deg); }
+
+/* decorations */
+.deco { position: absolute; pointer-events: none; }
+.trail { display: flex; justify-content: center; gap: 30px; opacity: .55; margin: 46px 0 0; }
+.trail img { height: 34px; }
+.trail img:nth-child(odd) { transform: rotate(8deg) translateY(6px); }
+.trail img:nth-child(even) { transform: rotate(-6deg); }
+footer { text-align: center; color: var(--soft); padding: 18px 16px 40px; font-size: .95rem; }
+footer .hand { font-size: 1.4rem; color: var(--ink); display: block; }
+
+/* dialog */
+dialog { border: 4px solid var(--ink); border-radius: 14px; padding: 0; width: min(1000px, calc(100vw - 24px)); max-height: calc(100vh - 24px);
+  background: var(--card); color: var(--ink); box-shadow: 10px 10px 0 rgba(43, 38, 32, .85); }
+dialog::backdrop { background: rgba(40, 32, 20, .6); }
+.d-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; padding: 16px 20px 6px; }
+.d-head h3 { margin: 0; font-size: 2.1rem; line-height: 1.1; }
 .d-head .en { color: var(--soft); }
-.d-head button { margin-left: auto; font: inherit; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--soft); }
+.d-head button { margin-left: auto; font: inherit; font-size: 1.4rem; background: var(--yellow); border: 2px solid var(--ink);
+  border-radius: 50%; width: 40px; height: 40px; cursor: pointer; }
 .d-pics { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 14px; padding: 8px 20px; }
-.d-pics img { width: 100%; border-radius: 10px; border: 2px solid var(--line); display: block; }
-.d-text { padding: 4px 20px 22px; }
-.d-text p { margin: 8px 0; }
+.d-pics img { width: 100%; border-radius: 6px; border: 2px solid var(--ink); display: block; }
+.d-text { padding: 4px 20px 16px; }
+.d-text p { margin: 8px 0; font-size: 1.05rem; }
 .puzzles { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.puzzles li { background: #fff4cf; border: 2px solid #f0dc94; border-radius: 999px; padding: 4px 12px; font-size: .95rem; }
+.puzzles li { background: #fff4cf; border: 2px solid #f0dc94; border-radius: 999px; padding: 3px 12px; font-size: .95rem; }
 .d-nav { display: flex; justify-content: space-between; padding: 0 20px 18px; }
-.d-nav button { font: inherit; background: var(--paper); border: 2px solid var(--line); border-radius: 10px; padding: 6px 14px; cursor: pointer; }
-.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px 24px; padding: 0; list-style: none; }
-.rules li::before { content: "★ "; color: var(--yellow); }
-footer { text-align: center; color: var(--soft); padding: 24px 16px 40px; font-size: .95rem; }
-@media (max-width: 640px) {
+.d-nav button { font-family: "TataHand", cursive; font-size: 1.25rem; background: #fff; border: 2px solid var(--ink); border-radius: 10px;
+  padding: 2px 14px; cursor: pointer; box-shadow: 3px 3px 0 var(--ink); }
+
+@media (max-width: 760px) {
+  .cast { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 8px; }
+  .stories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .story .title { font-size: 1.15rem; }
+  .story .en { font-size: .78rem; }
+  .story .num { width: 36px; height: 36px; font-size: 1.1rem; }
+  .steps { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); text-align: center; }
+  .rules { grid-template-columns: 1fr; }
+  .rules .joey { justify-self: center; }
   .d-pics { grid-template-columns: 1fr; }
-  .d-pics img.cover { max-width: 240px; margin: 0 auto; }
-  h2 { font-size: 1.8rem; }
+  .d-pics img.cover { max-width: 230px; margin: 0 auto; }
+  .panel { box-shadow: 5px 5px 0 rgba(43, 38, 32, .85); }
 }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
-<header>
-  <img class="logo" src="img/logo.png" alt="Velká a malá detektivka">
-  <p class="tag">Comics and a point-and-click game, made at home for two small detectives</p>
+<header class="hero">
+  <div class="panel"><img src="img/banner.png" alt="The big sister with a magnifier, the little sister with her orangutan, and Joey the dog sniffing footprints"></div>
+  <div class="hero-text">
+    <div>
+      <h1>Velká a malá detektivka</h1>
+      <p>Comics and a point-and-click game, made at home for two small detectives</p>
+    </div>
+    <div class="btns">
+      <a class="btn" href="#stories">The stories</a>
+      <a class="btn alt" href="https://github.com/redrick/velka_a_mala_detektivka">GitHub</a>
+    </div>
+  </div>
 </header>
-<img class="banner" src="img/banner.png" alt="The big sister with a magnifier, the little sister with her orangutan, and the dog sniffing footprints">
 
 <main>
-  <section class="intro">
-    <h2>What is this?</h2>
-    <p>A family project for two sisters, a big one (7) and a little one (4). They solve gentle mysteries at their
-    grandparents' cottage, with a magnifier, a torch, a plush orangutan and a very clever border collie called Joey.</p>
-    <p>Every story is first a printed comic, read at bedtime. The next day the girls play the same story on the
-    computer, where it gets new puzzles the comic doesn't have. The goal is to get small kids comfortable on a
-    computer through play, and to practise logic and reading on the way.</p>
-    <div class="facts">
-      <div class="fact"><b>16 stories</b>One series, from autumn to the next summer, held together by grandpa's childhood club, Klub Hvězdička.</div>
-      <div class="fact"><b>14 ready</b>Issues 1–14 exist as printable comics and as playable game stories.</div>
-      <div class="fact"><b>Drawn in code</b>Every picture is drawn in Python, the same library for the comic and the game.</div>
-      <div class="fact"><b>Czech + English</b>Big hand-lettered subtitles, so a grown-up can read along.</div>
+  <section id="cast">
+    <h2><span class="mark">Who's who</span></h2>
+    <p class="lead">Two sisters solve gentle mysteries at their grandparents' cottage and in their village. Every
+    picture is drawn in Python code, the same drawings for the comic and the game.</p>
+    <div class="cast">
+      <div class="who"><div class="fig"><img src="img/chars/alica_lens.png" alt=""></div><b>Alica</b><span>7, the big detective, with a magnifier</span></div>
+      <div class="who small"><div class="fig"><img src="img/chars/hanka_torch.png" alt=""></div><b>Hanka</b><span>4, the little detective, with a torch and opička</span></div>
+      <div class="who dog"><div class="fig"><img src="img/chars/joey_sniff.png" alt=""></div><b>Joey</b><span>border collie, the best nose</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/deda_happy.png" alt=""></div><b>Děda</b><span>grandpa, once in Klub Hvězdička</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/babicka_happy.png" alt=""></div><b>Babička</b><span>grandma, counts the gingerbread</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/tonda_happy.png" alt=""></div><b>Tonda</b><span>the neighbour boy, full of theories</span></div>
+      <div class="who small"><div class="fig"><img src="img/chars/betkal_happy.png" alt=""></div><b>Bětka</b><span>likes to draw everything</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/verka_happy.png" alt=""></div><b>Věrka</b><span>another old Klub member</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/rybar_happy.png" alt=""></div><b>Franta</b><span>the fisherman, Bětka's grandpa</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/hajny_happy.png" alt=""></div><b>Hajný</b><span>the gamekeeper, knows every track</span></div>
+      <div class="who"><div class="fig"><img src="img/chars/kastelanka_keys.png" alt=""></div><b>Kastelánka</b><span>keeps the castle keys</span></div>
     </div>
   </section>
 
-  <section>
-    <h2>The stories</h2>
-    <p>Click a story to see the comic and the game.</p>
-    <div class="stories" id="stories"></div>
+  <section id="how">
+    <h2><span class="mark">From the comic to the game</span></h2>
+    <p class="lead">Every story is first a printed comic, read at bedtime. The next day the girls play the same story
+    on the computer, where it gets new puzzles the comic doesn't have.</p>
+    <div class="steps">
+      <div class="step c1"><img src="img/stories/03_comic.jpg" alt="Comic cover" height="190"><b>1. Read</b><p>A hand-inked comic, printed as a little booklet.</p></div>
+      <div class="arrow">→</div>
+      <div class="step c2"><img src="img/stories/03_game.jpg" alt="Game scene" height="190"><b>2. Play</b><p>Click to walk, look and talk. The dog helps when you're stuck.</p></div>
+      <div class="arrow">→</div>
+      <div class="step c3"><img src="img/stories/14_game.jpg" alt="Castle scene" height="190"><b>3. Solve</b><p>Logic puzzles you can't lose: undo, try again, ask Joey.</p>
+        <div class="skills"><span>logic</span><span>planning</span><span>reading</span><span>counting</span><span>patterns</span><span>Roman numerals</span><span>tracks</span></div></div>
+    </div>
   </section>
 
-  <section>
-    <h2>Made for small hands</h2>
-    <ul class="rules">
-      <li>One click does the obvious thing. No verb menus, big targets.</li>
-      <li>Nothing scary, no way to lose, no timers. Every "culprit" is an animal or a kind person.</li>
-      <li>Stuck? Click the dog. Joey sniffs and walks towards the next goal.</li>
-      <li>Both sisters are playable. Some puzzles need the small one.</li>
-      <li>Every puzzle has undo, try again and a hint.</li>
-      <li>Saves itself in every room.</li>
-    </ul>
+  <section id="stories">
+    <h2><span class="mark">The stories</span></h2>
+    <p class="lead">Series 1 has 16 stories, from autumn to the next summer, held together by grandpa's childhood
+    club, Klub Hvězdička. Stories 1–14 are ready as comics and as games. Click one to look inside.</p>
+    <div class="stories" id="story-grid"></div>
+    <img class="deco" src="img/deco/sock_red.png" alt="" style="right: -6px; top: -20px; height: 70px; transform: rotate(18deg);">
   </section>
+
+  <section id="rules">
+    <h2><span class="mark">Made for small hands</span></h2>
+    <div class="rules">
+      <ul>
+        <li><b>One click does it</b>No verb menus. Big things to click, with a hand cursor.</li>
+        <li><b>Nothing scary</b>No way to lose, no timers. Every "culprit" is an animal or a kind person.</li>
+        <li><b>Stuck? Click the dog</b>Joey sniffs and walks towards the next thing to do.</li>
+        <li><b>Two detectives</b>Switch between the sisters. Some puzzles need the small one.</li>
+        <li><b>Czech and English</b>Big hand-lettered subtitles, so a grown-up can read along.</li>
+        <li><b>Saves by itself</b>Every room is saved; "Pokračovat" goes on where you stopped.</li>
+      </ul>
+      <div class="joey"><img src="img/chars/joey_sniff.png" alt=""><span>Čmuch čmuch!</span></div>
+    </div>
+  </section>
+
+  <div class="trail" aria-hidden="true">
+    <img src="img/deco/footprints.png" alt=""><img src="img/deco/frog13.png" alt=""><img src="img/deco/footprints.png" alt="">
+    <img src="img/deco/hidkey14.png" alt=""><img src="img/deco/footprints.png" alt=""><img src="img/deco/kavka14.png" alt="">
+    <img src="img/deco/footprints.png" alt=""><img src="img/deco/beaver13_sit.png" alt="">
+  </div>
 </main>
 
 <footer>
-  Made with ❤️, a magnifier and a lot of missing socks ·
-  <a href="https://github.com/redrick/velka_a_mala_detektivka">source on GitHub</a> · all rights reserved
+  <span class="hand">Made with a magnifier and a lot of missing socks</span>
+  <a href="https://github.com/redrick/velka_a_mala_detektivka">Source on GitHub</a> · a family project, all rights reserved
 </footer>
 
 <dialog id="story">
@@ -174,19 +289,20 @@ const STORIES = [
 const SOON = [[15, "Noc padajících hvězd", "The Night of Falling Stars"], [16, "Klub Hvězdička", "The Star Club"]];
 
 const pad = n => String(n).padStart(2, "0");
-const grid = document.getElementById("stories");
+const grid = document.getElementById("story-grid");
 STORIES.forEach((s, i) => {
   const b = document.createElement("button");
   b.className = "story";
-  b.innerHTML = `<img src="img/stories/${pad(s[0])}_game.jpg" alt="" loading="lazy">
-    <span class="num">${s[0]}.</span><span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
+  b.innerHTML = `<img src="img/stories/${pad(s[0])}_game.jpg" alt="" loading="lazy"><span class="num">${s[0]}</span>
+    <span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
   b.addEventListener("click", () => openStory(i));
   grid.appendChild(b);
 });
 SOON.forEach(s => {
   const d = document.createElement("div");
   d.className = "story soon";
-  d.innerHTML = `<div class="ph">coming soon</div><span class="num">${s[0]}.</span><span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
+  d.innerHTML = `<div class="ph">coming soon</div><span class="num">${s[0]}</span>
+    <span class="title">${s[1]}</span><span class="en">${s[2]}</span>`;
   grid.appendChild(d);
 });
 
@@ -208,18 +324,18 @@ function openStory(i) {
   history.replaceState(null, "", `#story-${s[0]}`);
   if (!dlg.open) dlg.showModal();
 }
-dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname));
-const m = location.hash.match(/^#story-(\d+)$/);
-if (m) { const i = STORIES.findIndex(s => s[0] === +m[1]); if (i >= 0) openStory(i); }
 document.getElementById("d-close").onclick = () => dlg.close();
 document.getElementById("d-prev").onclick = () => openStory(current - 1);
 document.getElementById("d-next").onclick = () => openStory(current + 1);
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("close", () => history.replaceState(null, "", location.pathname));
 document.addEventListener("keydown", e => {
   if (!dlg.open) return;
   if (e.key === "ArrowRight") openStory(current + 1);
   if (e.key === "ArrowLeft") openStory(current - 1);
 });
+const m = location.hash.match(/^#story-(\d+)$/);
+if (m) { const i = STORIES.findIndex(s => s[0] === +m[1]); if (i >= 0) openStory(i); }
 </script>
 </body>
 </html>
